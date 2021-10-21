@@ -1,7 +1,8 @@
-# Project Name
+# Carolina Coffee
 
-This first paragraph should be a short description of the app. You can add links
-to your wiki pages that have more detailed descriptions.
+The Carlina Coffee Application is a user friendly application that will allow users to conveniently
+select a drink, and modify the drink to the users preference. The application will allow the
+user to place the order in real time, and notify the user of the drinks order upon completion.
 
 Your audience for the Readme.md are other developers who are joining your team.
 Specifically, the file should contain detailed instructions that any developer
@@ -12,13 +13,12 @@ following your instructions.
 
 ## External Requirements
 
-List all the stuff the reader will need to install in order to get you app to
-run in their laptop. For example:
+Android Studio
 
 In order to build this project you first have to install:
 
-* [Node.js](https://nodejs.org/en/)
-* [MongoDB](https://www.mongodb.com/)
+* [Android Studio](https://developer.android.com/)
+
 
 If possible, list the actual commands you used to install these, so the reader
 can just cut-n-paste the commands and get everything setup.
