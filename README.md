@@ -32,6 +32,8 @@ your repo. Sometimes there is no need for this section, but some apps require
 some first-time configuration from the developer, for example: setting up a
 database for running your webapp locally.
 
+Open Android Studio, select [] + [] 
+
 ## Running
 
 Specify the commands for a developer to run the app from the cloned repo.
