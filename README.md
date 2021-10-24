@@ -70,4 +70,7 @@ Your names and emails
 Name: Caleb Howard
 Email: Howardc484@gmail.com
 
+Name: Westen Wingard
+Email: Westenwingard@gmail.com
+
 
