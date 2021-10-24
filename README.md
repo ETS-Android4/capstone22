@@ -13,7 +13,7 @@ following your instructions.
 
 ## External Requirements
 
-Android Studio,
+Android Studio
 
 In order to build this project you first have to install:
 
