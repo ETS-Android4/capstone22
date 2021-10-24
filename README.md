@@ -77,5 +77,5 @@ Name: Briana Rovelli
 Email: briana20rovelli@gmail.com
 
 Name: Christopher Wynne
-Email: chw5225@gmail.com  or  chwynne@email.sc.edu
+Email: chw5225@gmail.com
 
