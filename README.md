@@ -32,7 +32,7 @@ your repo. Sometimes there is no need for this section, but some apps require
 some first-time configuration from the developer, for example: setting up a
 database for running your webapp locally.
 
-Open Android Studio, select [] + [] +
+Open Android Studio, select [] + [] + [] 
 
 ## Running
 
@@ -79,5 +79,3 @@ Email: briana20rovelli@gmail.com
 
 Name: Christopher Wynne
 Email: chw5225@gmail.com
-
-
