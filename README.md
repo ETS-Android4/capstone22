@@ -2,7 +2,8 @@
 
 The Carlina Coffee Application is a user friendly application that will allow users to conveniently
 select a drink, and modify the drink to the users preference. The application will allow the
-user to place the order in real time, and notify the user of the drinks order upon completion.
+user to place the order in real time, sending the order to the store, and notifying the user of the
+drinks order upon completion.
 
 Your audience for the Readme.md are other developers who are joining your team.
 Specifically, the file should contain detailed instructions that any developer
