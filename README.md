@@ -37,7 +37,7 @@ Open Android Studio, select [] + [] +
 
 ## Running
 
-Specify the commands for a developer to run the app from the cloned repo.
+Specify the commands for a developer to run the app from the cloned repo. 
 
 To run the application from Android Studio, the user must select an available 
 device to emulate the Android app on. Once they have one selected, the user can
