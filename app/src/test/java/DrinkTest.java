@@ -1,6 +1,9 @@
 import static org.junit.Assert.*;
 
-import junit.framework.TestCase;
+import com.example.carolina_coffee.Drink;
+import com.example.carolina_coffee.DrinkSize;
+import com.example.carolina_coffee.DrinkType;
+import com.example.carolina_coffee.Latte;
 
 import org.junit.Test;
 
@@ -9,7 +12,7 @@ public class DrinkTest {
     @Test
     public void latteName_isCorrect() throws Exception {
         Drink drink = new Latte(DrinkType.Hot, DrinkSize.Large);
-        String expected = "Large Hot Latte";
+        String expected = "Large Hot com.example.carolina_coffee.Latte";
         String actual = drink.getName();
         assertEquals(expected, actual);
     }
@@ -17,7 +20,7 @@ public class DrinkTest {
     @Test
     public void latteDescription_isCorrect() throws Exception {
         Drink drink = new Latte(DrinkType.Hot, DrinkSize.Large);
-        String expected = "Espresso mixed with milk";
+        String expected = "com.example.carolina_coffee.Espresso mixed with milk";
         String actual = drink.getDescription();
         assertEquals(expected, actual);
     }
