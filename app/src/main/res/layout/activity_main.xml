@@ -23,6 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="fitXY"
         app:srcCompat="@drawable/pexels_lisa_1402407" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
