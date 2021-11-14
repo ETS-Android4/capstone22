@@ -10,6 +10,62 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carolina_Coffee">
         <activity
+            android:name=".MainMenuActivity15"
+            android:exported="true" />
+        <activity
+            android:name=".MenuActivity14"
+            android:exported="true" />
+        <activity
+            android:name=".NutritionActivity13"
+            android:exported="true" />
+        <activity
+            android:name=".PaymentActivity13"
+            android:exported="true" />
+        <activity
+            android:name=".CheckoutActivity12"
+            android:exported="true" />
+        <activity
+            android:name=".SavedOrdersActivity11"
+            android:exported="true" />
+        <activity
+            android:name=".PromptionsActivity10"
+            android:exported="true" />
+        <activity
+            android:name=".RewardsActivity9"
+            android:exported="true" />
+        <activity
+            android:name=".ProfileActivity8"
+            android:exported="true" />
+        <activity
+            android:name=".ProfileActivity7"
+            android:exported="true" />
+        <activity
+            android:name=".WalletActivity7"
+            android:exported="true" />
+        <activity
+            android:name=".PurchaseHistoryActivity6"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".InboxActivity5"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity4"
+            android:exported="true" />
+        <activity
+            android:name=".SignUpActivity3"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
