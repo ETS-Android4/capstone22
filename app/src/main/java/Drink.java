@@ -1,13 +1,16 @@
 abstract public class Drink {
     String name;
-    String description;
+    String description = "";
     DrinkType type;
     DrinkSize size;
-    double cost;
+
+    public String getName() {
+        return size.toString() + " " + type.toString() + " " + name;
+    }
 
     public String getDescription() {
         return description;
     }
 
-    public abstract int getCost();
+    public abstract double getCost();
 }
