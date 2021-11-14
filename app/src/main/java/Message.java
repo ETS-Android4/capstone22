@@ -1,2 +1,2 @@
-public class Message {
+abstract public class Message extends Inbox{
 }
