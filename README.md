@@ -2,7 +2,8 @@
 
 The Carlina Coffee Application is a user friendly application that will allow users to conveniently
 select a drink, and modify the drink to the users preference. The application will allow the
-user to place the order in real time, and notify the user of the drinks order upon completion.
+user to place the order in real time, sending the order to the store, and notifying the user of the
+drinks order upon completion.
 
 Your audience for the Readme.md are other developers who are joining your team.
 Specifically, the file should contain detailed instructions that any developer
@@ -32,11 +33,15 @@ your repo. Sometimes there is no need for this section, but some apps require
 some first-time configuration from the developer, for example: setting up a
 database for running your webapp locally.
 
-Open Android Studio, select [] + [] +
+Open Android Studio, select [] + [] +  
 
 ## Running
 
-Specify the commands for a developer to run the app from the cloned repo.
+Specify the commands for a developer to run the app from the cloned repo. 
+
+To run the application from Android Studio, the user must select an available 
+device to emulate the Android app on. Once they have one selected, the user can
+go to Build > Make Project. After that, there should be no issues running the application.
 
 # Deployment
 
@@ -59,7 +64,7 @@ The behavioral tests are in `/test/casper/`.
 
 ## Testing Technology
 
-In some cases you need to install test runners, etc. Explain how.
+In some cases you need to install test runners, etc. Explain how. []
 
 ## Running Tests
 
@@ -80,4 +85,5 @@ Email: briana20rovelli@gmail.com
 Name: Christopher Wynne
 Email: chw5225@gmail.com
 
-
+Name: Haoran Yin
+Email: haorany@email.sc.edu
