@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
 
-    EditText mFullName,mEmail,mPassword,mPhone;
-    Button mRegisterButton,mLoginButton;
+    EditText mFullName,mEmail,mPassword,mConfirmPassword,mPhone;
+    Button mLoginButton;
+    ImageView mRegisterButton;
     private FirebaseAuth fAuth;
     ProgressBar progressBar;
 
@@ -35,6 +37,7 @@ public class Register extends AppCompatActivity {
         mFullName       = findViewById(R.id.fullName);
         mEmail          = findViewById(R.id.email);
         mPassword       = findViewById(R.id.password);
+        mConfirmPassword= findViewById(R.id.confirmPassword);
         mRegisterButton = findViewById(R.id.registerButton);
         mLoginButton    = findViewById(R.id.loginButton);
         mPhone          = findViewById(R.id.phone);
@@ -55,26 +58,46 @@ public class Register extends AppCompatActivity {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
                     public void onClick(View v) {
+                        String name = mFullName.getText().toString().trim();
                         String email = mEmail.getText().toString().trim();
                         String password = mPassword.getText().toString().trim();
+                        String confirmPassword = mConfirmPassword.getText().toString().trim();
 
 
+
+                        // If user does not enter a name.
+                        if(TextUtils.isEmpty(name)) {
+                            Toast.makeText(Register.this, "Your name is required.", Toast.LENGTH_SHORT).show();
+                            mFullName.setError("Name is required.");
+                            return;
+                        }
 
                         // If user does not enter an email in the field
                         if(TextUtils.isEmpty(email)) {
+                            Toast.makeText(Register.this, "Email is required.", Toast.LENGTH_SHORT).show();
                             mEmail.setError("Email is required.");
                             return;
                         }
 
                         // If user does not enter a password in the field
                         if(TextUtils.isEmpty(password)) {
-                            mPassword.setError("Password is required");
+                            Toast.makeText(Register.this, "Password is required.", Toast.LENGTH_SHORT).show();
+                            mPassword.setError("Password is required.");
                             return;
                         }
 
                         // If user enters a password <= 8 characters.
                         if(password.length() < 8) {
+                            Toast.makeText(Register.this, "Password must be >= 8 characters.", Toast.LENGTH_SHORT).show();
                             mPassword.setError("Password must be >= 8 characters.");
+                            return;
+                        }
+
+                        // If user passwords do not match.
+                        if(!password.equals(confirmPassword)) {
+                            Toast.makeText(Register.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                            mPassword.setError("Passwords must be identical!");
+                            mConfirmPassword.setError("Passwords must be identical!");
                             return;
                         }
 
@@ -91,7 +114,7 @@ public class Register extends AppCompatActivity {
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                                 }else {
-                                    Toast.makeText(Register.this, "Error has occurred!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Register.this, "Error has occurred!\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     // Hide loading bar when user gets an error.
                                     progressBar.setVisibility(View.GONE);
                                 }

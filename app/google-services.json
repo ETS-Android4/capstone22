@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1016609704955",
+    "project_id": "capstone22-24c14",
+    "storage_bucket": "capstone22-24c14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016609704955:android:39c465b9f2eaa075fc595e",
+        "android_client_info": {
+          "package_name": "com.example.carolina_coffee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016609704955-6a10ff8arhbsocbdm2jmlrmdei6psask.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJpDPalA4RNrlxpA87FayT8rcNsPk-VMg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016609704955-6a10ff8arhbsocbdm2jmlrmdei6psask.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

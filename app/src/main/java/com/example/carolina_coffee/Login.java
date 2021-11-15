@@ -1,27 +1,34 @@
 package com.example.carolina_coffee;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
     EditText mEmail, mPassword;
-    Button mLoginButton, mCreateButton;
+    Button mCreateButton, mForgotPassword;
+    ImageView mLoginButton;
+    //TextView mForgotPassword;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
 
@@ -30,12 +37,13 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEmail = findViewById(R.id.email);
-        mPassword = findViewById(R.id.password);
-        progressBar = findViewById(R.id.progressBar);
-        fAuth = FirebaseAuth.getInstance();
-        mLoginButton = findViewById(R.id.loginButton);
-        mCreateButton = findViewById(R.id.createButton);
+        mEmail          = findViewById(R.id.email);
+        mPassword       = findViewById(R.id.password);
+        progressBar     = findViewById(R.id.progressBar);
+        fAuth           = FirebaseAuth.getInstance();
+        mLoginButton    = findViewById(R.id.loginButton);
+        mCreateButton   = findViewById(R.id.createButton);
+        mForgotPassword = findViewById(R.id.forgotPassword);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +55,14 @@ public class Login extends AppCompatActivity {
 
                 // If user does not enter an email in the field
                 if(TextUtils.isEmpty(email)) {
+                    Toast.makeText(Login.this, "Email is required.", Toast.LENGTH_SHORT).show();
                     mEmail.setError("Email is required.");
                     return;
                 }
 
                 // If user does not enter a password in the field
                 if(TextUtils.isEmpty(password)) {
+                    Toast.makeText(Login.this, "Password is required.", Toast.LENGTH_SHORT).show();
                     mPassword.setError("Password is required");
                     return;
                 }
@@ -74,7 +84,7 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Logged in Successfully.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else {
-                            Toast.makeText(Login.this, "Error has occurred!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Error has occurred!\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             // Hide loading bar when user gets an error.
                             progressBar.setVisibility(View.GONE);
                         }
@@ -83,6 +93,47 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        mForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText resetMail = new EditText(v.getContext());
+                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
+                passwordResetDialog.setTitle("Reset Password?");
+                passwordResetDialog.setMessage("Enter your Email to receive password reset link.");
+                passwordResetDialog.setView(resetMail);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Extract the email and send reset link.
+
+                        String mail = resetMail.getText().toString();
+                        fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(Login.this, "Reset Link Sent To Your Email.", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Login.this, "Error! Reset Link Was Not Sent.\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                passwordResetDialog.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Close the dialog box if user clicks no.
+
+
+                    }
+                });
+                // Display the dialog box for reset Password.
+                passwordResetDialog.create().show();
+            }
+        });
 
     }
 
@@ -91,6 +142,5 @@ public class Login extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),Register.class));
         finish();
     }
-
 
 }
