@@ -126,7 +126,6 @@ public class Register extends AppCompatActivity {
 
 
 
-
     }
 
     // Button for existing account -> send user to login page.
