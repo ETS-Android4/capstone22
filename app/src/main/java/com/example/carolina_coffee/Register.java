@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -49,6 +52,16 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Get rid of the top "Carolina_Coffee" purple bar on top of each page.
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        getSupportActionBar().hide(); // This line will hide the action bar
+
+        // This will change the action bar color from the default purple, to color of choice here.
+        // Calling to method that will make this action happen.
+        statusBarColor();
+
         setContentView(R.layout.activity_register);
 
         mFullName       = findViewById(R.id.fullName);
@@ -192,6 +205,15 @@ public class Register extends AppCompatActivity {
     public void existingAccountLogin(View view) {
         startActivity(new Intent(getApplicationContext(),Login.class));
         finish();
+    }
+
+    // This is method to change the status bar color from default purple to color of choice.
+    private void statusBarColor() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.black,this.getTheme()));
+        }else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.black));
+        }
     }
 
 
