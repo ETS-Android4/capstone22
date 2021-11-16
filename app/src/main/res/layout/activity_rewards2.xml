@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:letterSpacing=".1"
-        android:text="Earn Points for Free items"
+        android:text="@string/earn_points_for_free_items"
         android:textColor="#292929"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/backgroundpic"
         android:src="@drawable/screen_shot_2021_11_15_at_9_33_40_pm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,14 +56,18 @@
         android:id="@+id/imageView8"
         android:layout_width="369dp"
         android:layout_height="206dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/congratsbox"
         android:src="@drawable/rectanlge"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="535dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="369dp"
         android:layout_height="277dp"
+        android:contentDescription="@string/coffe_pic"
         android:src="@drawable/coffee_pic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,39 +79,48 @@
         android:id="@+id/imageView7"
         android:layout_width="296dp"
         android:layout_height="137dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/pointscollectedbox"
         android:src="@drawable/rectanlge"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="144dp" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="166dp"
         android:layout_height="37dp"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="184dp" />
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="132dp"
         android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:letterSpacing=".05"
-        android:text="Congrats!"
+        android:text="@string/congrats"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="594dp" />
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="206dp"
         android:layout_height="29dp"
-        android:text="   Points collected!"
+        android:layout_marginBottom="100dp"
+        android:text="@string/points_collected"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="155dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
