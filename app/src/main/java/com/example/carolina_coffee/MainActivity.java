@@ -77,4 +77,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void rewardsActivityButton(View view) {
+        Intent intent = new Intent(this, RewardsActivity2.class);
+        startActivity(intent);
+    }
 }
