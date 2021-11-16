@@ -207,6 +207,7 @@ public class Register extends AppCompatActivity {
         finish();
     }
 
+
     // This is method to change the status bar color from default purple to color of choice.
     private void statusBarColor() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

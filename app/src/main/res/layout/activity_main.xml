@@ -55,4 +55,5 @@
         android:onClick="profilePage"
         app:srcCompat="@drawable/accounticon" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
