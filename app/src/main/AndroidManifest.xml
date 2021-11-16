@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carolina_Coffee">
         <activity
+            android:name=".RewardsActivity2"
+            android:exported="false" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity android:name=".Login" />

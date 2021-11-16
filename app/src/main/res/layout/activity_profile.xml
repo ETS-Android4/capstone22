@@ -66,7 +66,7 @@
         android:paddingStart="30dp"
         android:paddingTop="10dp"
         android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
+        android:textColor="#CCFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
         android:paddingStart="30dp"
         android:paddingTop="10dp"
         android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
+        android:textColor="#CCFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,7 +131,7 @@
         android:paddingStart="30dp"
         android:paddingTop="10dp"
         android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
+        android:textColor="#CCFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -158,7 +158,7 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:background="@drawable/roundstyle"
-        android:backgroundTint="#CCFFFFFF"
+        android:backgroundTint="#99FFFFFF"
         android:fontFamily="@font/aclonica"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
@@ -169,6 +169,24 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lineFiller3" />
+
+    <TextView
+        android:id="@+id/whiteBoxBottom"
+        android:layout_width="410dp"
+        android:layout_height="95dp"
+        android:layout_marginBottom="112dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFFFF"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/profileTextTop"
@@ -243,5 +261,40 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileTextTop" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/accounticon" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/homeicon"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ordericon"
+        tools:layout_editor_absoluteX="204dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/payicon"
+        tools:layout_editor_absoluteX="113dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
