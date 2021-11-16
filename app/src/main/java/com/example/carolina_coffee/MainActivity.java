@@ -7,16 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView fullName,email,phone;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
 
     private Button loginButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -42,4 +51,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void profilePage(View view) {
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
 }

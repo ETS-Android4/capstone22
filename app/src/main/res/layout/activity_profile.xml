@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/settingpagebackground"
+    tools:context=".Profile">
+
+
+    <TextView
+        android:id="@+id/LineFiller1"
+        android:layout_width="300dp"
+        android:layout_height="15dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="5dp"
+        android:text="---------------------------------------------"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileName" />
+
+    <TextView
+        android:id="@+id/lineFiller2"
+        android:layout_width="300dp"
+        android:layout_height="15dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="5dp"
+        android:text="---------------------------------------------"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
+
+    <TextView
+        android:id="@+id/lineFiller3"
+        android:layout_width="300dp"
+        android:layout_height="15dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="5dp"
+        android:text="---------------------------------------------"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
+
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:hint="Full Name"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileNameTop" />
+
+    <TextView
+        android:id="@+id/profileNameTop"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:text="Name"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personalText" />
+
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:hint="Email Address"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmailTOP" />
+
+    <TextView
+        android:id="@+id/profileEmailTOP"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:text="Email Address"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LineFiller1" />
+
+    <TextView
+        android:id="@+id/profilePhone"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:hint="Phone Number"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePhoneTOP" />
+
+    <TextView
+        android:id="@+id/profilePhoneTOP"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:text="Phone Number"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineFiller2" />
+
+    <TextView
+        android:id="@+id/WhiteBox1"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:fontFamily="@font/aclonica"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#CCFFFFFF"
+        android:text="Need a change?"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineFiller3" />
+
+    <TextView
+        android:id="@+id/profileTextTop"
+        android:layout_width="417dp"
+        android:layout_height="96dp"
+        android:layout_marginEnd="-1dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/aclonica"
+        android:text="Profile"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TopMessage2"
+        android:layout_width="418dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="-1dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/aclonica"
+        android:text="Your Personal Information"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileTextTop" />
+
+    <TextView
+        android:id="@+id/verifyMsg"
+        android:layout_width="363dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="36dp"
+        android:text="Email Not Verified!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileTextTop" />
+
+    <Button
+        android:id="@+id/resendCode"
+        android:layout_width="139dp"
+        android:layout_height="47dp"
+        android:text="resendCode"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verifyMsg"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/personalText"
+        android:layout_width="300dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Personal"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileTextTop" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
