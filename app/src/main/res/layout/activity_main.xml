@@ -44,16 +44,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/rewardsActivityButton"
+        android:id="@+id/paymentActivity13"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="428dp"
         android:layout_marginEnd="150dp"
         android:fontFamily="@font/aclonica"
+        android:onClick="paymentActivity13"
+        android:padding="5dp"
+        android:text="Payment Activity 13"
+        android:textAlignment="center"
+        android:textColor="#808080"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/rewardsActivityButton2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="150dp"
+        android:fontFamily="@font/aclonica"
         android:onClick="rewardsActivityButton"
         android:padding="5dp"
-        android:text="rewards Ativity"
+        android:text="rewards Activity"
         android:textAlignment="center"
         android:textColor="#808080"
         app:layout_constraintEnd_toEndOf="parent"

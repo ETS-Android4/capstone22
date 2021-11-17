@@ -83,4 +83,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RewardsActivity2.class);
         startActivity(intent);
     }
+
+    public void paymentActivity13(View view) {
+        Intent intent = new Intent(this, PaymentActivity13.class);
+        startActivity(intent);
+    }
 }
