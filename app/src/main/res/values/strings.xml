@@ -33,4 +33,9 @@
     <string name="backgroundpic">BackGroundPic</string>
     <string name="congratsbox">congratsBox</string>
     <string name="pointscollectedbox">pointsCollectedBox</string>
+    <string name="coffeepic">CoffeePic</string>
+    <string name="you_have_earned_a">You have earned a</string>
+    <string name="details">Details</string>
+    <string name="promotions">Promotions</string>
+    <string name="our_current_offers">Our current offers</string>
 </resources>
