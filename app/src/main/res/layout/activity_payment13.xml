@@ -4,6 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaymentActivity13">
+
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context="com.example.carolina_coffee.PaymentActivity13">
+
+    <com.craftman.cardform.CardForm
+        android:id="@+id/card_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
