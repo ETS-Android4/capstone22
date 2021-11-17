@@ -174,7 +174,6 @@
         android:id="@+id/whiteBoxBottom"
         android:layout_width="410dp"
         android:layout_height="95dp"
-        android:layout_marginBottom="112dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFFFF"
         android:fontFamily="@font/aclonica"
@@ -185,7 +184,7 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -266,7 +265,7 @@
         android:id="@+id/imageView3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/accounticon" />
@@ -275,26 +274,29 @@
         android:id="@+id/imageView6"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/homeicon"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/homeicon" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/ordericon"
-        tools:layout_editor_absoluteX="204dp" />
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:srcCompat="@drawable/ordericon" />
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/payicon"
-        tools:layout_editor_absoluteX="113dp" />
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:srcCompat="@drawable/payicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
