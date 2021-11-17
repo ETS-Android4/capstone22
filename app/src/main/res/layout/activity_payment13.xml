@@ -5,16 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:background="@drawable/settingpagebackground"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     tools:context="com.example.carolina_coffee.PaymentActivity13">
 
+    <TextView
+        android:id="@+id/backGroundCover"
+        android:layout_width="379dp"
+        android:layout_height="560dp"
+        android:background="#C6BEBE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/WalletArtCover"
+        android:layout_width="379dp"
+        android:layout_height="250dp"
+        android:background="@drawable/walletcover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.craftman.cardform.CardForm
         android:id="@+id/card_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,4 +88,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PaymentActivity13.class);
         startActivity(intent);
     }
+
 }
