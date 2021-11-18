@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
 
     android:background="@drawable/settingpagebackground"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
     tools:context="com.example.carolina_coffee.PaymentActivity13">
 
     <TextView
         android:id="@+id/backGroundCover"
         android:layout_width="379dp"
         android:layout_height="530dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="88dp"
         android:background="#CCC6BEBE"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,21 +26,17 @@
         android:id="@+id/WalletArtCover"
         android:layout_width="379dp"
         android:layout_height="210dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="88dp"
         android:background="@drawable/walletcover"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.craftman.cardform.CardForm
-        android:id="@+id/card_form"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginTop="108dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/backGroundCover"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/topPaymentWhiteBox"
@@ -59,10 +56,21 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-
-
-
-
+    <com.craftman.cardform.CardForm
+        android:id="@+id/card_form"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="108dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
