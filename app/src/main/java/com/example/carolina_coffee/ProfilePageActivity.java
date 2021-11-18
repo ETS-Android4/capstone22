@@ -120,16 +120,6 @@ public class ProfilePageActivity extends AppCompatActivity {
             resendCode.setVisibility(View.VISIBLE);
             personalText.setVisibility(View.INVISIBLE);
 
-            /*
-            // Set Personal Text to visible when email verified is NOT visible.
-            if(resendCode.getVisibility() == View.VISIBLE) {
-                // if resend code is visible, make personal INVISIBLE
-                personalText.setVisibility(View.INVISIBLE);
-                return;
-            }
-
-             */
-
             resendCode.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
@@ -162,6 +152,18 @@ public class ProfilePageActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    //Fire Base Sign Out Method
+    public void logout(View view) {
+        // Logout
+        FirebaseAuth.getInstance().signOut();
+        // Send user to login page
+        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
+        overridePendingTransition(0,0);
+        finish();
     }
 
     // This is method to change the status bar color from default purple to color of choice.
@@ -177,5 +179,14 @@ public class ProfilePageActivity extends AppCompatActivity {
     public void settingsPage(View view) {
         Intent intent = new Intent(this, SettingPageActivity.class);
         startActivity(intent);
+    }
+
+    public void editProfile(View view) {
+        Intent i = new Intent(view.getContext(),EditProfileActivity.class);
+        // Sends firebase user data to the EditProfile Page
+        i.putExtra("fullName",fullName.getText().toString());
+        i.putExtra("email",email.getText().toString());
+        i.putExtra("phone",phone.getText().toString());
+        startActivity(i);
     }
 }

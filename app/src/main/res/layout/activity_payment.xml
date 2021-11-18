@@ -47,7 +47,7 @@
         android:layout_width="415dp"
         android:layout_height="65dp"
         android:background="#FFFFFF"
-        android:fontFamily="@font/aclonica"
+        android:fontFamily="@font/sofia_regular"
         android:text="Payment"
         android:textAlignment="center"
         android:textColor="#000000"

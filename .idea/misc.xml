@@ -5,19 +5,23 @@
       <map>
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/bottom_white_stroke_profile_page.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/nav_background_curved.xml" value="0.5703125" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/profile_page_all_curved_corners_red.xml" value="0.346875" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/profile_page_bottom_curved_box.xml" value="0.346875" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/profile_page_top_curved_box.xml" value="0.346875" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/round_corners.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/roundstyle.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/settings_page_all_curved_corners.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/settings_page_all_gray_curved_corners.xml" value="0.5703125" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/settings_page_all_white_curved_corners.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_edit_profile.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_login.xml" value="0.43976449275362317" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_payment.xml" value="0.5" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_payment_plans_page.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_payment_screen.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_profile.xml" value="0.5" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_register.xml" value="0.43976449275362317" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_rewards.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_setting_page.xml" value="0.5" />
         <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/menu/navigation_items.xml" value="0.5541666666666667" />

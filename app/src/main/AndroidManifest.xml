@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carolina_Coffee">
         <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".CartPageActivity"
             android:exported="false" />
         <activity
