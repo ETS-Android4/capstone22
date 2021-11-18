@@ -1,20 +1,20 @@
 package com.example.carolina_coffee;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,12 +34,54 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         getSupportActionBar().hide(); // This line will hide the action bar
-
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
-
         setContentView(R.layout.activity_main);
+
+
+
+        // Navigation
+        //--------------------------------------------------------------------------------------
+        //Initialize and assign variables - bottom_navigation = nav bar inside activity_main.xml
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //Set home Selected
+        bottomNavigationView.setSelectedItemId(R.id.homePageButton);
+        //perform itemSelectedListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    //Home Page Button
+                    case R.id.homePageButton:
+                        return true;
+
+                    //Payment Page Button
+                    case R.id.payPageButton:
+                        startActivity(new Intent(getApplicationContext(), PaymentActivity13.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Order Page Button
+                    case R.id.orderPageButton:
+                        startActivity(new Intent(getApplicationContext(),RewardsActivity2.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Account Page Button
+                    case R.id.accountPageButton:
+                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+        // End of Navigation
+        //--------------------------------------------------------------------------------------
+
+
+
 
 
         loginButton = (Button) findViewById(R.id.loginButton);

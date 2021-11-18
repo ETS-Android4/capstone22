@@ -15,15 +15,17 @@
     <TextView
         android:id="@+id/backGroundCover"
         android:layout_width="379dp"
-        android:layout_height="560dp"
-        android:background="#C6BEBE"
+        android:layout_height="530dp"
+        android:layout_marginTop="100dp"
+        android:background="#CCC6BEBE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/WalletArtCover"
         android:layout_width="379dp"
-        android:layout_height="250dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/walletcover"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,12 +33,49 @@
     <com.craftman.cardform.CardForm
         android:id="@+id/card_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="4dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <TextView
+        android:id="@+id/topPaymentWhiteBox"
+        android:layout_width="415dp"
+        android:layout_height="65dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/aclonica"
+        android:text="Payment"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:menu="@menu/navigation_items"
+        app:itemRippleColor="@color/white"
+        app:itemIconTint="@color/icons_color"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

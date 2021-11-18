@@ -8,18 +8,18 @@ import android.os.Build;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -27,7 +27,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class Profile extends AppCompatActivity {
@@ -54,8 +53,46 @@ public class Profile extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
-
         setContentView(R.layout.activity_profile);
+
+        // Navigation
+        //--------------------------------------------------------------------------------------
+        //Initialize and assign variables - bottom_navigation = nav bar inside activity_main.xml
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //Set home Selected
+        bottomNavigationView.setSelectedItemId(R.id.accountPageButton);
+        //perform itemSelectedListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    //Home Page Button
+                    case R.id.homePageButton:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Payment Page Button
+                    case R.id.payPageButton:
+                        startActivity(new Intent(getApplicationContext(), PaymentActivity13.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Order Page Button
+                    case R.id.orderPageButton:
+                        startActivity(new Intent(getApplicationContext(),RewardsActivity2.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Account Page Button
+                    case R.id.accountPageButton:
+                        return true;
+                }
+                return false;
+            }
+        });
+        // End of Navigation
+        //--------------------------------------------------------------------------------------
 
         phone = findViewById(R.id.profilePhone);
         fullName = findViewById(R.id.profileName);
@@ -133,6 +170,8 @@ public class Profile extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
     }
+
+
 
 
 }
