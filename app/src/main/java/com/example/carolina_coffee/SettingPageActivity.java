@@ -181,16 +181,35 @@ public class SettingPageActivity extends AppCompatActivity {
         }
     }
 
-    // Button -> sends user ot profile page
+    // Button -> sends user to History Page
+    public void historyPageButton(View view) {
+        Intent intent = new Intent(this, HistoryPageActivity.class);
+        overridePendingTransition(5,5);
+        startActivity(intent);
+    }
+    // Button -> sends user to Payment Plans Page
+    public void paymentPlansPageButton(View view) {
+        Intent intent = new Intent(this, PaymentActivity.class);
+        overridePendingTransition(5,5);
+        startActivity(intent);
+    }
+    // Button -> sends user to profile page
     public void profileButton(View view) {
         Intent intent = new Intent(this, ProfilePageActivity.class);
         overridePendingTransition(5,5);
         startActivity(intent);
     }
-    // Button -> sends user ot customer support page
+    // Button -> sends user to customer support page
     public void customerSupportButton(View view) {
+        Intent intent = new Intent(this, CustomerSupportPageActivity.class);
+        overridePendingTransition(5,5);
+        startActivity(intent);
     }
-    // Button -> sends user ot app settings page
+    // Button -> sends user to app settings page
     public void appSettingsPageButton(View view) {
+        Intent intent = new Intent(this, AppSettingsPageActivity.class);
+        overridePendingTransition(5,5);
+        startActivity(intent);
     }
+
 }

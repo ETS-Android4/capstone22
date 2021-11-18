@@ -13,7 +13,7 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class AppSettingsPageActivity extends AppCompatActivity {
+public class HistoryPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class AppSettingsPageActivity extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
-        setContentView(R.layout.activity_app_settings_page);
+        setContentView(R.layout.activity_history_page);
 
 
 
