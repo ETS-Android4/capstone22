@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carolina_Coffee">
         <activity
-            android:name=".PaymentActivity"
-            android:exported="false" />
-        <activity
             android:name=".RewardsActivity2"
             android:exported="false" />
         <activity
@@ -23,19 +20,19 @@
         <activity android:name=".Login" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".MainMenuActivity15"
+            android:name=".MainMenuActivity"
             android:exported="true" />
         <activity
-            android:name=".MenuActivity14"
+            android:name=".MenuActivity"
             android:exported="true" />
         <activity
-            android:name=".NutritionActivity13"
+            android:name=".NutritionActivity"
             android:exported="true" />
         <activity
             android:name=".PaymentActivity13"
             android:exported="true" />
         <activity
-            android:name=".CheckoutActivity12"
+            android:name=".CheckoutActivity"
             android:exported="true" />
         <activity
             android:name=".SavedOrdersActivity11"
