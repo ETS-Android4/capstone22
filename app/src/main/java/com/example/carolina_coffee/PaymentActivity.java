@@ -57,13 +57,13 @@ public class PaymentActivity extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), RewardsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), RewardsPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
                     //Account Page Button
                     case R.id.accountPageButton:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        startActivity(new Intent(getApplicationContext(), ProfilePageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

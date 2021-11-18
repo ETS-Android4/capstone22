@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/drawable/roundstyle.xml" value="0.5703125" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_login.xml" value="0.43976449275362317" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_payment.xml" value="0.5" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_payment_plans_page.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_payment_screen.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_profile.xml" value="0.43976449275362317" />
+        <entry key="..\:/Users/chw52/StudioProjects/capstone22/app/src/main/res/layout/activity_setting_page.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/howar/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_checkout.xml" value="0.1" />
         <entry key="..\:/Users/howar/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/howar/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_inbox.xml" value="0.36666666666666664" />

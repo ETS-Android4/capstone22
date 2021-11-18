@@ -29,7 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
 
-public class Profile extends AppCompatActivity {
+public class ProfilePageActivity extends AppCompatActivity {
 
     TextView fullName,email,phone,verifyMsg,personalText;
     FirebaseAuth fAuth;
@@ -80,7 +80,7 @@ public class Profile extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), RewardsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), RewardsPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

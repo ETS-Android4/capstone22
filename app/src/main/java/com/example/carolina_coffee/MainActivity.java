@@ -64,13 +64,13 @@ public class MainActivity extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), RewardsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), RewardsPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
                     //Account Page Button
                     case R.id.accountPageButton:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        startActivity(new Intent(getApplicationContext(), ProfilePageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
@@ -98,17 +98,19 @@ public class MainActivity extends AppCompatActivity {
         // Logout
         FirebaseAuth.getInstance().signOut();
         // Send user to login page
-        startActivity(new Intent(getApplicationContext(),Login.class));
+        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
+        overridePendingTransition(0,0);
         finish();
     }
 
     public void openLoginActivity2() {
-        Intent intent = new Intent(this, Register.class);
+        Intent intent = new Intent(this, RegisterPageActivity.class);
+        overridePendingTransition(0,0);
         startActivity(intent);
     }
 
     public void profilePage(View view) {
-        Intent intent = new Intent(this, Profile.class);
+        Intent intent = new Intent(this, ProfilePageActivity.class);
         startActivity(intent);
     }
 
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void rewardsActivityButton(View view) {
-        Intent intent = new Intent(this, RewardsActivity.class);
+        Intent intent = new Intent(this, RewardsPageActivity.class);
         startActivity(intent);
     }
 

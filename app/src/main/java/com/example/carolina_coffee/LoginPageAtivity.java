@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+public class LoginPageAtivity extends AppCompatActivity {
     EditText mEmail, mPassword;
     Button mCreateButton, mForgotPassword;
     ImageView mLoginButton;
@@ -68,14 +66,14 @@ public class Login extends AppCompatActivity {
 
                 // If user does not enter an email in the field
                 if(TextUtils.isEmpty(email)) {
-                    Toast.makeText(Login.this, "Email is required.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPageAtivity.this, "Email is required.", Toast.LENGTH_SHORT).show();
                     mEmail.setError("Email is required.");
                     return;
                 }
 
                 // If user does not enter a password in the field
                 if(TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "Password is required.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPageAtivity.this, "Password is required.", Toast.LENGTH_SHORT).show();
                     mPassword.setError("Password is required");
                     return;
                 }
@@ -94,10 +92,10 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(Login.this, "Logged in Successfully.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginPageAtivity.this, "Logged in Successfully.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }else {
-                            Toast.makeText(Login.this, "Error has occurred!\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginPageAtivity.this, "Error has occurred!\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             // Hide loading bar when user gets an error.
                             progressBar.setVisibility(View.GONE);
                         }
@@ -125,12 +123,12 @@ public class Login extends AppCompatActivity {
                         fAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(Login.this, "Reset Link Sent To Your Email.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginPageAtivity.this, "Reset Link Sent To Your Email.", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Login.this, "Error! Reset Link Was Not Sent.\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginPageAtivity.this, "Error! Reset Link Was Not Sent.\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -153,7 +151,7 @@ public class Login extends AppCompatActivity {
 
     // Create Account Button -> Send user to Register Page.
     public void createAccountButton(View view) {
-        startActivity(new Intent(getApplicationContext(),Register.class));
+        startActivity(new Intent(getApplicationContext(), RegisterPageActivity.class));
         finish();
     }
 

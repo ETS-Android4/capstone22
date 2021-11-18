@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pexels_lisa_1402407"
-    tools:context=".Register">
+    tools:context=".RegisterPageActivity">
 
     <ImageView
         android:id="@+id/Logov2"
