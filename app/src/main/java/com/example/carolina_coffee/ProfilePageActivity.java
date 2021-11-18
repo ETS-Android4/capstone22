@@ -86,6 +86,8 @@ public class ProfilePageActivity extends AppCompatActivity {
 
                     //Account Page Button
                     case R.id.accountPageButton:
+                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
@@ -172,6 +174,8 @@ public class ProfilePageActivity extends AppCompatActivity {
     }
 
 
-
-
+    public void settingsPage(View view) {
+        Intent intent = new Intent(this, SettingPageActivity.class);
+        startActivity(intent);
+    }
 }

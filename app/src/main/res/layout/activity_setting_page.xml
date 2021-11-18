@@ -4,6 +4,285 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/coffee_beans_background"
     tools:context=".SettingPageActivity">
+
+
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:fontFamily="@font/aclonica"
+        android:hint="Full Name"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topMessage" />
+
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/aclonica"
+        android:hint="Email Address"
+        android:paddingStart="30dp"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileName" />
+
+    <TextView
+        android:id="@+id/AccountTopBox"
+        android:layout_width="417dp"
+        android:layout_height="96dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/aclonica"
+        android:text="Account"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/topMessage"
+        android:layout_width="418dp"
+        android:layout_height="26dp"
+        android:background="@drawable/profile_page_top_curved_box"
+        android:fontFamily="@font/aclonica"
+        android:text="Your account details and more"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AccountTopBox" />
+
+    <TextView
+        android:id="@+id/top_History_White_Curved_Box"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="448dp"
+        android:background="@drawable/settings_page_all_white_curved_corners"
+        android:fontFamily="@font/aclonica"
+        android:letterSpacing="0.5"
+        android:paddingStart="40dp"
+        android:paddingTop="20dp"
+        android:text="History"
+        android:textColor="#EC3939"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/top_PaymentPlans_White_Curved_Box2"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/settings_page_all_white_curved_corners"
+        android:fontFamily="@font/aclonica"
+        android:letterSpacing="0.5"
+        android:paddingStart="40dp"
+        android:paddingTop="20dp"
+        android:text="Payment Plans"
+        android:textColor="#EC3939"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_History_White_Curved_Box" />
+
+    <TextView
+        android:id="@+id/bottom_account_White_Curved_Box3"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/settings_page_all_white_curved_corners"
+        android:fontFamily="@font/aclonica"
+        android:letterSpacing="0.5"
+        android:paddingStart="40dp"
+        android:paddingTop="20dp"
+        android:text="Account"
+        android:textAlignment="textStart"
+        android:textColor="#EC3939"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2" />
+
+    <TextView
+        android:id="@+id/profile_button"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/settings_page_all_gray_curved_corners"
+        android:letterSpacing="0.5"
+        android:onClick="profileButton"
+        android:paddingStart="20dp"
+        android:paddingTop="5dp"
+        android:text="Profile"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:itemRippleColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_account_White_Curved_Box3"
+        app:layout_constraintStart_toStartOf="@+id/bottom_account_White_Curved_Box3"
+        app:layout_constraintTop_toTopOf="@+id/bottom_account_White_Curved_Box3" />
+
+    <TextView
+        android:id="@+id/change_password_button"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/settings_page_all_gray_curved_corners"
+        android:letterSpacing="0.5"
+        android:onClick="changePasswordButton"
+        android:paddingStart="20dp"
+        android:paddingTop="5dp"
+        android:text="Change Password"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_button" />
+
+    <TextView
+        android:id="@+id/setting_button"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/settings_page_all_gray_curved_corners"
+        android:letterSpacing="0.5"
+        android:onClick="appSettingsPageButton"
+        android:paddingStart="20dp"
+        android:paddingTop="5dp"
+        android:text="Settings"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customer_support_button" />
+
+    <TextView
+        android:id="@+id/customer_support_button"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/settings_page_all_gray_curved_corners"
+        android:letterSpacing="0.5"
+        android:onClick="customerSupportButton"
+        android:paddingStart="20dp"
+        android:paddingTop="5dp"
+        android:text="Customer Support"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_password_button" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/nav_background_curved"
+        app:itemIconTint="@color/icons_color"
+        app:itemRippleColor="#C1C1C1"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_items">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <ImageView
+        android:id="@+id/credit_card_icon"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintStart_toStartOf="@+id/top_PaymentPlans_White_Curved_Box2"
+        app:layout_constraintTop_toTopOf="@+id/top_PaymentPlans_White_Curved_Box2"
+        app:srcCompat="@drawable/credit_card_icon" />
+
+    <ImageView
+        android:id="@+id/history_icon"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/top_History_White_Curved_Box"
+        app:layout_constraintTop_toTopOf="@+id/top_History_White_Curved_Box"
+        app:srcCompat="@drawable/history_icon" />
+
+    <ImageView
+        android:id="@+id/historyRightArrow"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/top_History_White_Curved_Box"
+        app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box"
+        app:layout_constraintTop_toTopOf="@+id/top_History_White_Curved_Box"
+        app:srcCompat="@drawable/right_arrow" />
+
+    <ImageView
+        android:id="@+id/paymentPlansRightArrow"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2"
+        app:layout_constraintEnd_toEndOf="@+id/top_PaymentPlans_White_Curved_Box2"
+        app:layout_constraintTop_toTopOf="@+id/top_PaymentPlans_White_Curved_Box2"
+        app:layout_constraintVertical_bias="0.461"
+        app:srcCompat="@drawable/right_arrow" />
+
+    <TextView
+        android:id="@+id/history_message_box"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Track your order history and receipts"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/top_History_White_Curved_Box"
+        app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box"
+        app:layout_constraintStart_toStartOf="@+id/top_History_White_Curved_Box" />
+
+    <TextView
+        android:id="@+id/paymentPlansMessageBox"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Add/Remove a payment method"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2"
+        app:layout_constraintEnd_toEndOf="@+id/top_PaymentPlans_White_Curved_Box2"
+        app:layout_constraintStart_toStartOf="@+id/top_PaymentPlans_White_Curved_Box2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

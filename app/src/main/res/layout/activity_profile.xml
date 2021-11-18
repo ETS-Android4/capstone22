@@ -9,64 +9,16 @@
 
 
     <TextView
-        android:id="@+id/LineFiller1"
-        android:layout_width="300dp"
-        android:layout_height="15dp"
-        android:background="#CC800B0B"
-        android:fontFamily="@font/aclonica"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text="---------------------------------------------"
-        android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileName" />
-
-    <TextView
-        android:id="@+id/lineFiller2"
-        android:layout_width="300dp"
-        android:layout_height="15dp"
-        android:background="#CC800B0B"
-        android:fontFamily="@font/aclonica"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text="---------------------------------------------"
-        android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
-
-    <TextView
-        android:id="@+id/lineFiller3"
-        android:layout_width="300dp"
-        android:layout_height="15dp"
-        android:background="#CC800B0B"
-        android:fontFamily="@font/aclonica"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:text="---------------------------------------------"
-        android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
-
-    <TextView
         android:id="@+id/profileName"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:background="#CC800B0B"
+        android:background="@drawable/bottom_white_stroke_profile_page"
         android:fontFamily="@font/aclonica"
         android:hint="Full Name"
         android:paddingStart="30dp"
         android:paddingTop="10dp"
         android:textAlignment="textStart"
-        android:textColor="#CCFFFFFF"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,10 +32,11 @@
         android:background="#CC800B0B"
         android:fontFamily="@font/aclonica"
         android:paddingStart="30dp"
-        android:paddingTop="10dp"
+        android:paddingTop="25dp"
         android:text="Name"
         android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
+        android:textColor="#CCFFFFFF"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,13 +46,13 @@
         android:id="@+id/profileEmail"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:background="#CC800B0B"
+        android:background="@drawable/bottom_white_stroke_profile_page"
         android:fontFamily="@font/aclonica"
         android:hint="Email Address"
         android:paddingStart="30dp"
         android:paddingTop="10dp"
         android:textAlignment="textStart"
-        android:textColor="#CCFFFFFF"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,26 +65,27 @@
         android:background="#CC800B0B"
         android:fontFamily="@font/aclonica"
         android:paddingStart="30dp"
-        android:paddingTop="10dp"
+        android:paddingTop="25dp"
         android:text="Email Address"
         android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
+        android:textColor="#CCFFFFFF"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LineFiller1" />
+        app:layout_constraintTop_toBottomOf="@+id/profileName" />
 
     <TextView
         android:id="@+id/profilePhone"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:background="#CC800B0B"
+        android:background="@drawable/bottom_white_stroke_profile_page"
         android:fontFamily="@font/aclonica"
         android:hint="Phone Number"
         android:paddingStart="30dp"
         android:paddingTop="10dp"
         android:textAlignment="textStart"
-        android:textColor="#CCFFFFFF"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,20 +98,21 @@
         android:background="#CC800B0B"
         android:fontFamily="@font/aclonica"
         android:paddingStart="30dp"
-        android:paddingTop="10dp"
+        android:paddingTop="25dp"
         android:text="Phone Number"
         android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
+        android:textColor="#CCFFFFFF"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineFiller2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
 
     <TextView
         android:id="@+id/WhiteBox1"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:background="@drawable/roundstyle"
+        android:background="@drawable/profile_page_bottom_curved_box"
         android:backgroundTint="#99FFFFFF"
         android:fontFamily="@font/aclonica"
         android:paddingStart="20dp"
@@ -168,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lineFiller3" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
 
     <TextView
         android:id="@+id/profileTextTop"
@@ -191,7 +146,7 @@
         android:layout_width="418dp"
         android:layout_height="26dp"
         android:layout_marginEnd="-1dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/profile_page_top_curved_box"
         android:fontFamily="@font/aclonica"
         android:text="Your Personal Information"
         android:textAlignment="center"
@@ -244,18 +199,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileTextTop" />
 
+    <TextView
+        android:id="@+id/backArrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/left_arrow"
+        android:onClick="settingsPage"
+        app:itemRippleColor="#C1C1C1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="@drawable/nav_background_curved"
         app:menu="@menu/navigation_items"
-        app:itemRippleColor="@color/white"
+        app:itemRippleColor="#C1C1C1"
+        app:itemTextColor="@color/black"
         app:itemIconTint="@color/icons_color"
         app:layout_constraintBottom_toBottomOf="parent" >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
