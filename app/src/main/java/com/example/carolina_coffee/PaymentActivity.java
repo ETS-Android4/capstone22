@@ -18,7 +18,7 @@ import com.craftman.cardform.CardForm;
 import com.craftman.cardform.OnPayBtnClickListner;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class PaymentActivity13 extends AppCompatActivity {
+public class PaymentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class PaymentActivity13 extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
-        setContentView(R.layout.activity_payment13);
+        setContentView(R.layout.activity_payment);
 
         // Navigation
         //--------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ public class PaymentActivity13 extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(),RewardsActivity2.class));
+                        startActivity(new Intent(getApplicationContext(), RewardsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -83,7 +83,7 @@ public class PaymentActivity13 extends AppCompatActivity {
         cardForm.setPayBtnClickListner(new OnPayBtnClickListner() {
             @Override
             public void onClick(Card card) {
-                Toast.makeText(PaymentActivity13.this, "Name : "+card.getName()+" | Last 4 digits : "+card.getLast4(),
+                Toast.makeText(PaymentActivity.this, "Name : "+card.getName()+" | Last 4 digits : "+card.getLast4(),
                         Toast.LENGTH_SHORT).show();
             }
         });

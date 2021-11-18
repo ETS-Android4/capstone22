@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rewardspage1"
-    tools:context=".RewardsActivity2">
+    tools:context=".RewardsActivity">
 
     <TextView
         android:id="@+id/topRewardsBox"

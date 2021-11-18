@@ -12,7 +12,7 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class RewardsActivity2 extends AppCompatActivity {
+public class RewardsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class RewardsActivity2 extends AppCompatActivity {
         statusBarColor();
 
         //This must be placed below the method above that changes/deletes action bar.
-        setContentView(R.layout.activity_rewards2);
+        setContentView(R.layout.activity_rewards);
 
 
 
@@ -52,7 +52,7 @@ public class RewardsActivity2 extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity13.class));
+                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

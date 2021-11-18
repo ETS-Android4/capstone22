@@ -1,10 +1,5 @@
 import static org.junit.Assert.*;
 
-import com.example.carolina_coffee.Drink;
-import com.example.carolina_coffee.DrinkSize;
-import com.example.carolina_coffee.DrinkType;
-import com.example.carolina_coffee.Latte;
-
 import org.junit.Test;
 
 public class DrinkTest {
