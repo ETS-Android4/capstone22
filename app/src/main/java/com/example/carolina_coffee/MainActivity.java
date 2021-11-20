@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
+
         setContentView(R.layout.activity_main);
 
 

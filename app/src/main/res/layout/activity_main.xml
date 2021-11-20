@@ -56,6 +56,8 @@
         android:text="Payment Activity 13"
         android:textAlignment="center"
         android:textColor="#808080"
+        android:backgroundTint="#ffFFFFFF"
+        app:itemRippleColor="#C1C1C1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
