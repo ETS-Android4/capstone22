@@ -1,32 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.carolina_coffee">
+    package="com.example.carolina_coffee"
+    xmlns:tools = "http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Carolina Coffee"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Carolina_Coffee">
+        android:theme="@style/Theme.Carolina_Coffee"
+        tools:replace="android:label">
         <activity
-            android:name=".Menu"
+            android:name=".HistoryPageActivity"
             android:exported="false" />
         <activity
-            android:name=".RewardsActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Profile"
+            android:name=".CartPageActivity"
             android:exported="false" />
-        <activity android:name=".Login" />
+        <activity
+            android:name=".OrderMenuPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppSettingsPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerSupportPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SavedOrdersPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InboxPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RewardsPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfilePageActivity"
+            android:exported="false" />
+        <activity android:name=".LoginPageAtivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".PaymentActivity"
             android:exported="true" />
         <activity
-            android:name=".Register"
+            android:name=".RegisterPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

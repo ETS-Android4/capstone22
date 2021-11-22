@@ -29,7 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
 
-public class Profile extends AppCompatActivity {
+public class ProfilePageActivity extends AppCompatActivity {
 
     TextView fullName,email,phone,verifyMsg,personalText;
     FirebaseAuth fAuth;
@@ -80,12 +80,14 @@ public class Profile extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), RewardsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), RewardsPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
                     //Account Page Button
                     case R.id.accountPageButton:
+                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
@@ -117,16 +119,6 @@ public class Profile extends AppCompatActivity {
             verifyMsg.setVisibility(View.VISIBLE);
             resendCode.setVisibility(View.VISIBLE);
             personalText.setVisibility(View.INVISIBLE);
-
-            /*
-            // Set Personal Text to visible when email verified is NOT visible.
-            if(resendCode.getVisibility() == View.VISIBLE) {
-                // if resend code is visible, make personal INVISIBLE
-                personalText.setVisibility(View.INVISIBLE);
-                return;
-            }
-
-             */
 
             resendCode.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -160,6 +152,18 @@ public class Profile extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+
+    //Fire Base Sign Out Method
+    public void logout(View view) {
+        // Logout
+        FirebaseAuth.getInstance().signOut();
+        // Send user to login page
+        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
+        overridePendingTransition(0,0);
+        finish();
     }
 
     // This is method to change the status bar color from default purple to color of choice.
@@ -172,6 +176,17 @@ public class Profile extends AppCompatActivity {
     }
 
 
+    public void settingsPage(View view) {
+        Intent intent = new Intent(this, SettingPageActivity.class);
+        startActivity(intent);
+    }
 
-
+    public void editProfile(View view) {
+        Intent i = new Intent(view.getContext(),EditProfileActivity.class);
+        // Sends firebase user data to the EditProfile Page
+        i.putExtra("fullName",fullName.getText().toString());
+        i.putExtra("email",email.getText().toString());
+        i.putExtra("phone",phone.getText().toString());
+        startActivity(i);
+    }
 }

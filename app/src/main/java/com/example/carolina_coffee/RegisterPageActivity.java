@@ -3,7 +3,6 @@ package com.example.carolina_coffee;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,27 +15,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 import java.util.HashMap;
 
-public class Register extends AppCompatActivity {
+public class RegisterPageActivity extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     EditText mFullName,mEmail,mPassword,mConfirmPassword,mPhone;
@@ -99,35 +94,35 @@ public class Register extends AppCompatActivity {
 
                         // If user does not enter a name.
                         if(TextUtils.isEmpty(fullName)) {
-                            Toast.makeText(Register.this, "Your name is required.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterPageActivity.this, "Your name is required.", Toast.LENGTH_SHORT).show();
                             mFullName.setError("Name is required.");
                             return;
                         }
 
                         // If user does not enter an email in the field
                         if(TextUtils.isEmpty(email)) {
-                            Toast.makeText(Register.this, "Email is required.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterPageActivity.this, "Email is required.", Toast.LENGTH_SHORT).show();
                             mEmail.setError("Email is required.");
                             return;
                         }
 
                         // If user does not enter a password in the field
                         if(TextUtils.isEmpty(password)) {
-                            Toast.makeText(Register.this, "Password is required.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterPageActivity.this, "Password is required.", Toast.LENGTH_SHORT).show();
                             mPassword.setError("Password is required.");
                             return;
                         }
 
                         // If user enters a password <= 8 characters.
                         if(password.length() < 8) {
-                            Toast.makeText(Register.this, "Password must be >= 8 characters.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterPageActivity.this, "Password must be >= 8 characters.", Toast.LENGTH_SHORT).show();
                             mPassword.setError("Password must be >= 8 characters.");
                             return;
                         }
 
                         // If user passwords do not match.
                         if(!password.equals(confirmPassword)) {
-                            Toast.makeText(Register.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterPageActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
                             mPassword.setError("Passwords must be identical!");
                             mConfirmPassword.setError("Passwords must be identical!");
                             return;
@@ -151,7 +146,7 @@ public class Register extends AppCompatActivity {
                                     fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            Toast.makeText(Register.this, "Verification Email Has Been Sent!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterPageActivity.this, "Verification Email Has Been Sent!", Toast.LENGTH_SHORT).show();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
@@ -164,7 +159,7 @@ public class Register extends AppCompatActivity {
 
 
 
-                                    Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterPageActivity.this, "User Created.", Toast.LENGTH_SHORT).show();
                                     userID = fAuth.getCurrentUser().getUid();
                                     DocumentReference documentReference = fStore.collection("users").document(userID);
                                     Map<String,Object> user = new HashMap<>();
@@ -187,7 +182,7 @@ public class Register extends AppCompatActivity {
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
                                 }else {
-                                    Toast.makeText(Register.this, "Error has occurred!\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterPageActivity.this, "Error has occurred!\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     // Hide loading bar when user gets an error.
                                     progressBar.setVisibility(View.GONE);
                                 }
@@ -203,7 +198,7 @@ public class Register extends AppCompatActivity {
 
     // Button for existing account -> send user to login page.
     public void existingAccountLogin(View view) {
-        startActivity(new Intent(getApplicationContext(),Login.class));
+        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
         finish();
     }
 

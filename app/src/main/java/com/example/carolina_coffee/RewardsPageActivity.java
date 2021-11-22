@@ -12,7 +12,7 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class RewardsActivity extends AppCompatActivity {
+public class RewardsPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class RewardsActivity extends AppCompatActivity {
 
                     //Account Page Button
                     case R.id.accountPageButton:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

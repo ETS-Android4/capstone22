@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
+
         setContentView(R.layout.activity_main);
 
 
@@ -64,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), RewardsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), RewardsPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
                     //Account Page Button
                     case R.id.accountPageButton:
-                        startActivity(new Intent(getApplicationContext(),Profile.class));
+                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
@@ -93,27 +94,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Fire Base Sign Out Method
-    public void logout(View view) {
-        // Logout
-        FirebaseAuth.getInstance().signOut();
-        // Send user to login page
-        startActivity(new Intent(getApplicationContext(),Login.class));
-        finish();
-    }
-
-    public void openLoginActivity2() {
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
-    }
-
-    public void profilePage(View view) {
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
-    }
-
-    // This is method to change the status bar color from default purple to color of choice.
-    private void statusBarColor() {
+    // Status Bar Color
+    public void statusBarColor() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black,this.getTheme()));
         }else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
@@ -121,8 +103,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Fire Base Sign Out Method
+    public void logout(View view) {
+        // Logout
+        FirebaseAuth.getInstance().signOut();
+        // Send user to login page
+        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
+        overridePendingTransition(0,0);
+        finish();
+    }
+
+    public void openLoginActivity2() {
+        Intent intent = new Intent(this, RegisterPageActivity.class);
+        overridePendingTransition(0,0);
+        startActivity(intent);
+    }
+
+    public void profilePage(View view) {
+        Intent intent = new Intent(this, ProfilePageActivity.class);
+        startActivity(intent);
+    }
+
+
     public void rewardsActivityButton(View view) {
-        Intent intent = new Intent(this, RewardsActivity.class);
+        Intent intent = new Intent(this, RewardsPageActivity.class);
         startActivity(intent);
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rewardspage1"
-    tools:context=".RewardsActivity">
+    tools:context=".RewardsPageActivity">
 
     <TextView
         android:id="@+id/topRewardsBox"
@@ -31,6 +31,7 @@
         android:id="@+id/RewardsText"
         android:layout_width="223dp"
         android:layout_height="70dp"
+        android:fontFamily="@font/sofia_regular"
         android:letterSpacing=".1"
         android:text="@string/rewards"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -58,6 +59,7 @@
         android:id="@+id/earnPointsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sofia_regular"
         android:letterSpacing=".1"
         android:text="@string/earn_points_for_free_items"
         android:textColor="#292929"
@@ -99,6 +101,7 @@
         android:id="@+id/RewardPointsCollected"
         android:layout_width="206dp"
         android:layout_height="29dp"
+        android:fontFamily="@font/sofia_regular"
         android:text="@string/points_collected"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -155,9 +158,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="@drawable/nav_background_curved"
+        app:itemTextColor="@color/black"
         app:menu="@menu/navigation_items"
-        app:itemRippleColor="@color/white"
+        app:itemRippleColor="#C1C1C1"
         app:itemIconTint="@color/icons_color"
         app:layout_constraintBottom_toBottomOf="parent" >
 
