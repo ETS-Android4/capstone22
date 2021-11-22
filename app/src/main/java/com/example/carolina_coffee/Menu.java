@@ -48,7 +48,7 @@ public class Menu extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), RewardsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), RewardsPageActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
 
