@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,13 +24,14 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
-
+    private ImageView loadingImage;
 
     private Button loginButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Get rid of the top "Carolina_Coffee" purple bar on top of each page.
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         statusBarColor();
 
         setContentView(R.layout.activity_main);
+
+        // Working on loading screen - Chris
+        //LoadingScreen loadingscreen = new LoadingScreen(loadingImage);
+        //loadingscreen.setLoadScreen();
 
 
 
@@ -84,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+/*
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                 openLoginActivity2();
             }
         });
+
+ */
     }
 
     // Status Bar Color
@@ -103,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
     //Fire Base Sign Out Method
     public void logout(View view) {
         // Logout
@@ -112,27 +121,12 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
         finish();
     }
-
-    public void openLoginActivity2() {
-        Intent intent = new Intent(this, RegisterPageActivity.class);
-        overridePendingTransition(0,0);
-        startActivity(intent);
-    }
+     */
 
     public void profilePage(View view) {
         Intent intent = new Intent(this, ProfilePageActivity.class);
         startActivity(intent);
     }
 
-
-    public void rewardsActivityButton(View view) {
-        Intent intent = new Intent(this, RewardsPageActivity.class);
-        startActivity(intent);
-    }
-
-    public void paymentActivity13(View view) {
-        Intent intent = new Intent(this, PaymentActivity.class);
-        startActivity(intent);
-    }
 
 }

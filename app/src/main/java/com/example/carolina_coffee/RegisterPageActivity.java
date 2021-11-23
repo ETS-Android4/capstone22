@@ -36,7 +36,7 @@ public class RegisterPageActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText mFullName,mEmail,mPassword,mConfirmPassword,mPhone;
     Button mLoginButton;
-    ImageView mRegisterButton;
+    Button mRegisterButton;
     //private FirebaseAuth fAuth;
     ProgressBar progressBar;
     FirebaseAuth fAuth;

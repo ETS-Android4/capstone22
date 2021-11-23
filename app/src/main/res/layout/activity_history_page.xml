@@ -24,12 +24,13 @@
 
     <TextView
         android:id="@+id/backArrow2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/left_arrow"
         android:onClick="settingsPage"
+        android:foreground="@drawable/ripple"
         app:itemRippleColor="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -32,6 +32,7 @@
         android:padding="10dp"
         android:textColor="#808080"
         android:textColorHint="#808080"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -52,6 +53,7 @@
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="#808080"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullName" />
@@ -69,6 +71,7 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="#808080"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -86,6 +89,7 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="#808080"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -103,24 +107,27 @@
         android:inputType="phone"
         android:padding="10dp"
         android:textColor="#808080"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPassword" />
 
-    <TextView
+    <Button
         android:id="@+id/existingAccount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/sofia_regular"
+        android:foreground="@drawable/ripple_grayc1c1"
         android:onClick="existingAccountLogin"
         android:text="login to an existing account"
         android:textAlignment="center"
         android:textColor="#E8E0E0"
+        android:textSize="10sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 
@@ -150,17 +157,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Logov2" />
 
-    <ImageView
+    <Button
         android:id="@+id/registerButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:cropToPadding="false"
+        android:fontFamily="@font/sofia_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/profile_page_all_curved_corners_red"
+        android:letterSpacing="0.25"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp"
+        android:text="  Register  "
+        android:textColor="#FFFFFF"
+        android:foreground="@drawable/ripple_grayc1c1"
+        app:backgroundTint="@color/red_ec"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone"
-        app:srcCompat="@drawable/createbutton" />
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

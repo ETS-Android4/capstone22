@@ -28,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginPageAtivity extends AppCompatActivity {
     EditText mEmail, mPassword;
     Button mCreateButton, mForgotPassword;
-    ImageView mLoginButton;
+    Button mLoginButton;
     //TextView mForgotPassword;
     ProgressBar progressBar;
     FirebaseAuth fAuth;

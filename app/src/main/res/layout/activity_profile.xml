@@ -224,12 +224,13 @@
 
     <TextView
         android:id="@+id/backArrow"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/left_arrow"
         android:onClick="settingsPage"
+        android:foreground="@drawable/ripple"
         app:itemRippleColor="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -266,41 +267,47 @@
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <TextView
+    <Button
         android:id="@+id/editInformationButton"
+        android:fontFamily="@font/sofia_regular"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginTop="55dp"
         android:background="@drawable/profile_page_all_curved_corners_red"
         android:letterSpacing="0.25"
-        android:paddingStart="15dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="5dp"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp"
         android:text="Edit"
         android:textColor="#FFFFFF"
         android:onClick="editProfile"
+        android:foreground="@drawable/ripple_grayc1c1"
+        app:backgroundTint="@color/red_ec"
         app:layout_constraintEnd_toEndOf="@+id/WhiteBox1"
         app:layout_constraintStart_toStartOf="@+id/WhiteBox1"
         app:layout_constraintTop_toTopOf="@+id/WhiteBox1" />
 
-    <TextView
+    <Button
         android:id="@+id/LogOutButton"
+        android:fontFamily="@font/sofia_regular"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginTop="45dp"
         android:background="@drawable/profile_page_all_curved_corners_red"
         android:letterSpacing="0.25"
-        android:paddingStart="15dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="5dp"
-        android:text="Sign Out"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp"
+        android:text="  Sign Out  "
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:onClick="logout"
+        android:foreground="@drawable/ripple_grayc1c1"
+        app:backgroundTint="@color/red_ec"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/WhiteBox1" />

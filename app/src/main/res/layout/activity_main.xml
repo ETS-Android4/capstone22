@@ -8,91 +8,18 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="150dp"
-        android:fontFamily="@font/aclonica"
-        android:padding="5dp"
-        android:text="Login Tester"
-        android:textAlignment="center"
-        android:textColor="#808080"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/signOut"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="300dp"
-        android:fontFamily="@font/aclonica"
-        android:onClick="logout"
-        android:padding="5dp"
-        android:text="Sign Out"
-        android:textAlignment="center"
-        android:textColor="#808080"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/paymentActivity13"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="432dp"
-        android:layout_marginEnd="150dp"
-        android:fontFamily="@font/aclonica"
-        android:onClick="paymentActivity13"
-        android:padding="5dp"
-        android:text="Payment Activity 13"
-        android:textAlignment="center"
-        android:textColor="#808080"
-        android:backgroundTint="#ffFFFFFF"
-        app:itemRippleColor="#C1C1C1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/rewardsActivityButton2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="272dp"
-        android:layout_marginEnd="150dp"
-        android:fontFamily="@font/aclonica"
-        android:onClick="rewardsActivityButton"
-        android:padding="5dp"
-        android:text="rewards Activity"
-        android:textAlignment="center"
-        android:textColor="#808080"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="47dp"
         android:layout_height="43dp"
         android:layout_marginTop="24dp"
-        android:background="@color/white"
+        android:background="@drawable/account_icon"
+        android:foreground="@drawable/ripple_red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="profilePage"
-        app:srcCompat="@drawable/account_icon" />
+        android:onClick="profilePage" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
