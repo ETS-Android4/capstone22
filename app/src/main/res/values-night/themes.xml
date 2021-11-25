@@ -2,15 +2,28 @@
     <!-- Base application theme. -->
     <style name="Theme.Carolina_Coffee" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryVariant">@color/black</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/red_ec</item>
+        <item name="colorPrimaryVariant">@color/red_ec</item>
+        <item name="colorOnPrimary">@color/red_ec</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/black</item>
-        <item name="colorSecondaryVariant">@color/black</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/red_ec</item>
+        <item name="colorSecondaryVariant">@color/red_ec</item>
+        <item name="colorOnSecondary">@color/red_ec</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowDisablePreview">true</item>
+
     </style>
+
+    <!-- Working to remove white desfault screen -->
+    <style name="AppTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Starting activity theme -->
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/coffee_beans_background</item>
+    </style>
+
 </resources>

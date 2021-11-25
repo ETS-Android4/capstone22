@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/topMessage2"
-        android:layout_width="418dp"
+        android:layout_width="0dp"
         android:layout_height="26dp"
         android:background="@drawable/profile_page_top_curved_box"
         android:fontFamily="@font/sofia_regular"
