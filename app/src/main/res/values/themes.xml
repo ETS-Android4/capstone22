@@ -12,18 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowDisablePreview">true</item>
 
     </style>
 
-    <!-- Working to remove white desfault screen -->
-    <style name="AppTheme">
+    <!-- Working to remove white default screen -->
+    <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-    </style>
-
-    <!-- Starting activity theme -->
-    <style name="AppTheme.Launcher">
-        <item name="android:windowBackground">@drawable/coffee_beans_background</item>
+        <item name="android:windowBackground">@drawable/splash_image</item>
+        <item name="android:statusBarColor">@color/red_ec</item>
     </style>
 
 </resources>

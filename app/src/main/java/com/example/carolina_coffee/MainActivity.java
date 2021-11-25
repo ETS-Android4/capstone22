@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         //------------------------
         // Comes first to get rid of the white default loading screen
         // Eseentially this is wokring to bypass and remove default white screen that pops up when loading app.
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_Carolina_Coffee);
         //------------------------
 
-        super.onCreate(savedInstanceState);
+
 
         // Get rid of the top "Carolina_Coffee" purple bar on top of each page.
         requestWindowFeature(Window.FEATURE_NO_TITLE);
