@@ -4,6 +4,8 @@ import com.example.carolina_coffee.Drink;
 import com.example.carolina_coffee.DrinkSize;
 import com.example.carolina_coffee.DrinkType;
 import com.example.carolina_coffee.Latte;
+import com.example.carolina_coffee.Milk;
+import com.example.carolina_coffee.MilkType;
 import com.example.carolina_coffee.Syrup;
 import com.example.carolina_coffee.SyrupType;
 
@@ -43,8 +45,9 @@ public class DrinkTest {
     public void additions_isCorrect() throws Exception {
         Drink drink = new Latte(DrinkType.Hot, DrinkSize.Small);
         drink = new Syrup(drink, SyrupType.Classic);
+        drink = new Milk(drink, MilkType.Almond);
         drink = new Syrup(drink, SyrupType.Caramel);
-        List<String> expected = Arrays.asList(new String[]{"Classic Syrup", "Caramel Syrup"});
+        List<String> expected = Arrays.asList(new String[]{"Classic Syrup", "Almond Milk", "Caramel Syrup"});
         List<String> actual = drink.getAdditions();
         assertEquals(expected, actual);
     }
