@@ -143,10 +143,10 @@
 
     <TextView
         android:id="@+id/profileTextTop"
-        android:layout_width="417dp"
+        android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_marginEnd="-1dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/top_page_red_curved_sides"
         android:fontFamily="@font/sofia_regular"
         android:letterSpacing="0.2"
         android:text="Edit"
@@ -160,10 +160,10 @@
 
     <TextView
         android:id="@+id/TopMessage2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="26dp"
         android:layout_marginEnd="-1dp"
-        android:background="@drawable/profile_page_top_curved_box"
+        android:background="@drawable/top_page_red_curved"
         android:fontFamily="@font/sofia_regular"
         android:letterSpacing="0.25"
         android:text="Edit Your Information"

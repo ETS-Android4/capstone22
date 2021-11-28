@@ -178,6 +178,16 @@ public class SettingPageActivity extends AppCompatActivity {
         //End of onCreate
     }
 
+    //Fire Base Sign Out Method
+    public void logout(View view) {
+        // Logout
+        FirebaseAuth.getInstance().signOut();
+        // Send user to login page
+        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
+        overridePendingTransition(0,0);
+        finish();
+    }
+
     // This is method to change the status bar color from default purple to color of choice.
     private void statusBarColor() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
