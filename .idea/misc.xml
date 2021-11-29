@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_app_settings_page.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.190625" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_defaultpage_examplecode.xml" value="0.22" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_inbox_page.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_login.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_order_menu_page.xml" value="0.33" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_setting_page.xml" value="0.33" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/drawable/ic_launcher_background.xml" value="0.346875" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/drawable/launch_background.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/drawable/profile_page_all_curved_corners_red.xml" value="0.346875" />
