@@ -166,7 +166,7 @@
                 android:paddingTop="0dp"
                 android:paddingEnd="0dp"
                 android:paddingBottom="0dp"
-                android:text="Click For Suprise"
+                android:text="Click For Surprise"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="@color/red_ec"

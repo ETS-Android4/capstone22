@@ -93,7 +93,7 @@ public class RewardsPageActivity extends AppCompatActivity {
     //details button to show pop up
     public void details_button_popup(View view) {
         TextView output = findViewById(R.id.suprisePopUp);
-        output.setText("Suprise you've won a free drink!");
+        output.setText("Surprise you've won a free drink!");
     }
 
 
