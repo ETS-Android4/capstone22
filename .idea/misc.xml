@@ -61,14 +61,15 @@
         <entry key="..\:/Users/jyinh/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/drawable/white_bottom_curves.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/layout/activity_app_settings_page.xml" value="0.15307971014492755" />
         <entry key="app/src/main/res/layout/activity_cart_page.xml" value="0.15307971014492755" />
         <entry key="app/src/main/res/layout/activity_checkout12.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_customer_support_page.xml" value="0.15307971014492755" />
         <entry key="app/src/main/res/layout/activity_defaultpage_examplecode.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.15307971014492755" />
-        <entry key="app/src/main/res/layout/activity_history_page.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_inbox_page.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_history_page.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_inbox_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -77,7 +78,7 @@
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.1484375" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1484375" />
         <entry key="app/src/main/res/layout/activity_profile7.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.11770833333333333" />
+        <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_rewards2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rewards9.xml" value="0.1546875" />
         <entry key="app/src/main/res/layout/activity_saved_orders_page.xml" value="0.1484375" />
