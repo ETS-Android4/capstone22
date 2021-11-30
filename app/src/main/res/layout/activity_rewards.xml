@@ -9,151 +9,175 @@
 
     <TextView
         android:id="@+id/topRewardsBox"
-        android:layout_width="450dp"
-        android:layout_height="120dp"
-        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_page_red_curved_sides"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Rewards"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pointsCollectedBox"
-        android:layout_width="284dp"
-        android:layout_height="142dp"
-        android:background="#F4F4F4"
-        app:layout_constraintBottom_toTopOf="@+id/CoffeePic"
+        android:id="@+id/topMessage"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:background="@drawable/top_page_red_curved"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Earn Points and Free items"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topRewardsBox" />
 
-    <TextView
-        android:id="@+id/RewardsText"
-        android:layout_width="223dp"
-        android:layout_height="70dp"
-        android:fontFamily="@font/sofia_regular"
-        android:letterSpacing=".1"
-        android:text="@string/rewards"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#000000"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintTop_toBottomOf="@+id/topMessage"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/congratsBox"
-        android:layout_width="295dp"
-        android:layout_height="152dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CoffeePic"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/earnPointsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sofia_regular"
-        android:letterSpacing=".1"
-        android:text="@string/earn_points_for_free_items"
-        android:textColor="#292929"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RewardsText"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/pointsCollectedBox"
-        app:layout_constraintEnd_toEndOf="@+id/pointsCollectedBox"
-        app:layout_constraintStart_toStartOf="@+id/pointsCollectedBox"
-        app:layout_constraintTop_toTopOf="@+id/pointsCollectedBox" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="132dp"
-        android:layout_height="40dp"
-        android:letterSpacing=".05"
-        android:text="@string/congrats"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/congratsBox"
-        app:layout_constraintEnd_toEndOf="@+id/congratsBox"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="@+id/congratsBox"
-        app:layout_constraintTop_toTopOf="@+id/congratsBox"
-        app:layout_constraintVertical_bias="0.110000014" />
-
-    <TextView
-        android:id="@+id/RewardPointsCollected"
-        android:layout_width="206dp"
-        android:layout_height="29dp"
-        android:fontFamily="@font/sofia_regular"
-        android:text="@string/points_collected"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/pointsCollectedBox"
-        app:layout_constraintEnd_toEndOf="@+id/pointsCollectedBox"
-        app:layout_constraintStart_toStartOf="@+id/pointsCollectedBox"
-        app:layout_constraintTop_toTopOf="@+id/pointsCollectedBox"
-        app:layout_constraintVertical_bias="0.13" />
-
-    <ImageView
-        android:id="@+id/CoffeePic"
-        android:layout_width="300dp"
-        android:layout_height="220dp"
-        android:contentDescription="@string/coffeepic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topRewardsBox"
-        app:layout_constraintVertical_bias="0.43"
-        app:srcCompat="@drawable/coffee1" />
-
-    <TextView
-        android:id="@+id/earnedText"
-        android:layout_width="234dp"
-        android:layout_height="60dp"
-        android:text="@string/you_have_earned_a"
-        app:layout_constraintBottom_toBottomOf="@+id/congratsBox"
-        app:layout_constraintEnd_toEndOf="@+id/congratsBox"
-        app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintStart_toStartOf="@+id/congratsBox"
-        app:layout_constraintTop_toTopOf="@+id/congratsBox"
-        app:layout_constraintVertical_bias="0.45" />
-
-    <Button
-        android:id="@+id/DetailsButton"
-        android:layout_width="99dp"
-        android:layout_height="48dp"
-        android:background="#CC800B0B"
-        android:backgroundTint="#CC800B0B"
-        android:backgroundTintMode="#CC800B0B"
-        android:text="@string/details"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/congratsBox"
-        app:layout_constraintEnd_toEndOf="@+id/congratsBox"
-        app:layout_constraintStart_toStartOf="@+id/congratsBox"
-        app:layout_constraintTop_toTopOf="@+id/congratsBox"
-        app:layout_constraintVertical_bias="0.92" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cvLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
 
+            <TextView
+                android:id="@+id/rewards_white_box_top"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/settings_page_all_white_curved_corners"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/point_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/sofia_regular"
+                android:letterSpacing="0.1"
+                android:text="100 points collected!"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
+                app:layout_constraintTop_toTopOf="@+id/rewards_white_box_top" />
+
+            <TextView
+                android:id="@+id/point_bar_leftside"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/settings_page_all_gray_curved_corners"
+                app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
+                app:layout_constraintHorizontal_bias="0.479"
+                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
+                app:layout_constraintTop_toBottomOf="@+id/point_count_text" />
+
+            <TextView
+                android:id="@+id/point_bar_leftside2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="150dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
+                app:layout_constraintHorizontal_bias="0.479"
+                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
+                app:layout_constraintTop_toBottomOf="@+id/point_count_text" />
+
+            <TextView
+                android:id="@+id/circle_coffee"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="-5dp"
+                android:background="@drawable/settings_page_all_gray_curved_corners"
+                app:layout_constraintBottom_toBottomOf="@+id/point_bar_leftside"
+                app:layout_constraintStart_toEndOf="@+id/point_bar_leftside"
+                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside" />
+
+            <ImageView
+                android:id="@+id/coffee_cup"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/circle_coffee"
+                app:layout_constraintEnd_toEndOf="@+id/circle_coffee"
+                app:layout_constraintStart_toStartOf="@+id/circle_coffee"
+                app:layout_constraintTop_toTopOf="@+id/circle_coffee"
+                app:srcCompat="@drawable/coffee_cup" />
+
+            <TextView
+                android:id="@+id/coffee_image"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/coffee1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rewards_white_box_top" />
+
+            <TextView
+                android:id="@+id/congratsBox"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/white_bottom_curves"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.514"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coffee_image" />
+
+            <Button
+                android:id="@+id/details_button"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                android:fontFamily="@font/sofia_regular"
+                android:foreground="@drawable/ripple_grayc1c1"
+                android:letterSpacing="0.25"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="   Details   "
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:backgroundTint="@color/red_ec"
+                app:layout_constraintBottom_toBottomOf="@+id/congratsBox"
+                app:layout_constraintEnd_toEndOf="@+id/congratsBox"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="@+id/congratsBox" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -161,12 +185,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/nav_background_curved"
-        app:itemTextColor="@color/black"
-        app:menu="@menu/navigation_items"
-        app:itemRippleColor="#C1C1C1"
         app:itemIconTint="@color/icons_color"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:itemRippleColor="#C1C1C1"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
