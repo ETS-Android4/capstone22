@@ -154,18 +154,19 @@
             <Button
                 android:id="@+id/details_button"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="48dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/profile_page_all_curved_corners_red"
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
                 android:letterSpacing="0.25"
+                android:onClick="details_button_popup"
                 android:paddingStart="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingEnd="0dp"
                 android:paddingBottom="0dp"
-                android:text="   Details   "
+                android:text="Click For Suprise"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="@color/red_ec"
@@ -173,6 +174,19 @@
                 app:layout_constraintEnd_toEndOf="@+id/congratsBox"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="@+id/congratsBox" />
+
+            <TextView
+                android:id="@+id/suprisePopUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/congratsBox"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/congratsBox"
+                app:layout_constraintTop_toBottomOf="@+id/coffee_image" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

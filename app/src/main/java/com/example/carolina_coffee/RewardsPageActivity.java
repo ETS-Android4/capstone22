@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -88,5 +90,12 @@ public class RewardsPageActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
     }
+    //details button to show pop up
+    public void details_button_popup(View view) {
+        TextView output = findViewById(R.id.suprisePopUp);
+        output.setText("Suprise you've won a free drink!");
+    }
+
+
 
 }
