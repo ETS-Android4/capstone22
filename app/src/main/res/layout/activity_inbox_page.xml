@@ -8,18 +8,108 @@
     android:background="@drawable/settingpagebackground"
     tools:context="com.example.carolina_coffee.InboxPageActivity">
 
+    <TextView
+        android:id="@+id/new_reward_box"
+        android:layout_width="335dp"
+        android:layout_height="105dp"
+        android:background="@color/red_ec"
+        android:backgroundTint="#CC800B0B"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/whiteBox2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/whiteBox2"
+        android:layout_width="334dp"
+        android:layout_height="340dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/profile_page_bottom_curved_box"
+        android:backgroundTint="#99FFFFFF"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/inboxTopBox"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="@drawable/top_page_red_curved_sides"
+        android:fontFamily="@font/sofia_regular"
+        android:text="@string/Inbox"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/topMessage6"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:background="@drawable/top_page_red_curved"
+        android:fontFamily="@font/sofia_regular"
+        android:text="@string/we_ll_keep_you_up_to_date"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inboxTopBox" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/nav_background_curved"
-        app:itemTextColor="@color/black"
-        app:menu="@menu/navigation_items"
-        app:itemRippleColor="#C1C1C1"
         app:itemIconTint="@color/icons_color"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:itemRippleColor="#C1C1C1"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/messages_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/sofia_regular"
+        android:letterSpacing=".30"
+        android:text="@string/messages_textbox"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topMessage6" />
+
+    <TextView
+        android:id="@+id/newRewardsBox"
+        android:layout_width="254dp"
+        android:layout_height="38dp"
+        android:background="@drawable/settings_page_all_white_curved_corners"
+        android:fontFamily="@font/sofia_regular"
+        android:text="You have 1 new reward!"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="227dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,12 +9,29 @@
 
 
     <TextView
+        android:id="@+id/whiteBox"
+        android:layout_width="342dp"
+        android:layout_height="425dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/profile_page_bottom_curved_box"
+        android:backgroundTint="#99FFFFFF"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/historyTopBox"
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:background="@drawable/top_page_red_curved_sides"
         android:fontFamily="@font/sofia_regular"
-        android:text="History"
+        android:text="@string/history"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="60sp"
@@ -24,16 +41,17 @@
 
     <TextView
         android:id="@+id/backArrow2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/left_arrow"
-        android:onClick="settingsPage"
         android:foreground="@drawable/ripple"
+        android:onClick="settingsPage"
         app:itemRippleColor="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/topMessage2"
@@ -41,7 +59,7 @@
         android:layout_height="26dp"
         android:background="@drawable/top_page_red_curved"
         android:fontFamily="@font/sofia_regular"
-        android:text="Your History and Receipts"
+        android:text="@string/your_history_and_receipts"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"

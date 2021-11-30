@@ -38,4 +38,11 @@
     <string name="details">Details</string>
     <string name="promotions">Promotions</string>
     <string name="our_current_offers">Our current offers</string>
+    <string name="history">History</string>
+    <string name="inbox">inbox</string>
+    <string name="Inbox">Inbox</string>
+    <string name="history">History</string>
+    <string name="your_history_and_receipts">Your History and Receipts</string>
+    <string name="we_ll_keep_you_up_to_date">We\'ll keep you up to date!</string>
+    <string name="messages_textbox">Messages</string>
 </resources>
