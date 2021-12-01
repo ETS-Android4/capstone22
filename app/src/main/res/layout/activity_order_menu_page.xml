@@ -62,9 +62,9 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <TextView
-        android:id="@+id/topMessage3"
-        android:layout_width="367dp"
-        android:layout_height="399dp"
+        android:id="@+id/MenuRedBox"
+        android:layout_width="365dp"
+        android:layout_height="380dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/bottom_white_stroke_profile_page"
         android:fontFamily="@font/sofia_regular"
@@ -77,103 +77,212 @@
         app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
 
     <TextView
-        android:id="@+id/topMessage5"
-        android:layout_width="367dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="428dp"
+        android:id="@+id/MenuWhiteBox"
+        android:layout_width="365dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="432dp"
         android:background="@drawable/profile_page_top_curved_box"
         android:fontFamily="@font/sofia_regular"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/CountinueButton"
         android:layout_width="264dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/createbutton"
+        android:fontFamily="@font/sofia_regular"
         android:text="Continue"
+        android:textStyle="bold"
         app:backgroundTint="@color/red_ec"
-        app:layout_constraintEnd_toEndOf="@+id/topMessage5"
+        app:layout_constraintEnd_toEndOf="@+id/MenuWhiteBox"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/topMessage5"
-        app:layout_constraintTop_toTopOf="@+id/topMessage5" />
+        app:layout_constraintStart_toStartOf="@+id/MenuWhiteBox"
+        app:layout_constraintTop_toTopOf="@+id/MenuWhiteBox" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/NutritionButton"
         android:layout_width="264dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/createbutton"
+        android:fontFamily="@font/sofia_regular"
         android:text="Nutrition"
+        android:textStyle="bold"
         app:backgroundTint="@color/red_ec"
-        app:layout_constraintBottom_toBottomOf="@+id/topMessage5"
-        app:layout_constraintEnd_toEndOf="@+id/topMessage5"
+        app:layout_constraintBottom_toBottomOf="@+id/MenuWhiteBox"
+        app:layout_constraintEnd_toEndOf="@+id/MenuWhiteBox"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/topMessage5"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/MenuWhiteBox"
+        app:layout_constraintTop_toBottomOf="@+id/CountinueButton"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ScrollView
-        android:layout_width="345dp"
-        android:layout_height="359dp"
-        android:layout_marginTop="34dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cvLayout"
+        android:layout_width="357dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topMessage2">
+        app:layout_constraintTop_toTopOf="@+id/MenuRedBox">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cvLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/latteCircle"
+            android:layout_width="115dp"
+            android:layout_height="94dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.136"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.23"
+            app:srcCompat="@drawable/latte_circle" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="82dp"
-                android:layout_height="78dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/latte_circle" />
+        <TextView
+            android:id="@+id/drinkDescription"
+            android:layout_width="152dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/sofia_regular"
+            android:text="Espresso with milk"
+            android:textColor="#B9FFFFFF"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toEndOf="@+id/latteCircle"
+            app:layout_constraintTop_toBottomOf="@+id/drinkText2"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="149dp"
-                android:layout_height="31dp"
-                android:layout_marginEnd="36dp"
-                android:fontFamily="@font/sofia_regular"
-                android:text="Latte"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.354" />
+        <TextView
+            android:id="@+id/drinkText2"
+            android:layout_width="153dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/sofia_regular"
+            android:text="Latte"
+            android:textColor="@color/white"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toEndOf="@+id/latteCircle"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="149dp"
-                android:layout_height="31dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="36dp"
-                android:fontFamily="@font/sofia_regular"
-                android:text="Espresso with milk"
-                android:textColor="#B9FFFFFF"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
-                app:layout_constraintVertical_bias="0.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/DrinkSizeHeader"
+        android:layout_width="154dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Size"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
+        app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
+        app:layout_constraintTop_toBottomOf="@+id/cvLayout" />
+
+    <RadioGroup
+        android:id="@+id/SizeRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
+        app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
+        app:layout_constraintTop_toBottomOf="@+id/DrinkSizeHeader">
+
+        <RadioButton
+            android:id="@+id/radioButton9"
+            android:layout_width="102dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/sofia_regular"
+            android:text="Small"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:text="Medium"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="94dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Large"
+            android:textColor="@color/white" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/DrinkTypeHeader"
+        android:layout_width="154dp"
+        android:layout_height="29dp"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Type"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
+        app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
+        app:layout_constraintTop_toBottomOf="@+id/SizeRadioGroup" />
+
+    <RadioGroup
+        android:id="@+id/TypeRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
+        app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
+        app:layout_constraintTop_toBottomOf="@+id/DrinkTypeHeader">
+
+        <RadioButton
+            android:id="@+id/radioButton11"
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sofia_regular"
+            android:text="Hot"
+            android:textColor="@color/white" />
+
+        <RadioButton
+            android:id="@+id/radioButton10"
+            android:layout_width="73dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sofia_regular"
+            android:text="Iced"
+            android:textColor="@color/white" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/CustomizeButton"
+        android:layout_width="260dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/createbutton"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Customize"
+        app:backgroundTint="#491616"
+        app:layout_constraintBottom_toTopOf="@+id/MenuWhiteBox"
+        app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
+        app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
+        app:layout_constraintTop_toBottomOf="@+id/TypeRadioGroup" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

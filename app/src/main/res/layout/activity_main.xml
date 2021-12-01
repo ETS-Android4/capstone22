@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/topMessage3"
+        android:id="@+id/MenuRedBox"
         android:layout_width="match_parent"
         android:layout_height="26dp"
         android:background="@drawable/top_page_red_curved"
@@ -267,7 +267,7 @@
         android:foreground="@drawable/ripple_red_25_corners"
         android:onClick="profilePage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topMessage3"
+        app:layout_constraintTop_toBottomOf="@+id/MenuRedBox"
         app:srcCompat="@drawable/mail" />
 
     <ImageView
@@ -279,7 +279,7 @@
         android:foreground="@drawable/ripple_red_25_corners"
         android:onClick="profilePage"
         app:layout_constraintEnd_toEndOf="@+id/top_blank_inbox_saved"
-        app:layout_constraintTop_toBottomOf="@+id/topMessage3"
+        app:layout_constraintTop_toBottomOf="@+id/MenuRedBox"
         app:srcCompat="@drawable/saved_icon" />
 
     <TextView
