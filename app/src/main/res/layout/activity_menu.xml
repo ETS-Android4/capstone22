@@ -4,18 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu">
+    android:background="@drawable/settingpagebackground"
+    tools:context=".MenuPageActivity">
+
+    <TextView
+        android:id="@+id/menuRedBox"
+        android:layout_width="365dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bottom_white_stroke_profile_page"
+        android:fontFamily="@font/sofia_regular"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topMessage3" />
+
+    <TextView
+        android:id="@+id/historyTopBox2"
+        android:layout_width="417dp"
+        android:layout_height="96dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Menu"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/topMessage3"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:background="@drawable/profile_page_top_curved_box"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Choose your drink"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyTopBox2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menuRecycler"
+        android:layout_width="365dp"
+        android:layout_height="450dp"
+        android:scrollbars="vertical"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/menuRedBox"
+        app:layout_constraintStart_toStartOf="@+id/menuRedBox"
+        app:layout_constraintTop_toTopOf="@+id/menuRedBox"></androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:menu="@menu/navigation_items"
-        app:itemRippleColor="@color/white"
+        android:background="@drawable/nav_background_curved"
         app:itemIconTint="@color/icons_color"
-        app:layout_constraintBottom_toBottomOf="parent" >
+        app:itemRippleColor="#C1C1C1"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

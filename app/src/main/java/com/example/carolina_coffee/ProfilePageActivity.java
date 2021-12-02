@@ -86,7 +86,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), RewardsPageActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

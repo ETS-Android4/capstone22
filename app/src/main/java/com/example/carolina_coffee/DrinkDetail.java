@@ -1,27 +1,39 @@
 package com.example.carolina_coffee;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.craftman.cardform.Card;
-import com.craftman.cardform.CardForm;
-import com.craftman.cardform.OnPayBtnClickListner;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
-public class PaymentActivity extends AppCompatActivity {
+public class DrinkDetail extends AppCompatActivity {
+
+    TextView drink_name, drink_price, drink_description;
+    ImageView drink_image;
+
+    String drinkID = "";
+
+    FirebaseDatabase database;
+    DatabaseReference drinks;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //------------------------
         // Comes first to get rid of the white default loading screen
@@ -38,7 +50,7 @@ public class PaymentActivity extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.activity_order_menu_page);
 
         // Navigation
         //--------------------------------------------------------------------------------------
@@ -46,7 +58,7 @@ public class PaymentActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set home Selected
-        bottomNavigationView.setSelectedItemId(R.id.payPageButton);
+        bottomNavigationView.setSelectedItemId(R.id.orderPageButton);
         //perform itemSelectedListener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -59,6 +71,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
+                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     //Order Page Button
@@ -79,18 +93,40 @@ public class PaymentActivity extends AppCompatActivity {
         // End of Navigation
         //--------------------------------------------------------------------------------------
 
-        CardForm cardForm   = (CardForm) findViewById(R.id.card_form);
-        TextView txtDes = (TextView) findViewById(R.id.payment_amount);
-        Button btnPay = (Button)findViewById(R.id.btn_pay);
+        //Firebase
+        database = FirebaseDatabase.getInstance();
+        drinks = database.getReference("Category");
 
-        txtDes.setText("");
-        btnPay.setText(String.format("Payer %s",txtDes.getText()));
+        //Init view
+        drink_name = (TextView) findViewById(R.id.drinkText);
+        drink_description = (TextView) findViewById(R.id.drinkDescription);
+        drink_price = (TextView) findViewById(R.id.drinkPrice);
+        drink_image = (ImageView) findViewById(R.id.drinkCircle);
 
-        cardForm.setPayBtnClickListner(new OnPayBtnClickListner() {
+        if(getIntent() != null) drinkID = getIntent().getStringExtra("DrinkID");
+        if(!drinkID.isEmpty()) {
+            getDetailDrink(drinkID);
+        }
+
+    }
+
+    private void getDetailDrink(String drinkID) {
+        drinks.child(drinkID).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(Card card) {
-                Toast.makeText(PaymentActivity.this, "Name : "+card.getName()+" | Last 4 digits : "+card.getLast4(),
-                        Toast.LENGTH_SHORT).show();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Drink drink = snapshot.getValue(Drink.class);
+
+                Picasso.with(getBaseContext()).load(drink.getImage()).into(drink_image);
+
+                drink_name.setText(drink.getName());
+                drink_price.setText("" + drink.getCost());
+                drink_description.setText(drink.getDescription());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
@@ -103,5 +139,4 @@ public class PaymentActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
     }
-
 }

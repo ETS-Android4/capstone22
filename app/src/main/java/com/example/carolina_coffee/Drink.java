@@ -1,16 +1,36 @@
 package com.example.carolina_coffee;
 
+import android.os.Bundle;
+
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class Drink {
+public abstract class Drink {
     String name;
     String description = "";
+    String image;
+    double cost;
     List<String> additions = new ArrayList<>();
     DrinkType type;
     DrinkSize size;
 
+    public Drink() {
+
+    }
+
+    public Drink(String name, String description, String image, double cost, DrinkType type, DrinkSize size) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.cost = cost;
+        this.type = type;
+        this.size = size;
+    }
     public String getName() {
+        return name;
+    }
+
+    public String getFullName() {
         return size.toString() + " " + type.toString() + " " + name;
     }
 
@@ -22,5 +42,11 @@ abstract public class Drink {
         return additions;
     }
 
-    public abstract double getCost();
+    public double getCost() {
+        return cost;
+    }
+
+    public String getImage() {
+        return image;
+    }
 }

@@ -1,24 +1,38 @@
 package com.example.carolina_coffee;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.craftman.cardform.Card;
-import com.craftman.cardform.CardForm;
-import com.craftman.cardform.OnPayBtnClickListner;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class PaymentActivity extends AppCompatActivity {
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firestore.v1.StructuredQuery;
+import com.squareup.picasso.Picasso;
+
+public class MenuPageActivity extends AppCompatActivity {
+
+    FirebaseDatabase database;
+    DatabaseReference category;
+
+    FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
+
+    RecyclerView recyler_menu;
+    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +52,7 @@ public class PaymentActivity extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.activity_menu);
 
         // Navigation
         //--------------------------------------------------------------------------------------
@@ -46,7 +60,7 @@ public class PaymentActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set home Selected
-        bottomNavigationView.setSelectedItemId(R.id.payPageButton);
+        bottomNavigationView.setSelectedItemId(R.id.orderPageButton);
         //perform itemSelectedListener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -59,12 +73,12 @@ public class PaymentActivity extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
+                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     //Order Page Button
                     case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                     //Account Page Button
@@ -79,21 +93,53 @@ public class PaymentActivity extends AppCompatActivity {
         // End of Navigation
         //--------------------------------------------------------------------------------------
 
-        CardForm cardForm   = (CardForm) findViewById(R.id.card_form);
-        TextView txtDes = (TextView) findViewById(R.id.payment_amount);
-        Button btnPay = (Button)findViewById(R.id.btn_pay);
 
-        txtDes.setText("");
-        btnPay.setText(String.format("Payer %s",txtDes.getText()));
+        //Init Firebase
+        database = FirebaseDatabase.getInstance();
+        category = database.getReference("Category");
 
-        cardForm.setPayBtnClickListner(new OnPayBtnClickListner() {
-            @Override
-            public void onClick(Card card) {
-                Toast.makeText(PaymentActivity.this, "Name : "+card.getName()+" | Last 4 digits : "+card.getLast4(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        //Load menu
+        recyler_menu = (RecyclerView)findViewById(R.id.menuRecycler);
+        recyler_menu.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyler_menu.setLayoutManager(layoutManager);
+
+        loadMenu();
     }
+
+    private void loadMenu() {
+        FirebaseRecyclerOptions<Category> options =
+                new FirebaseRecyclerOptions.Builder<Category>().setQuery(category, Category.class).build();
+
+        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options)
+        {
+            @Override
+            public void onBindViewHolder(@NonNull MenuViewHolder holder, int position, @NonNull Category model) {
+                holder.txtMenuName.setText(model.getName());
+                Picasso.with(getBaseContext()).load(model.getImage()).fit().into(holder.imageView);
+                final Category clickItem = model;
+                holder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        startActivity(new Intent(getApplicationContext(), OrderMenuPageActivity.class));
+                        overridePendingTransition(0,0);
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.menu_item, parent, false);
+                return new MenuViewHolder(view);
+            }
+        };
+        adapter.startListening();
+        recyler_menu.setAdapter(adapter);
+
+    }
+
 
     // This is method to change the status bar color from default purple to color of choice.
     private void statusBarColor() {
@@ -103,5 +149,4 @@ public class PaymentActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
     }
-
 }

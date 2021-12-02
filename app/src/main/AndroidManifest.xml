@@ -26,6 +26,9 @@
             android:name=".OrderMenuPageActivity"
             android:exported="false" />
         <activity
+            android:name=".MenuPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".AppSettingsPageActivity"
             android:exported="false" />
         <activity

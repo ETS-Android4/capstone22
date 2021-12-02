@@ -98,7 +98,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/createbutton"
         android:fontFamily="@font/sofia_regular"
-        android:text="Continue"
+        android:text="Add to Cart"
         android:textStyle="bold"
         app:backgroundTint="@color/red_ec"
         app:layout_constraintEnd_toEndOf="@+id/MenuWhiteBox"
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toTopOf="@+id/MenuRedBox">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/latteCircle"
+            android:id="@+id/drinkCircle"
             android:layout_width="115dp"
             android:layout_height="94dp"
             android:layout_marginTop="8dp"
@@ -154,30 +154,30 @@
             android:layout_width="152dp"
             android:layout_height="30dp"
             android:fontFamily="@font/sofia_regular"
-            android:text="Espresso with milk"
+            android:text="Description"
             android:textColor="#B9FFFFFF"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.476"
-            app:layout_constraintStart_toEndOf="@+id/latteCircle"
-            app:layout_constraintTop_toBottomOf="@+id/drinkText2"
+            app:layout_constraintStart_toEndOf="@+id/drinkCircle"
+            app:layout_constraintTop_toBottomOf="@+id/drinkText"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/drinkText2"
+            android:id="@+id/drinkText"
             android:layout_width="153dp"
             android:layout_height="35dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/sofia_regular"
-            android:text="Latte"
+            android:text="Drink Name"
             android:textColor="@color/white"
             android:textSize="28dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintStart_toEndOf="@+id/latteCircle"
+            app:layout_constraintStart_toEndOf="@+id/drinkCircle"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -268,6 +268,7 @@
             android:fontFamily="@font/sofia_regular"
             android:text="Iced"
             android:textColor="@color/white" />
+
     </RadioGroup>
 
     <Button
@@ -283,6 +284,20 @@
         app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
         app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
         app:layout_constraintTop_toBottomOf="@+id/TypeRadioGroup" />
+
+    <TextView
+        android:id="@+id/drinkPrice"
+        android:layout_width="152dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/sofia_regular"
+        android:text="$0.00"
+        android:textAlignment="center"
+        android:textColor="#B9FFFFFF"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/MenuRedBox"
+        app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
+        app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
+        app:layout_constraintTop_toBottomOf="@+id/CustomizeButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

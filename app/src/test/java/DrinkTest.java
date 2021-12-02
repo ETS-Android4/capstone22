@@ -19,15 +19,15 @@ public class DrinkTest {
 
     @Test
     public void latteName_isCorrect() throws Exception {
-        Drink drink = new Latte(DrinkType.Hot, DrinkSize.Large);
+        Drink drink = new Latte("Latte", "Espresso mixed with milk", "", 4.15, DrinkType.Hot, DrinkSize.Large);
         String expected = "Large Hot Latte";
-        String actual = drink.getName();
+        String actual = drink.getFullName();
         assertEquals(expected, actual);
     }
 
     @Test
     public void latteDescription_isCorrect() throws Exception {
-        Drink drink = new Latte(DrinkType.Hot, DrinkSize.Large);
+        Drink drink = new Latte("Latte", "Espresso mixed with milk", "", 4.15, DrinkType.Hot, DrinkSize.Large);
         String expected = "Espresso mixed with milk";
         String actual = drink.getDescription();
         assertEquals(expected, actual);
@@ -35,7 +35,7 @@ public class DrinkTest {
 
     @Test
     public void latteCost_isCorrect() throws Exception {
-        Drink drink = new Latte(DrinkType.Hot, DrinkSize.Small);
+        Drink drink = new Latte("Latte", "Espresso mixed with milk", "", 4.15, DrinkType.Hot, DrinkSize.Small);
         double expected = 2.95;
         double actual = drink.getCost();
         assertEquals(expected, actual, 0.001);
@@ -43,7 +43,7 @@ public class DrinkTest {
 
     @Test
     public void additions_isCorrect() throws Exception {
-        Drink drink = new Latte(DrinkType.Hot, DrinkSize.Small);
+        Drink drink = new Latte("Latte", "Espresso mixed with milk", "", 4.15, DrinkType.Hot, DrinkSize.Small);
         drink = new Syrup(drink, SyrupType.Classic);
         drink = new Milk(drink, MilkType.Almond);
         drink = new Syrup(drink, SyrupType.Caramel);

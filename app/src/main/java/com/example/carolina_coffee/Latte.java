@@ -6,9 +6,11 @@ public class Latte extends Drink{
         description = "Espresso mixed with milk";
     }
 
-    public Latte(DrinkType type, DrinkSize size) {
-        name = "Latte";
-        description = "Espresso mixed with milk";
+    public Latte(String name, String description, String image, double cost, DrinkType type, DrinkSize size) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.cost = cost;
         this.type = type;
         this.size = size;
     }
