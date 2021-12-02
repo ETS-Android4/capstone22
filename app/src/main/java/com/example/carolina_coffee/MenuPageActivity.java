@@ -121,8 +121,10 @@ public class MenuPageActivity extends AppCompatActivity {
                 holder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        startActivity(new Intent(getApplicationContext(), OrderMenuPageActivity.class));
+                        Intent drinkDetail = new Intent(MenuPageActivity.this, OrderMenuPageActivity.class);
+                        drinkDetail.putExtra("DrinkID", adapter.getRef(position).getKey());
                         overridePendingTransition(0,0);
+                        startActivity(drinkDetail);
                     }
                 });
             }

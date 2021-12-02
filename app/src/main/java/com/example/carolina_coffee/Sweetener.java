@@ -17,8 +17,4 @@ public class Sweetener extends AdditionDecorator {
     public List<String> getAdditions() {
         return drink.getAdditions();
     }
-
-    public double getCost() {
-        return 0.50 + drink.getCost();
-    }
 }

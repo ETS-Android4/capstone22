@@ -16,7 +16,4 @@ public class Syrup extends AdditionDecorator {
         return drink.getAdditions();
     }
 
-    public double getCost() {
-        return 0.50 + drink.getCost();
-    }
 }

@@ -15,8 +15,4 @@ public class Drizzle extends AdditionDecorator {
     public List<String> getAdditions() {
         return drink.getAdditions();
     }
-
-    public double getCost() {
-        return 0.30 + drink.getCost();
-    }
 }

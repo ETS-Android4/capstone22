@@ -16,7 +16,4 @@ public class Topping extends AdditionDecorator {
         return drink.getAdditions();
     }
 
-    public double getCost() {
-        return 0.30 + drink.getCost();
-    }
 }

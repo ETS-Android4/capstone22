@@ -8,9 +8,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -25,8 +30,12 @@ public class OrderMenuPageActivity extends AppCompatActivity {
     TextView drink_name, drink_price, drink_description;
     ImageView drink_image;
 
+    String drinkID = "";
+
     FirebaseDatabase database;
     DatabaseReference drinks;
+
+    Latte drink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,46 +57,10 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         statusBarColor();
         setContentView(R.layout.activity_order_menu_page);
 
-        // Navigation
-        //--------------------------------------------------------------------------------------
-        //Initialize and assign variables - bottom_navigation = nav bar inside activity_main.xml
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //Set home Selected
-        bottomNavigationView.setSelectedItemId(R.id.orderPageButton);
-        //perform itemSelectedListener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    //Home Page Button
-                    case R.id.homePageButton:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    //Payment Page Button
-                    case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    //Order Page Button
-                    case R.id.orderPageButton:
-                        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    //Account Page Button
-                    case R.id.accountPageButton:
-                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
-        // End of Navigation
-        //--------------------------------------------------------------------------------------
+        //Firebase
+        database = FirebaseDatabase.getInstance();
+        drinks = database.getReference("Category");
 
         //Init view
         drink_name = (TextView) findViewById(R.id.drinkText);
@@ -95,20 +68,35 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         drink_price = (TextView) findViewById(R.id.drinkPrice);
         drink_image = (ImageView) findViewById(R.id.drinkCircle);
 
+        //Get Food Id from Intent
+        if (getIntent() != null){
+            drinkID = getIntent().getStringExtra("DrinkID");
+        }
+        if(!drinkID.isEmpty()){
+            getDetailDrink(drinkID);
+        }else {
+            Toast.makeText(this, "Error: drinkId = "+drinkID, Toast.LENGTH_SHORT).show();
+        }
+
+        continueButton();
 
     }
 
-    private void getDetailDrink() {
-        drinks.addValueEventListener(new ValueEventListener() {
+    private void getDetailDrink(String drinkID) {
+        drinks.child(drinkID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Drink drink = snapshot.getValue(Drink.class);
+                drink = snapshot.getValue(Latte.class);
 
-                Picasso.with(getBaseContext()).load(drink.getImage()).into(drink_image);
+
+                Picasso.with(getBaseContext()).load(drink.getImage()).fit().into(drink_image);
 
                 drink_name.setText(drink.getName());
-                drink_price.setText("" + drink.getCost());
+                drink_price.setText("" + drink.getPrice());
                 drink_description.setText(drink.getDescription());
+
+                Toast.makeText(OrderMenuPageActivity.this, drink_name.getText(), Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -127,5 +115,35 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         }else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
+    }
+
+    private void continueButton() {
+        Button btnDisplay = (Button)findViewById(R.id.CountinueButton);
+        RadioGroup rgSize = (RadioGroup)findViewById(R.id.SizeRadioGroup);
+        RadioGroup rgType = (RadioGroup)findViewById(R.id.TypeRadioGroup);
+
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int sizeId = rgSize.getCheckedRadioButtonId();
+                RadioButton rbSize = (RadioButton)findViewById(sizeId);
+
+                int typeId = rgType.getCheckedRadioButtonId();
+                RadioButton rbType = (RadioButton)findViewById(typeId);
+                Toast.makeText(OrderMenuPageActivity.this, rbSize.getText() + " " + rbType.getText() + " " + drink_name.getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //Intent intent = new Intent(this, CartPageActivity.class);
+        //overridePendingTransition(0,0);
+        //startActivity(intent);
+    }
+
+
+    public void backButton(View view) {
+        Intent intent = new Intent(this, MenuPageActivity.class);
+        overridePendingTransition(0,0);
+        startActivity(intent);
     }
 }

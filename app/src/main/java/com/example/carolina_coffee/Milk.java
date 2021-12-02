@@ -16,7 +16,4 @@ public class Milk extends AdditionDecorator{
         return drink.getAdditions();
     }
 
-    public double getCost() {
-        return 0.60 + drink.getCost();
-    }
 }

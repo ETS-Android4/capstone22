@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Drink {
-    String name;
-    String description = "";
-    String image;
-    double cost;
+    String Name;
+    String Image;
+    String Description = "";
+    String Price;
+    String DrinkID = "";
+
     List<String> additions = new ArrayList<>();
     DrinkType type;
     DrinkSize size;
@@ -18,35 +20,59 @@ public abstract class Drink {
 
     }
 
-    public Drink(String name, String description, String image, double cost, DrinkType type, DrinkSize size) {
-        this.name = name;
-        this.description = description;
-        this.image = image;
-        this.cost = cost;
-        this.type = type;
-        this.size = size;
+    public Drink(String description, String drinkID, String image, String name, String price) {
+        Name = name;
+        Description = description;
+        Image = image;
+        Price = price;
+        DrinkID = drinkID;
     }
+
     public String getName() {
-        return name;
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getFullName() {
-        return size.toString() + " " + type.toString() + " " + name;
+        return size.toString() + " " + type.toString() + " " + Name;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 
     public List<String> getAdditions() {
         return additions;
     }
 
-    public double getCost() {
-        return cost;
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
     }
 
     public String getImage() {
-        return image;
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+
+    public String getDrinkID() {
+        return DrinkID;
+    }
+
+    public void setDrinkID(String drinkID) {
+        DrinkID = drinkID;
     }
 }

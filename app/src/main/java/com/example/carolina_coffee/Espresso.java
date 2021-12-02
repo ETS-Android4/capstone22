@@ -24,7 +24,4 @@ public class Espresso extends AdditionDecorator {
         return drink.getAdditions();
     }
 
-    public double getCost() {
-        return 1.00 + drink.getCost();
-    }
 }
