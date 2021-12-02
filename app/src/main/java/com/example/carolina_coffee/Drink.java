@@ -13,8 +13,8 @@ public abstract class Drink {
     String DrinkID = "";
 
     List<String> additions = new ArrayList<>();
-    DrinkType type;
-    DrinkSize size;
+    String type;
+    String size;
 
     public Drink() {
 

@@ -5,22 +5,18 @@ public class Latte extends Drink{
 
     }
 
-    public Latte(String description, String drinkID, String image, String name, String price) {
+    public Latte(String name, String description, String image, String price, String drinkID) {
         this.Name = name;
         this.Description = description;
         this.Image = image;
         this.Price = price;
         this.DrinkID = drinkID;
-        this.type = DrinkType.Hot;
-        this.size = DrinkSize.Medium;
     }
 
-    public Latte(String name, String description, String image, String price, DrinkType type, DrinkSize size) {
-        this.Name = name;
-        this.Description = description;
-        this.Image = image;
-        this.Price = price;
+    public void setType(String type) {
         this.type = type;
-        this.size = size;
+    }
+    public void setSize(String size) {
+        this.type = type;
     }
 }

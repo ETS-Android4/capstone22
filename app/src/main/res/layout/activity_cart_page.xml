@@ -4,6 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/settingpagebackground"
     tools:context=".CartPageActivity">
+
+    <TextView
+        android:id="@+id/menuWhiteBox"
+        android:layout_width="365dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="432dp"
+        android:background="@drawable/profile_page_top_curved_box"
+        android:fontFamily="@font/sofia_regular"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
+
+    <TextView
+        android:id="@+id/menuRedBox2"
+        android:layout_width="365dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/bottom_white_stroke_profile_page"
+        android:fontFamily="@font/sofia_regular"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
+
+    <TextView
+        android:id="@+id/historyTopBox"
+        android:layout_width="417dp"
+        android:layout_height="96dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Order"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/backArrow2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/left_arrow"
+        android:onClick="backButton"
+        app:itemRippleColor="#C1C1C1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/topMessage2"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:background="@drawable/profile_page_top_curved_box"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Review your Order"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
+
+    <Button
+        android:id="@+id/placeOrderButton"
+        android:layout_width="264dp"
+        android:layout_height="48dp"
+        android:background="@drawable/createbutton"
+        android:fontFamily="@font/sofia_regular"
+        android:text="Place Order"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:backgroundTint="@color/red_ec"
+        app:layout_constraintBottom_toBottomOf="@+id/menuWhiteBox"
+        app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="@+id/menuWhiteBox"
+        app:layout_constraintTop_toTopOf="@+id/menuWhiteBox" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="368dp"
+        android:layout_height="378dp"
+        app:layout_constraintEnd_toEndOf="@+id/menuRedBox2"
+        app:layout_constraintStart_toStartOf="@+id/menuRedBox2"
+        app:layout_constraintTop_toTopOf="@+id/menuRedBox2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

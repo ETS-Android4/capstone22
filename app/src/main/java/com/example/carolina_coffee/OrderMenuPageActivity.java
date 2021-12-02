@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class OrderMenuPageActivity extends AppCompatActivity {
 
     TextView drink_name, drink_price, drink_description;
@@ -130,14 +132,19 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
                 int typeId = rgType.getCheckedRadioButtonId();
                 RadioButton rbType = (RadioButton)findViewById(typeId);
-                Toast.makeText(OrderMenuPageActivity.this, rbSize.getText() + " " + rbType.getText() + " " + drink_name.getText(), Toast.LENGTH_SHORT).show();
+
+
+                Latte order = new Latte(drink_name.toString(), drink_description.toString(), drink_image.toString(), drink_price.toString(), drinkID);
+                order.setSize(rbSize.toString());
+                order.setType(rbType.toString());
+                //cart.addtoCart(order);
+                Intent intent = new Intent(OrderMenuPageActivity.this, CartPageActivity.class);
+                overridePendingTransition(0,0);
+                startActivity(intent);
+                //Toast.makeText(OrderMenuPageActivity.this, rbSize.getText() + " " + rbType.getText() + " " + drink_name.getText(), Toast.LENGTH_SHORT).show();
             }
         });
 
-
-        //Intent intent = new Intent(this, CartPageActivity.class);
-        //overridePendingTransition(0,0);
-        //startActivity(intent);
     }
 
 
@@ -146,4 +153,6 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
         startActivity(intent);
     }
+
+
 }
