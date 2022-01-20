@@ -16,11 +16,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class CartPageActivity extends AppCompatActivity {
 
     RecyclerView recyler_menu;
@@ -106,6 +101,12 @@ public class CartPageActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
     }
+
+    public void paymentPageButton(View view) {
+        Intent intent = new Intent(this, PaymentActivity.class);
+        startActivity(intent);
+    }
+
 
 
 }
