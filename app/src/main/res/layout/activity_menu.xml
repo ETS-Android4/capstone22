@@ -54,8 +54,10 @@
         android:id="@+id/menuRecycler"
         android:layout_width="365dp"
         android:layout_height="450dp"
+        android:layout_marginBottom="71dp"
         android:scrollbars="vertical"
         android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="@+id/menuRedBox"
         app:layout_constraintStart_toStartOf="@+id/menuRedBox"
         app:layout_constraintTop_toTopOf="@+id/menuRedBox"></androidx.recyclerview.widget.RecyclerView>

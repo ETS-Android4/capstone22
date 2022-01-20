@@ -10,17 +10,18 @@
     <TextView
         android:id="@+id/menuWhiteBox"
         android:layout_width="365dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="432dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/profile_page_top_curved_box"
         android:fontFamily="@font/sofia_regular"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
+        app:layout_constraintTop_toBottomOf="@+id/menuRedBox2" />
 
     <TextView
         android:id="@+id/menuRedBox2"
@@ -119,6 +120,8 @@
         app:itemRippleColor="#C1C1C1"
         app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

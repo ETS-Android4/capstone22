@@ -351,9 +351,10 @@
                         app:itemRippleColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.504"
+                        app:layout_constraintHorizontal_bias="0.506"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/customer_support_button" />
+                        app:layout_constraintTop_toBottomOf="@+id/customer_support_button"
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <Button
                         android:id="@+id/customer_support_button"
