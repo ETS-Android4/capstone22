@@ -9,12 +9,15 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CartPageActivity extends AppCompatActivity {
 
@@ -48,6 +51,46 @@ public class CartPageActivity extends AppCompatActivity {
         recyler_menu.setLayoutManager(layoutManager);
 
         loadCart();
+
+        // Navigation
+        //--------------------------------------------------------------------------------------
+        //Initialize and assign variables - bottom_navigation = nav bar inside activity_main.xml
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //Set home Selected
+        bottomNavigationView.setSelectedItemId(R.id.accountPageButton);
+        //perform itemSelectedListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    //Home Page Button
+                    case R.id.homePageButton:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Payment Page Button
+                    case R.id.payPageButton:
+                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Order Page Button
+                    case R.id.orderPageButton:
+                        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    //Account Page Button
+                    case R.id.accountPageButton:
+                        return true;
+                }
+                return false;
+            }
+        });
+        // End of Navigation
+        //--------------------------------------------------------------------------------------
+        //End of onCreate
     }
 
     public void backButton(View view) {
