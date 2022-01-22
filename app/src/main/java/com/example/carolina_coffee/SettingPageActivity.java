@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +28,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.storage.StorageReference;
 
 public class SettingPageActivity extends AppCompatActivity {
 
@@ -183,7 +181,7 @@ public class SettingPageActivity extends AppCompatActivity {
         // Logout
         FirebaseAuth.getInstance().signOut();
         // Send user to login page
-        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
+        startActivity(new Intent(getApplicationContext(), LoginPageActivity.class));
         overridePendingTransition(0,0);
         finish();
     }
