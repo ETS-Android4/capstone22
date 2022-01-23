@@ -88,13 +88,29 @@
         <entry key="..\:/Users/jyinh/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/activity_app_settings_page.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_cart_page.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/activity_checkout12.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_customer_support_page.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_defaultpage_examplecode.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_history_page.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_inbox_page.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_order_menu_page.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_payment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/activity_profile7.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/activity_rewards2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rewards9.xml" value="0.1546875" />
+        <entry key="app/src/main/res/layout/activity_saved_orders_page.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/activity_setting_page.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/menu_item.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/review_order_item.xml" value="0.1431159420289855" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19322916666666667" />
       </map>
     </option>
