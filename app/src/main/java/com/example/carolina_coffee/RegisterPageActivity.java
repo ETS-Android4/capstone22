@@ -6,7 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.telephony.PhoneNumberUtils;
+import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -41,6 +46,8 @@ public class RegisterPageActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
+
+
 
 
     @Override
@@ -78,6 +85,60 @@ public class RegisterPageActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
 
+        // ** AUTO FORMAT Phone Number
+        //-----------------------------------------------------------
+        final EditText editText = (EditText) findViewById(R.id.phone);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count){}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = editText.getText().toString();
+                int  textLength = editText.getText().length();
+                if (text.endsWith("-") || text.endsWith(" ") || text.endsWith(" "))
+                    return;
+                if (textLength == 1) {
+                    if (!text.contains("(")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "(").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                } else if (textLength == 5) {
+                    if (!text.contains(")")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, ")").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+                else if (textLength == 6) {
+                    editText.setText(new StringBuilder(text).insert(text.length() - 1, " ").toString());
+                    editText.setSelection(editText.getText().length());
+                }
+                else if (textLength == 10) {
+                    if (!text.contains("-"))
+                    {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "-").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+                else if (textLength == 15) {
+                    if (text.contains("-")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "-").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+                else if (textLength == 18) {
+                    if (text.contains("-")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "-").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+            }
+        });
+        // End of auto format phone number
+        //-----------------------------------------------------------
+
+
         // If user is already logged in, take user to main page.
         if(fAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -94,6 +155,8 @@ public class RegisterPageActivity extends AppCompatActivity {
                         String password = mPassword.getText().toString().trim();
                         String confirmPassword = mConfirmPassword.getText().toString().trim();
                         String phone = mPhone.getText().toString();
+
+
 
 
 

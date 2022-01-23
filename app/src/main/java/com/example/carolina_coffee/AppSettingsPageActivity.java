@@ -10,6 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.Switch;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -78,7 +82,27 @@ public class AppSettingsPageActivity extends AppCompatActivity {
         });
         // End of Navigation
         //--------------------------------------------------------------------------------------
+
+
+        // Biometric Scanner Switch Button method
+        //---------------------------------------
+        ImageView image = findViewById(R.id.help_icon);
+        Switch switchVisibility = findViewById(R.id.biometrics_switch);
+
+        switchVisibility.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    ImageView help_icon;
+                    image.setImageDrawable(getDrawable(R.drawable.btn_clear));
+                } else {
+                    image.setImageDrawable(getDrawable(R.drawable.account_icon));
+                }
+            }
+        });
     }
+    // End of biometric switch button mathod
+    //---------------------------------------
 
     // This is method to change the status bar color from default purple to color of choice.
     private void statusBarColor() {
@@ -94,4 +118,6 @@ public class AppSettingsPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void biometric_scanner_switch(View view) {
+    }
 }

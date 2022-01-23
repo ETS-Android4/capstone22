@@ -1,19 +1,31 @@
 package com.example.carolina_coffee;
 
+import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG;
+import static androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.core.content.ContextCompat;
+import androidx.biometric.BiometricPrompt;
 
+
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -23,14 +35,29 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.concurrent.Executor;
 
 public class LoginPageActivity extends AppCompatActivity {
+
     EditText mEmail, mPassword;
     Button mCreateButton, mForgotPassword;
     Button mLoginButton;
-    //TextView mForgotPassword;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+    FirebaseUser fUser;
+    ProgressDialog progressDialog;
+    SharedPreferences sharedPreferences;
+
+
+    // Biometrics
+    private static final int REQUEST_CODE = 101010;
+    Button finger_print_button;
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +84,19 @@ public class LoginPageActivity extends AppCompatActivity {
         mPassword       = findViewById(R.id.password);
         progressBar     = findViewById(R.id.progressBar);
         fAuth           = FirebaseAuth.getInstance();
+        fUser           = fAuth.getCurrentUser();
         mLoginButton    = findViewById(R.id.loginButton);
         mCreateButton   = findViewById(R.id.createButton);
         mForgotPassword = findViewById(R.id.forgotPassword);
+        progressDialog  = new ProgressDialog(this);
+        finger_print_button = findViewById(R.id.finger_print);
+
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-
 
 
                 // If user does not enter an email in the field
@@ -99,6 +129,12 @@ public class LoginPageActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(LoginPageActivity.this, "Logged in Successfully.", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
+                            // **INTENT TO SEND**
+                            // Biometrics
+                            //Sending Biometric button to APP Settings page to change visibility via switch.
+
+
                         }else {
                             Toast.makeText(LoginPageActivity.this, "Error has occurred!\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             // Hide loading bar when user gets an error.
@@ -108,6 +144,22 @@ public class LoginPageActivity extends AppCompatActivity {
                 });
             }
         });
+
+        finger_print_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = mEmail.getText().toString();
+                String password = mPassword.getText().toString();
+                PerformAuth(email,password);
+            }
+        });
+
+        sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+        boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
+        if(isLogin) {
+
+            finger_print_button.setVisibility(View.VISIBLE);
+        }
 
 
         mForgotPassword.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +204,117 @@ public class LoginPageActivity extends AppCompatActivity {
             }
         });
 
+
+        // ** Biometrics **
+        // Imported from Android Studio dev. official website.
+        // ----------------------------------------------------------------
+        // Allows user to authenticate using either a Class 3 biometric or
+        // their lock screen credential (PIN, pattern, or password).
+        BiometricManager biometricManager = BiometricManager.from(this);
+        switch (biometricManager.canAuthenticate(BIOMETRIC_STRONG | DEVICE_CREDENTIAL)) {
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                Log.d("MY_APP_TAG", "App can authenticate using biometrics.");
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                Log.e("MY_APP_TAG", "No biometric features available on this device.");
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                Log.e("MY_APP_TAG", "Biometric features are currently unavailable.");
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                // Prompts the user to create credentials that your app accepts.
+                final Intent enrollIntent = new Intent(Settings.ACTION_BIOMETRIC_ENROLL);
+                enrollIntent.putExtra(Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
+                        BIOMETRIC_STRONG | DEVICE_CREDENTIAL);
+                startActivityForResult(enrollIntent, REQUEST_CODE);
+                break;
+        }
+
+        executor = ContextCompat.getMainExecutor(this);
+        biometricPrompt = new BiometricPrompt(LoginPageActivity.this,
+                executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode,
+                                              @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(getApplicationContext(),
+                        "Authentication error: " + errString, Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(
+                    @NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(),"Authentication succeeded!", Toast.LENGTH_SHORT).show();
+
+                String email = sharedPreferences.getString("email", "");
+                String password = sharedPreferences.getString("password", "");
+
+                PerformAuth(email, password);
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(getApplicationContext(), "Authentication failed",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric login for my app")
+                .setSubtitle("Log in using your biometric credential")
+                .setNegativeButtonText("Use account password")
+                .build();
+
+        // Prompt appears when user clicks "Log in".
+        // Consider integrating with the keystore to unlock cryptographic operations,
+        // if needed by your app.
+        finger_print_button.setOnClickListener(view -> {
+            biometricPrompt.authenticate(promptInfo);
+        });
+
+        // END of Biometrics
+        // ----------------------------------------------------------------
+
+
     }
+    // END of on-create method
+    //-----------------------------------------------
+
+    // Biometric Auth
+    private void PerformAuth(String email, String password) {
+        progressDialog.setMessage("Login");
+        progressDialog.show();
+
+        //Auth user.
+        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull @org.jetbrains.annotations.NotNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+
+                    SharedPreferences.Editor editor = getSharedPreferences("data", MODE_PRIVATE).edit();
+                    editor.putString("email",email);
+                    editor.putString("password",password);
+                    editor.putBoolean("isLogin",true);
+                    editor.apply();
+
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                } else {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), ""+task.getException(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
+
 
     // Create Account Button -> Send user to Register Page.
     public void createAccountButton(View view) {
@@ -168,6 +330,5 @@ public class LoginPageActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
     }
-
 
 }
