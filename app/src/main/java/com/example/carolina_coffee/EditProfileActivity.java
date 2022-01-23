@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,6 +84,59 @@ public class EditProfileActivity extends AppCompatActivity {
         profilePhone.setText(phone);
 
         //Log.d(TAG,"onCreate: " + fullName + " " + email + " " + phone );
+
+        // ** AUTO FORMAT Phone Number
+        //-----------------------------------------------------------
+        final EditText editText = (EditText) findViewById(R.id.profilePhone);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count){}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = editText.getText().toString();
+                int  textLength = editText.getText().length();
+                if (text.endsWith("-") || text.endsWith(" ") || text.endsWith(" "))
+                    return;
+                if (textLength == 1) {
+                    if (!text.contains("(")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "(").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                } else if (textLength == 5) {
+                    if (!text.contains(")")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, ")").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+                else if (textLength == 6) {
+                    editText.setText(new StringBuilder(text).insert(text.length() - 1, " ").toString());
+                    editText.setSelection(editText.getText().length());
+                }
+                else if (textLength == 10) {
+                    if (!text.contains("-"))
+                    {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "-").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+                else if (textLength == 15) {
+                    if (text.contains("-")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "-").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+                else if (textLength == 18) {
+                    if (text.contains("-")) {
+                        editText.setText(new StringBuilder(text).insert(text.length() - 1, "-").toString());
+                        editText.setSelection(editText.getText().length());
+                    }
+                }
+            }
+        });
+        // End of auto format phone number
+        //-----------------------------------------------------------
 
         // Grab new data changes and update to FireBase
         confirmChangesButton.setOnClickListener(new View.OnClickListener() {

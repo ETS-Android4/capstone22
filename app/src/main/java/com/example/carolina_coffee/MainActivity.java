@@ -3,6 +3,8 @@ package com.example.carolina_coffee;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +19,8 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -105,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
  */
+
+
     }
 
     // Status Bar Color
@@ -129,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void profilePage(View view) {
-        Intent intent = new Intent(this, ProfilePageActivity.class);
+        Intent intent = new Intent(this, LockScreenActivity.class);
         startActivity(intent);
     }
 
