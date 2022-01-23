@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.View;
@@ -25,8 +28,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+
 public class OrderMenuPageActivity extends AppCompatActivity {
 
+    private static Cart cart = new Cart();
     TextView drink_name, drink_price, drink_description;
     ImageView drink_image;
 
@@ -122,6 +128,10 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
     }
 
+    public static Cart getCart() {
+        return cart;
+    }
+
     private void getDetailDrink(String drinkID) {
         drinks.child(drinkID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -172,19 +182,28 @@ public class OrderMenuPageActivity extends AppCompatActivity {
                 RadioButton rbType = (RadioButton)findViewById(typeId);
 
 
-                Latte order = new Latte(drink_name.toString(), drink_description.toString(), drink_image.toString(), drink_price.toString(), drinkID);
-                order.setSize(rbSize.toString());
-                order.setType(rbType.toString());
-                //cart.addtoCart(order);
+
+                Latte order = new Latte(drink_name.getText().toString(), drink_description.getText().toString(), "", drink_price.getText().toString(), drinkID);
+                order.setSize(rbSize.getText().toString());
+                order.setType(rbType.getText().toString());
+                cart.addtoCart(order);
                 Intent intent = new Intent(OrderMenuPageActivity.this, CartPageActivity.class);
                 overridePendingTransition(0,0);
                 startActivity(intent);
-                //Toast.makeText(OrderMenuPageActivity.this, rbSize.getText() + " " + rbType.getText() + " " + drink_name.getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderMenuPageActivity.this, rbSize.getText() + " " + rbType.getText() + " " +  "", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
+    public String getEncoded64ImageStringFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+        byte[] byteFormat = stream.toByteArray();
+        // get the base 64 string
+        String imgString = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
+        return imgString;
+    }
 
     public void backButton(View view) {
         Intent intent = new Intent(this, MenuPageActivity.class);

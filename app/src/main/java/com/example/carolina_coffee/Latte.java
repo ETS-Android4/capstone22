@@ -17,6 +17,6 @@ public class Latte extends Drink{
         this.type = type;
     }
     public void setSize(String size) {
-        this.type = type;
+        this.size = size;
     }
 }

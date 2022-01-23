@@ -37,7 +37,7 @@ public abstract class Drink {
     }
 
     public String getFullName() {
-        return size.toString() + " " + type.toString() + " " + Name;
+        return size + " " + type + " " + Name;
     }
 
     public String getDescription() {

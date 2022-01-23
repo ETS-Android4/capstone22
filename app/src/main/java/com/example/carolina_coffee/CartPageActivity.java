@@ -18,11 +18,16 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class CartPageActivity extends AppCompatActivity {
 
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
+
+    Cart cart = OrderMenuPageActivity.getCart();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,12 +100,11 @@ public class CartPageActivity extends AppCompatActivity {
 
     public void backButton(View view) {
         Intent intent = new Intent(this, MenuPageActivity.class);
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
         startActivity(intent);
     }
 
     private void loadCart() {
-        //Cart cart = OrderMenuPageActivity.getCart();
         RecyclerView.Adapter<CartViewHolder> adapter = new RecyclerView.Adapter<CartViewHolder>() {
             public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
@@ -109,17 +113,16 @@ public class CartPageActivity extends AppCompatActivity {
             }
             @Override
             public void onBindViewHolder(CartViewHolder viewHolder, int i) {
-                //Latte drink = cart.getCart().get(i);
-               viewHolder.txtDrinkName.setText("Drink Name");
-               viewHolder.txtDrinkAddOns.setText("Add-ons will be added later!");
-               viewHolder.txtDrinkPrice.setText("$0.00");
-               //Picasso.with(getBaseContext()).load(drink.getImage()).fit().into(viewHolder.imageView);
+                Latte drink = cart.getCart().get(i);
+                viewHolder.txtDrinkName.setText(drink.getFullName());
+                viewHolder.txtDrinkAddOns.setText("Add-ons will be added later!");
+                viewHolder.txtDrinkPrice.setText("$" + drink.getPrice());
+                //Picasso.with(getBaseContext()).load(drink.getImage()).fit().into(viewHolder.imageView);
             }
 
             @Override
             public int getItemCount() {
-                //return cart.getCart().size();
-                return 1;
+                return cart.getCart().size();
             }
         };
         recyler_menu.setAdapter(adapter);
