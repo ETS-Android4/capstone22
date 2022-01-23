@@ -9,6 +9,25 @@
 
 
     <TextView
+        android:id="@+id/whiteBox3"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/profile_page_bottom_curved_box"
+        android:backgroundTint="#99FFFFFF"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:text="Need a change?"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/privacy_text_box" />
+
+    <TextView
         android:id="@+id/settingsTopBox"
         android:layout_width="match_parent"
         android:layout_height="96dp"
@@ -63,5 +82,273 @@
         app:menu="@menu/navigation_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/app_setting_text"
+        android:layout_width="0dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/sofia_regular"
+        android:letterSpacing="0.2"
+        android:text="App Settings"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topMessage2" />
+
+    <TextView
+        android:id="@+id/security_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/support_red_box"
+        android:fontFamily="@font/sofia_regular"
+        android:letterSpacing="0.2"
+        android:paddingStart="5dp"
+        android:text="Security"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/passcode_text_box"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/passcode_text_box"
+        app:layout_constraintTop_toBottomOf="@+id/app_setting_text" />
+
+    <TextView
+        android:id="@+id/notifications_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/support_red_box"
+        android:fontFamily="@font/sofia_regular"
+        android:letterSpacing="0.2"
+        android:paddingStart="5dp"
+        android:text="Notifications"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/inbox_messages_text_box"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/inbox_messages_text_box"
+        app:layout_constraintTop_toBottomOf="@+id/biometric_text_box" />
+
+    <TextView
+        android:id="@+id/help_policies_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/support_red_box"
+        android:fontFamily="@font/sofia_regular"
+        android:letterSpacing="0.2"
+        android:paddingStart="5dp"
+        android:text="Help &amp; Policies"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/help_text_box"
+        app:layout_constraintStart_toStartOf="@+id/help_text_box"
+        app:layout_constraintTop_toBottomOf="@+id/inbox_messages_text_box" />
+
+    <TextView
+        android:id="@+id/passcode_text_box"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="30dp"
+        android:paddingTop="12dp"
+        android:text="Passcode Lock"
+        android:textAlignment="textStart"
+        android:textColor="#CCFFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/security_text" />
+
+    <TextView
+        android:id="@+id/biometric_text_box"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="30dp"
+        android:paddingTop="12dp"
+        android:text="Biometrics Unlock"
+        android:textAlignment="textStart"
+        android:textColor="#CCFFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passcode_text_box" />
+
+    <TextView
+        android:id="@+id/inbox_messages_text_box"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="30dp"
+        android:paddingTop="12dp"
+        android:text="Inbox Messages"
+        android:textAlignment="textStart"
+        android:textColor="#CCFFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notifications_text" />
+
+    <ImageView
+        android:id="@+id/help_icon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/help_text_box"
+        app:layout_constraintTop_toTopOf="@+id/help_text_box"
+        app:srcCompat="@drawable/question" />
+
+    <ImageView
+        android:id="@+id/app_terms_icon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/app_terms_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/app_terms_text_box"
+        app:layout_constraintTop_toTopOf="@+id/app_terms_text_box"
+        app:srcCompat="@drawable/contact" />
+
+    <ImageView
+        android:id="@+id/privacy_icon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/privacy_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/privacy_text_box"
+        app:layout_constraintTop_toTopOf="@+id/privacy_text_box"
+        app:srcCompat="@drawable/padlock" />
+
+    <Button
+        android:id="@+id/help_text_box"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="@drawable/support_red_box"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="30dp"
+        android:text="Help"
+        android:textAlignment="textStart"
+        android:textColor="#CCFFFFFF"
+        android:textSize="15sp"
+        android:foreground="@drawable/ripple_grayc1c1"
+        app:backgroundTint="@color/dark_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_policies_text" />
+
+    <Button
+        android:id="@+id/app_terms_text_box"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="30dp"
+        android:text="Application Terms"
+        android:textAlignment="textStart"
+        android:textColor="#CCFFFFFF"
+        android:textSize="15sp"
+        android:foreground="@drawable/ripple_grayc1c1"
+        app:backgroundTint="@color/dark_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/help_text_box" />
+
+    <Button
+        android:id="@+id/privacy_text_box"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:background="#CC800B0B"
+        android:fontFamily="@font/sofia_regular"
+        android:paddingStart="30dp"
+        android:text="Privacy Statement"
+        android:textAlignment="textStart"
+        android:textColor="#CCFFFFFF"
+        android:textSize="15sp"
+        android:foreground="@drawable/ripple_grayc1c1"
+        app:backgroundTint="@color/dark_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_terms_text_box" />
+
+
+    <Button
+        android:id="@+id/red_back_button_1"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/profile_page_all_curved_corners_red"
+        android:fontFamily="@font/sofia_regular"
+        android:foreground="@drawable/ripple_grayc1c1"
+        android:letterSpacing="0.25"
+        android:onClick="settingsPage"
+        android:paddingStart="0dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/red_ec"
+        app:layout_constraintBottom_toBottomOf="@+id/whiteBox3"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox3"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/whiteBox3" />
+
+    <Switch
+        android:id="@+id/passcode_lock_switch"
+        android:layout_width="106dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/passcode_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/passcode_text_box"
+        app:layout_constraintTop_toTopOf="@+id/passcode_text_box"
+        app:layout_constraintVertical_bias="0.975" />
+
+    <Switch
+        android:id="@+id/biometrics_switch3"
+        android:layout_width="106dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/biometric_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/biometric_text_box"
+        app:layout_constraintTop_toTopOf="@+id/biometric_text_box" />
+
+    <Switch
+        android:id="@+id/inbox_messages_switch"
+        android:layout_width="106dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/inbox_messages_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/inbox_messages_text_box"
+        app:layout_constraintTop_toTopOf="@+id/inbox_messages_text_box"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

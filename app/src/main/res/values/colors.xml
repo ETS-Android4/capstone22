@@ -10,5 +10,6 @@
     <color name="c1c1_gray">#c1c1c1</color>
     <color name="red_ec">#EC3939</color>
     <color name ="iconGray">#413E3E</color>
+    <color name = "dark_red">#CC800B0B</color>
 
 </resources>
