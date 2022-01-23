@@ -79,20 +79,7 @@ public class PaymentActivity extends AppCompatActivity {
         // End of Navigation
         //--------------------------------------------------------------------------------------
 
-        CardForm cardForm   = (CardForm) findViewById(R.id.card_form);
-        TextView txtDes = (TextView) findViewById(R.id.payment_amount);
-        Button btnPay = (Button)findViewById(R.id.btn_pay);
 
-        txtDes.setText("");
-        btnPay.setText(String.format("Payer %s",txtDes.getText()));
-
-        cardForm.setPayBtnClickListner(new OnPayBtnClickListner() {
-            @Override
-            public void onClick(Card card) {
-                Toast.makeText(PaymentActivity.this, "Name : "+card.getName()+" | Last 4 digits : "+card.getLast4(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     // This is method to change the status bar color from default purple to color of choice.
