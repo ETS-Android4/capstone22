@@ -66,19 +66,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cvLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/backGroundCover"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginBottom="100dp"
-                android:background="#CCC6BEBE"
+                android:layout_marginBottom="-32dp"
+                android:background="@drawable/settings_page_all_gray_curved_corners"
                 android:paddingLeft="16dp"
                 android:paddingTop="16dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/back_button_3"
                 app:layout_constraintEnd_toEndOf="@+id/WalletArtCover"
                 app:layout_constraintHorizontal_bias="0.47"
                 app:layout_constraintStart_toStartOf="@+id/WalletArtCover"
@@ -108,7 +108,7 @@
                 android:ems="10"
                 android:fontFamily="@font/sofia_regular"
                 android:hint="Zip"
-                android:inputType="textPostalAddress"
+                android:inputType="phone"
                 android:maxLength="5"
                 android:padding="10dp"
                 android:textColor="#808080"
@@ -173,8 +173,7 @@
                 android:id="@+id/back_button_3"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/profile_page_all_curved_corners_red"
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
@@ -191,7 +190,6 @@
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:backgroundTint="@color/red_ec"
-                app:layout_constraintBottom_toBottomOf="@+id/backGroundCover"
                 app:layout_constraintStart_toStartOf="@+id/billing_zip_box_1"
                 app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_1" />
 
@@ -199,8 +197,7 @@
                 android:id="@+id/add_payment_method_button_1"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/profile_page_all_curved_corners_red"
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
@@ -216,7 +213,6 @@
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:backgroundTint="@color/red_ec"
-                app:layout_constraintBottom_toBottomOf="@+id/backGroundCover"
                 app:layout_constraintEnd_toEndOf="@+id/billing_zip_box_1"
                 app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_1" />
 

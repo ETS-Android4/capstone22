@@ -1,6 +1,7 @@
 package com.example.carolina_coffee;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,7 +25,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +37,9 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
     private static final String TAG = "TAG";
     EditText mBilling_Name_1, mCardNumber_1, mExp_Date_1, mCCV_Num_1, mZip_1;
     Button mAdd_Payment_1,mDelete_payment_1,mDelete_payment_2;
+    TextView mCard_Ending_1, mCard_Ending_2;
     FirebaseAuth fAuth;
+    FirebaseUser user;
     FirebaseFirestore fStore;
     String userID;
 
@@ -70,6 +77,8 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
+        user = fAuth.getCurrentUser();
 
         // below line is used to get the
         // instance of our FIrebase database.
@@ -143,12 +152,16 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                 // start new activity here
             }
         });
-
-
-
-
         // **END** OF Delete User DATA for Payment 1.
         //-------------------------------------------
+
+        //Display last 4 digits on card if user added one.
+        displayDigits_1();
+        displayDigits_2();
+
+
+
+
 
 
 
@@ -279,5 +292,71 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
     public void delete_payment_method_2(View view) {
     }
 
+    /*
+    //Disable PaymentMethod 1 button from PaymentMethod_1_Activity
+    public void disablePaymentMethod_1_Button() {
+        View payment_Button_1 = findViewById(R.id.payment_method_box_1);
+        payment_Button_1.setEnabled(true);
+    }
+     */
+
+
+    public void displayDigits_1() {
+        //Display last 4 digits if user has card
+        mCard_Ending_1 = findViewById(R.id.card_ending_1);
+        // Displaying Card info FROM FireBase
+        DocumentReference documentReference = fStore.collection("PaymentMethod_1").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            // Card 1
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    String card_1 = documentSnapshot.getString("Billing_Card_Num_1");
+                    String lastFourDigits_1 = "";
+
+                    if (card_1.length() > 4) {
+                        lastFourDigits_1 = card_1.substring(card_1.length() - 4);
+                    } else {
+                        lastFourDigits_1 = card_1;
+                    }
+                    //mCard_Ending_1.setText(documentSnapshot.getString("Billing_Card_Num_1"));
+                    mCard_Ending_1.setText("Card Ending in: " + lastFourDigits_1);
+                } else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                    mCard_Ending_1.setText("No Card.");
+                }
+            }
+        });
+
+    }
+    public void displayDigits_2() {
+        //Display last 4 digits if user has card
+        mCard_Ending_2 = findViewById(R.id.card_ending_2);
+        // Displaying Card info FROM FireBase
+        DocumentReference documentReference = fStore.collection("PaymentMethod_2").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            // Card 1
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    String card_2 = documentSnapshot.getString("Billing_Card_Num_2");
+                    String lastFourDigits_2 = "";
+                    if(card_2.length() == 19) {
+                        if (card_2.length() > 4) {
+                            lastFourDigits_2 = card_2.substring(card_2.length() - 4);
+                        } else {
+                            lastFourDigits_2 = card_2;
+                        }
+                        //mCard_Ending_1.setText(documentSnapshot.getString("Billing_Card_Num_1"));
+                        mCard_Ending_2.setText("Card Ending in: " + lastFourDigits_2);
+                    }
+                } else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                    mCard_Ending_2.setText("No Card.");
+                }
+            }
+
+        });
+    }
 
 }

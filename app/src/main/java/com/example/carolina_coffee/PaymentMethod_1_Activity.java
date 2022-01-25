@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +33,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -264,34 +268,42 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
         //--------------------------------------------------------------------------------------
     }
 
+
     // *** Collecting Payment Method 1 to FireBase
     //--------------------------------------------
     private void addDataToFireBase(String fullName_string, String cardNumber_string, String exp_date_string, String ccv_num_string, String zip_code_string) {
-            //Send confirmation email / verification link.
-            FirebaseUser fuser = fAuth.getCurrentUser();
+        //Send confirmation email / verification link.
+        FirebaseUser fuser = fAuth.getCurrentUser();
 
-            Toast.makeText(PaymentMethod_1_Activity.this, "Card Added.", Toast.LENGTH_SHORT).show();
-            userID = fAuth.getCurrentUser().getUid();
-            DocumentReference documentReference = fStore.collection("PaymentMethod_1").document(userID);
-            Map<String,Object> user = new HashMap<>();
-            user.put("Billing_Name_1",fullName_string);
-            user.put("Billing_Card_Num_1",cardNumber_string);
-            user.put("Billing_Exp_Date_1",exp_date_string);
-            user.put("Billing_CCV_Num_1",ccv_num_string);
-            user.put("Billing_Zip_1",zip_code_string);
+        Toast.makeText(PaymentMethod_1_Activity.this, "Card Added.", Toast.LENGTH_SHORT).show();
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("PaymentMethod_1").document(userID);
+        Map<String,Object> user = new HashMap<>();
+        user.put("Billing_Name_1",fullName_string);
+        user.put("Billing_Card_Num_1",cardNumber_string);
+        user.put("Billing_Exp_Date_1",exp_date_string);
+        user.put("Billing_CCV_Num_1",ccv_num_string);
+        user.put("Billing_Zip_1",zip_code_string);
+        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e.toString());
+            }
+        });
+        //Start new activity
+        /*
+        // ****************************
+        // Disable payment 1 edit button from working on EditPaymentMethodActivity.class
+        EditPaymentPlansActivity eppa1 = new EditPaymentPlansActivity();
+        eppa1.disablePaymentMethod_1_Button();
 
-            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "onFailure: " + e.toString());
-                }
-            });
-            //Start new activity
+         */
+
         }
 
     // *** END of Collecting Payment Method 1 to FireBase

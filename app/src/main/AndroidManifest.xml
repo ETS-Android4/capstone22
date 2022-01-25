@@ -20,6 +20,8 @@
             android:exported="false" />
         <activity
             android:name=".PaymentMethod_1_Activity"
+            android:windowSoftInputMode="adjustPan"
+
             android:exported="false" />
         <activity
             android:name=".EditPaymentPlansActivity"
