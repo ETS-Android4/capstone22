@@ -100,11 +100,11 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                 userID = fAuth.getCurrentUser().getUid();
                 DocumentReference documentReference = fStore.collection("PaymentMethod_1").document(userID);
                 Map<String,Object> user = new HashMap<>();
-                user.put("Billing_Name_1","");
-                user.put("Billing_Card_Num_1","");
-                user.put("Billing_Exp_Date_1","");
-                user.put("Billing_CCV_Num_1","");
-                user.put("Billing_Zip_1","");
+                user.remove("Billing_Name_1");
+                user.remove("Billing_Card_Num_1");
+                user.remove("Billing_Exp_Date_1");
+                user.remove("Billing_CCV_Num_1");
+                user.remove("Billing_Zip_1");
 
                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -132,11 +132,11 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                 userID = fAuth.getCurrentUser().getUid();
                 DocumentReference documentReference = fStore.collection("PaymentMethod_2").document(userID);
                 Map<String,Object> user = new HashMap<>();
-                user.put("Billing_Name_2","");
-                user.put("Billing_Card_Num_2","");
-                user.put("Billing_Exp_Date_2","");
-                user.put("Billing_CCV_Num_2","");
-                user.put("Billing_Zip_2","");
+                user.remove("Billing_Name_2");
+                user.remove("Billing_Card_Num_2");
+                user.remove("Billing_Exp_Date_2");
+                user.remove("Billing_CCV_Num_2");
+                user.remove("Billing_Zip_2");
 
                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -157,7 +157,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
 
         //Display last 4 digits on card if user added one.
         displayDigits_1();
-        displayDigits_2();
+        //displayDigits_2();
 
 
 
@@ -313,17 +313,20 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     String card_1 = documentSnapshot.getString("Billing_Card_Num_1");
                     String lastFourDigits_1 = "";
-
-                    if (card_1.length() > 4) {
-                        lastFourDigits_1 = card_1.substring(card_1.length() - 4);
+                    if(documentSnapshot.getString("Billing_Card_Num_1") == null) {
+                        mCard_Ending_1.setText("No Card.");
+                        return;
                     } else {
-                        lastFourDigits_1 = card_1;
+                        if (card_1.length() > 4) {
+                            lastFourDigits_1 = card_1.substring(card_1.length() - 4);
+                        } else {
+                            lastFourDigits_1 = card_1;
+                        }
                     }
                     //mCard_Ending_1.setText(documentSnapshot.getString("Billing_Card_Num_1"));
                     mCard_Ending_1.setText("Card Ending in: " + lastFourDigits_1);
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
-                    mCard_Ending_1.setText("No Card.");
                 }
             }
         });
@@ -335,24 +338,25 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         // Displaying Card info FROM FireBase
         DocumentReference documentReference = fStore.collection("PaymentMethod_2").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            // Card 1
+            // Card 2
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
                     String card_2 = documentSnapshot.getString("Billing_Card_Num_2");
-                    String lastFourDigits_2 = "";
-                    if(card_2.length() == 19) {
+                    String lastFourDigits_1 = "";
+                    if(documentSnapshot.getString("Billing_Card_Num_2") == null) {
+                        mCard_Ending_2.setText("No Card.");
+                        return;
+                    } else {
                         if (card_2.length() > 4) {
-                            lastFourDigits_2 = card_2.substring(card_2.length() - 4);
+                            lastFourDigits_1 = card_2.substring(card_2.length() - 4);
                         } else {
-                            lastFourDigits_2 = card_2;
+                            lastFourDigits_1 = card_2;
                         }
-                        //mCard_Ending_1.setText(documentSnapshot.getString("Billing_Card_Num_1"));
-                        mCard_Ending_2.setText("Card Ending in: " + lastFourDigits_2);
                     }
+                    mCard_Ending_2.setText("Card Ending in: " + lastFourDigits_1);
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
-                    mCard_Ending_2.setText("No Card.");
                 }
             }
 
