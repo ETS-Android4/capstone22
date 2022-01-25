@@ -97,7 +97,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/top_History_White_Curved_Box"
+                android:id="@+id/payment_method_box_1"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
@@ -122,7 +122,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/top_PaymentPlans_White_Curved_Box2"
+                android:id="@+id/payment_method_box_2"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
@@ -141,7 +141,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top_History_White_Curved_Box" />
+                app:layout_constraintTop_toBottomOf="@+id/payment_method_box_1" />
 
             <TextView
                 android:id="@+id/bottom_account_White_Curved_Box3"
@@ -155,14 +155,14 @@
                 android:letterSpacing="0.5"
                 android:paddingStart="40dp"
                 android:paddingTop="20dp"
-                android:text="Account"
+                android:text="Blank"
                 android:textAlignment="textStart"
                 android:textColor="#EC3939"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2" />
+                app:layout_constraintTop_toBottomOf="@+id/payment_method_box_2" />
 
 
             <ImageView
@@ -171,8 +171,8 @@
                 android:layout_height="36dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintTop_toTopOf="@+id/top_History_White_Curved_Box"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_1"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_1"
                 app:srcCompat="@drawable/credit_card_icon" />
 
             <ImageView
@@ -181,8 +181,8 @@
                 android:layout_height="33dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="17dp"
-                app:layout_constraintStart_toStartOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintTop_toTopOf="@+id/top_PaymentPlans_White_Curved_Box2"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_2"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_2"
                 app:srcCompat="@drawable/credit_card_icon" />
 
             <ImageView
@@ -192,9 +192,9 @@
                 android:layout_marginEnd="16dp"
                 android:foreground="@drawable/ripple"
                 android:onClick="payment_method_1"
-                app:layout_constraintBottom_toBottomOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintTop_toTopOf="@+id/top_History_White_Curved_Box"
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_1"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_1"
                 app:srcCompat="@drawable/right_arrow" />
 
             <ImageView
@@ -204,9 +204,9 @@
                 android:layout_marginEnd="16dp"
                 android:foreground="@drawable/ripple"
                 android:onClick="payment_method_2"
-                app:layout_constraintBottom_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintEnd_toEndOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintTop_toTopOf="@+id/top_PaymentPlans_White_Curved_Box2"
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_2"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_2"
                 app:layout_constraintVertical_bias="0.461"
                 app:srcCompat="@drawable/right_arrow" />
 
@@ -219,9 +219,9 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintStart_toStartOf="@+id/top_History_White_Curved_Box" />
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_1"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_1" />
 
             <TextView
                 android:id="@+id/card_ending_2"
@@ -232,9 +232,9 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintEnd_toEndOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintStart_toStartOf="@+id/top_PaymentPlans_White_Curved_Box2" />
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_2"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_2" />
 
 
             <Button
@@ -293,7 +293,7 @@
                         android:onClick="profileButton"
                         android:paddingStart="20dp"
                         android:paddingTop="5dp"
-                        android:text="Profile"
+                        android:text="Blank"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textStyle="bold"
@@ -316,7 +316,7 @@
                         android:onClick="changePasswordButton"
                         android:paddingStart="20dp"
                         android:paddingTop="5dp"
-                        android:text="Change Password"
+                        android:text="Blank"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textStyle="bold"
@@ -340,7 +340,7 @@
                         android:onClick="appSettingsPageButton"
                         android:paddingStart="20dp"
                         android:paddingTop="5dp"
-                        android:text="Settings"
+                        android:text="Blank"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textStyle="bold"
@@ -365,7 +365,7 @@
                         android:onClick="customerSupportButton"
                         android:paddingStart="20dp"
                         android:paddingTop="5dp"
-                        android:text="Customer Support"
+                        android:text="Blank"
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textStyle="bold"
@@ -401,8 +401,8 @@
                 android:textSize="10dp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/red_ec"
-                app:layout_constraintBottom_toTopOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box" />
+                app:layout_constraintBottom_toTopOf="@+id/payment_method_box_1"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1" />
 
             <Button
                 android:id="@+id/edit_cards_button_done"
@@ -425,8 +425,8 @@
                 android:textStyle="bold"
                 android:visibility="invisible"
                 app:backgroundTint="@color/red_ec"
-                app:layout_constraintBottom_toTopOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box" />
+                app:layout_constraintBottom_toTopOf="@+id/payment_method_box_1"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1" />
 
             <Button
                 android:id="@+id/delete_payment_1"
@@ -436,7 +436,6 @@
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
                 android:letterSpacing="0.25"
-                android:onClick="delete_payment_method_1"
                 android:paddingStart="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
@@ -449,9 +448,9 @@
                 android:visibility="invisible"
                 app:backgroundTint="@color/red_ec"
                 app:layout_constraintBottom_toTopOf="@+id/card_ending_1"
-                app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1"
                 app:layout_constraintHorizontal_bias="0.536"
-                app:layout_constraintStart_toStartOf="@+id/top_History_White_Curved_Box" />
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_1" />
 
             <Button
                 android:id="@+id/delete_payment_2"
@@ -474,9 +473,9 @@
                 android:visibility="invisible"
                 app:backgroundTint="@color/red_ec"
                 app:layout_constraintBottom_toTopOf="@+id/card_ending_2"
-                app:layout_constraintEnd_toEndOf="@+id/top_PaymentPlans_White_Curved_Box2"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_2"
                 app:layout_constraintHorizontal_bias="0.536"
-                app:layout_constraintStart_toStartOf="@+id/top_PaymentPlans_White_Curved_Box2" />
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

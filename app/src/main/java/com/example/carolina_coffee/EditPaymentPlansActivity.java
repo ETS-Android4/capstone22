@@ -6,14 +6,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class EditPaymentPlansActivity extends AppCompatActivity {
+    private static final String TAG = "TAG";
+    EditText mBilling_Name_1, mCardNumber_1, mExp_Date_1, mCCV_Num_1, mZip_1;
+    Button mAdd_Payment_1,mDelete_payment_1,mDelete_payment_2;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
+
+    // creating a variable for our
+    // Firebase Database.
+    FirebaseDatabase firebaseDatabase;
+
+    // creating a variable for our Database
+    // Reference for Firebase.
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +62,95 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         // Calling to method that will make this action happen.
         statusBarColor();
         setContentView(R.layout.activity_edit_payment_plans);
+
+        // Delete User DATA for Payment 1 & 2
+        //-------------------------------------------
+        mDelete_payment_1  = findViewById(R.id.delete_payment_1);
+        mDelete_payment_2  = findViewById(R.id.delete_payment_2);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        // below line is used to get the
+        // instance of our FIrebase database.
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        // below line is used to get reference for our database.
+        // Not sure if we will use this.
+        databaseReference = firebaseDatabase.getReference("CardInformation_1");
+
+
+        // ** METHOD TO DELETE 1
+        mDelete_payment_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Send confirmation email / verification link.
+                FirebaseUser fuser = fAuth.getCurrentUser();
+
+                Toast.makeText(EditPaymentPlansActivity.this, "Payment Method 1 Deleted.", Toast.LENGTH_SHORT).show();
+                userID = fAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fStore.collection("PaymentMethod_1").document(userID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("Billing_Name_1","");
+                user.put("Billing_Card_Num_1","");
+                user.put("Billing_Exp_Date_1","");
+                user.put("Billing_CCV_Num_1","");
+                user.put("Billing_Zip_1","");
+
+                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "onSuccess: "+ userID);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e.toString());
+                    }
+                });
+                //Start new activity
+            }
+        });
+
+        // ** METHOD TO DELETE 2
+        mDelete_payment_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Send confirmation email / verification link.
+                FirebaseUser fuser = fAuth.getCurrentUser();
+
+                Toast.makeText(EditPaymentPlansActivity.this, "Payment Method 2 Deleted.", Toast.LENGTH_SHORT).show();
+                userID = fAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fStore.collection("PaymentMethod_2").document(userID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("Billing_Name_2","");
+                user.put("Billing_Card_Num_2","");
+                user.put("Billing_Exp_Date_2","");
+                user.put("Billing_CCV_Num_2","");
+                user.put("Billing_Zip_2","");
+
+                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "onSuccess: "+ userID);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e.toString());
+                    }
+                });
+                // start new activity here
+            }
+        });
+
+
+
+
+        // **END** OF Delete User DATA for Payment 1.
+        //-------------------------------------------
+
+
 
 
 
@@ -124,6 +242,13 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         View delete_payment_method_2 = findViewById(R.id.delete_payment_2);
         delete_payment_method_2.setVisibility(View.VISIBLE);
 
+        //DISABLE payment_method_box Buttons
+        View payment_Button_1 = findViewById(R.id.payment_method_box_1);
+        View payment_Button_2 = findViewById(R.id.payment_method_box_2);
+        payment_Button_1.setEnabled(false);
+        payment_Button_2.setEnabled(false);
+
+
     }
     public void edit_payment_button_done(View view) {
         // DONE button Disappears
@@ -140,6 +265,12 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         // PaymentMethod 2
         View delete_payment_method_2 = findViewById(R.id.delete_payment_2);
         delete_payment_method_2.setVisibility(View.INVISIBLE);
+
+        //ENABLE payment_method_box Buttons
+        View payment_Button_1 = findViewById(R.id.payment_method_box_1);
+        View payment_Button_2 = findViewById(R.id.payment_method_box_2);
+        payment_Button_1.setEnabled(true);
+        payment_Button_2.setEnabled(true);
     }
 
     public void delete_payment_method_1(View view) {

@@ -38,7 +38,7 @@ import java.util.HashMap;
 public class RegisterPageActivity extends AppCompatActivity {
 
     public static final String TAG = "TAG";
-    EditText mFullName,mEmail,mPassword,mConfirmPassword,mPhone;
+    EditText mFullName,mEmail,mPassword,mConfirmPassword,mPhone,mCardNum;
     Button mLoginButton;
     Button mRegisterButton;
     //private FirebaseAuth fAuth;
@@ -78,6 +78,7 @@ public class RegisterPageActivity extends AppCompatActivity {
         mRegisterButton = findViewById(R.id.registerButton);
         mLoginButton    = findViewById(R.id.loginButton);
         mPhone          = findViewById(R.id.phone);
+        mCardNum        = findViewById(R.id.CardNum);
 
 
         fAuth = FirebaseAuth.getInstance();
@@ -155,6 +156,7 @@ public class RegisterPageActivity extends AppCompatActivity {
                         String password = mPassword.getText().toString().trim();
                         String confirmPassword = mConfirmPassword.getText().toString().trim();
                         String phone = mPhone.getText().toString();
+                        String cardNum = mCardNum.getText().toString();
 
 
 
@@ -234,6 +236,7 @@ public class RegisterPageActivity extends AppCompatActivity {
                                     user.put("fName",fullName);
                                     user.put("email",email);
                                     user.put("phone",phone);
+                                    user.put("Card_Number",cardNum);
 
                                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override

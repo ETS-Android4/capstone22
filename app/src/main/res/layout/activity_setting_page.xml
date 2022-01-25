@@ -100,7 +100,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/top_History_White_Curved_Box"
+                android:id="@+id/payment_method_box_1"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
@@ -125,7 +125,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/top_PaymentPlans_White_Curved_Box2"
+                android:id="@+id/payment_method_box_2"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
@@ -144,7 +144,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top_History_White_Curved_Box" />
+                app:layout_constraintTop_toBottomOf="@+id/payment_method_box_1" />
 
             <TextView
                 android:id="@+id/bottom_account_White_Curved_Box3"
@@ -165,7 +165,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2" />
+                app:layout_constraintTop_toBottomOf="@+id/payment_method_box_2" />
 
 
             <ImageView
@@ -174,8 +174,8 @@
                 android:layout_height="33dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="17dp"
-                app:layout_constraintStart_toStartOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintTop_toTopOf="@+id/top_PaymentPlans_White_Curved_Box2"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_2"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_2"
                 app:srcCompat="@drawable/credit_card_icon" />
 
             <ImageView
@@ -184,8 +184,8 @@
                 android:layout_height="36dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintTop_toTopOf="@+id/top_History_White_Curved_Box"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_1"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_1"
                 app:srcCompat="@drawable/history_icon" />
 
             <ImageView
@@ -195,9 +195,9 @@
                 android:layout_marginEnd="16dp"
                 android:foreground="@drawable/ripple"
                 android:onClick="historyPageButton"
-                app:layout_constraintBottom_toBottomOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintTop_toTopOf="@+id/top_History_White_Curved_Box"
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_1"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_1"
                 app:srcCompat="@drawable/right_arrow" />
 
             <ImageView
@@ -207,9 +207,9 @@
                 android:layout_marginEnd="16dp"
                 android:foreground="@drawable/ripple"
                 android:onClick="paymentPlansPageButton"
-                app:layout_constraintBottom_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintEnd_toEndOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintTop_toTopOf="@+id/top_PaymentPlans_White_Curved_Box2"
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_2"
+                app:layout_constraintTop_toTopOf="@+id/payment_method_box_2"
                 app:layout_constraintVertical_bias="0.461"
                 app:srcCompat="@drawable/right_arrow" />
 
@@ -222,9 +222,9 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintEnd_toEndOf="@+id/top_History_White_Curved_Box"
-                app:layout_constraintStart_toStartOf="@+id/top_History_White_Curved_Box" />
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_1"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_1" />
 
             <TextView
                 android:id="@+id/card_ending_2"
@@ -235,9 +235,9 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintEnd_toEndOf="@+id/top_PaymentPlans_White_Curved_Box2"
-                app:layout_constraintStart_toStartOf="@+id/top_PaymentPlans_White_Curved_Box2" />
+                app:layout_constraintBottom_toBottomOf="@+id/payment_method_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_2"
+                app:layout_constraintStart_toStartOf="@+id/payment_method_box_2" />
 
 
             <Button
