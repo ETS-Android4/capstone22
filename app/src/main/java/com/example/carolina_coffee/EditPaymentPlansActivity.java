@@ -157,7 +157,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
 
         //Display last 4 digits on card if user added one.
         displayDigits_1();
-        //displayDigits_2();
+        displayDigits_2();
 
 
 
@@ -343,18 +343,18 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if (documentSnapshot.exists()) {
                     String card_2 = documentSnapshot.getString("Billing_Card_Num_2");
-                    String lastFourDigits_1 = "";
+                    String lastFourDigits_2 = "";
                     if(documentSnapshot.getString("Billing_Card_Num_2") == null) {
                         mCard_Ending_2.setText("No Card.");
                         return;
                     } else {
                         if (card_2.length() > 4) {
-                            lastFourDigits_1 = card_2.substring(card_2.length() - 4);
+                            lastFourDigits_2 = card_2.substring(card_2.length() - 4);
                         } else {
-                            lastFourDigits_1 = card_2;
+                            lastFourDigits_2 = card_2;
                         }
                     }
-                    mCard_Ending_2.setText("Card Ending in: " + lastFourDigits_1);
+                    mCard_Ending_2.setText("Card Ending in: " + lastFourDigits_2);
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
