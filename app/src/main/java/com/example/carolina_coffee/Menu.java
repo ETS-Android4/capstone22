@@ -48,7 +48,7 @@ public class Menu extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CartPageActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -60,6 +60,8 @@ public class Menu extends AppCompatActivity {
 
                     //Account Page Button
                     case R.id.accountPageButton:
+                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;

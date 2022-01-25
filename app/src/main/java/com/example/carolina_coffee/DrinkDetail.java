@@ -1,7 +1,6 @@
 package com.example.carolina_coffee;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -71,7 +70,7 @@ public class DrinkDetail extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        startActivity(new Intent(getApplicationContext(), PaymentActivity_1.class));
                         overridePendingTransition(0,0);
                         return true;
 

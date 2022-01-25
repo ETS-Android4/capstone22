@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/payPageButton"
-        android:icon="@drawable/greywallet"
+        android:icon="@drawable/mail"
         android:title="Pay"/>
 
     <item

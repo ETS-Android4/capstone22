@@ -60,7 +60,7 @@ public class RewardsPageActivity extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CartPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 

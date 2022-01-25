@@ -92,7 +92,7 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set home Selected
-        bottomNavigationView.setSelectedItemId(R.id.accountPageButton);
+        bottomNavigationView.setSelectedItemId(R.id.orderPageButton);
         //perform itemSelectedListener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -105,8 +105,6 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                     //Order Page Button
@@ -117,6 +115,8 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
                     //Account Page Button
                     case R.id.accountPageButton:
+                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;

@@ -18,9 +18,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 public class CartPageActivity extends AppCompatActivity {
 
@@ -63,7 +60,7 @@ public class CartPageActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set home Selected
-        bottomNavigationView.setSelectedItemId(R.id.accountPageButton);
+        bottomNavigationView.setSelectedItemId(R.id.payPageButton);
         //perform itemSelectedListener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -76,8 +73,6 @@ public class CartPageActivity extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                     //Order Page Button
@@ -88,6 +83,8 @@ public class CartPageActivity extends AppCompatActivity {
 
                     //Account Page Button
                     case R.id.accountPageButton:
+                        startActivity(new Intent(getApplicationContext(), SettingPageActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
@@ -149,7 +146,7 @@ public class CartPageActivity extends AppCompatActivity {
     }
 
     public void paymentPageButton(View view) {
-        Intent intent = new Intent(this, PaymentActivity.class);
+        Intent intent = new Intent(this, PaymentActivity_1.class);
         startActivity(intent);
     }
 

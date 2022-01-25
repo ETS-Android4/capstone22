@@ -16,6 +16,15 @@
         android:theme="@style/splashScreenTheme"
         tools:replace="android:label">
         <activity
+            android:name=".PaymentMethod_2_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentMethod_1_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EditPaymentPlansActivity"
+            android:exported="false" />
+        <activity
             android:name=".LockScreenActivity"
             android:exported="false" />
         <activity
@@ -57,7 +66,7 @@
         <activity android:name=".LoginPageActivity" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".PaymentActivity"
+            android:name=".PaymentActivity_1"
             android:exported="true" />
         <activity
             android:name=".RegisterPageActivity"

@@ -154,7 +154,7 @@ public class SettingPageActivity extends AppCompatActivity {
 
                     //Payment Page Button
                     case R.id.payPageButton:
-                        startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CartPageActivity.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -203,7 +203,7 @@ public class SettingPageActivity extends AppCompatActivity {
     }
     // Button -> sends user to Payment Plans Page
     public void paymentPlansPageButton(View view) {
-        Intent intent = new Intent(this, PaymentActivity.class);
+        Intent intent = new Intent(this, EditPaymentPlansActivity.class);
         overridePendingTransition(5,5);
         startActivity(intent);
     }
