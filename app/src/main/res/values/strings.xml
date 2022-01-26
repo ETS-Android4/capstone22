@@ -45,4 +45,14 @@
     <string name="we_ll_keep_you_up_to_date">We\'ll keep you up to date!</string>
     <string name="messages_textbox">Messages</string>
     <string name="congrats_you_ve_won_a_free_drink">Congrats you\'ve won a free drink</string>
+    <string name="rewards">Rewards</string>
+    <string name="earn_points_and_free_items">Earn Points and Free items</string>
+    <string name="_100_points_collected">100 points collected!</string>
+    <string name="todo">TODO</string>
+    <string name="click_for_surprise">Click For Surprise</string>
+    <string name="hot">Hot</string>
+    <string name="medium">Medium</string>
+    <string name="customize_your_drink">Customize your drink</string>
+    <string name="privacy_statement">Privacy Statement</string>
+    <string name="help">Help</string>
 </resources>
