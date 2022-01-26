@@ -101,22 +101,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/billing_zip_box_1"
+                android:id="@+id/billing_zip_box_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="#CCFFFFFF"
                 android:ems="10"
                 android:fontFamily="@font/sofia_regular"
                 android:hint="Zip"
-                android:inputType="phone"
+                android:inputType="number"
                 android:maxLength="5"
                 android:padding="10dp"
                 android:textColor="#808080"
                 android:textColorHint="#808080"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/ccv_num_box_1"
-                app:layout_constraintStart_toStartOf="@+id/exp_date_box_1"
-                app:layout_constraintTop_toBottomOf="@+id/exp_date_box_1" />
+                app:layout_constraintEnd_toEndOf="@+id/ccv_num_box_2"
+                app:layout_constraintStart_toStartOf="@+id/exp_date_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/exp_date_box_2" />
 
             <TextView
                 android:id="@+id/display_card_name"
@@ -190,11 +190,11 @@
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:backgroundTint="@color/red_ec"
-                app:layout_constraintStart_toStartOf="@+id/billing_zip_box_1"
-                app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_1" />
+                app:layout_constraintStart_toStartOf="@+id/billing_zip_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_2" />
 
             <Button
-                android:id="@+id/add_payment_method_button_1"
+                android:id="@+id/add_payment_method_button_2"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginTop="32dp"
@@ -213,11 +213,11 @@
                 android:textStyle="bold"
                 android:visibility="visible"
                 app:backgroundTint="@color/red_ec"
-                app:layout_constraintEnd_toEndOf="@+id/billing_zip_box_1"
-                app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_1" />
+                app:layout_constraintEnd_toEndOf="@+id/billing_zip_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_2" />
 
             <EditText
-                android:id="@+id/fullName_box_1"
+                android:id="@+id/fullName_box_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -232,12 +232,13 @@
                 android:textColor="#808080"
                 android:textColorHint="#808080"
                 android:textStyle="bold"
+                android:nextFocusDown="@+id/card_number_box_2"
                 app:layout_constraintEnd_toEndOf="@+id/backGroundCover"
                 app:layout_constraintStart_toStartOf="@+id/backGroundCover"
                 app:layout_constraintTop_toBottomOf="@+id/WalletArtCover" />
 
             <EditText
-                android:id="@+id/ccv_num_box_1"
+                android:id="@+id/ccv_num_box_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="#CCFFFFFF"
@@ -250,12 +251,13 @@
                 android:textColor="#808080"
                 android:textColorHint="#808080"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/card_number_box_1"
-                app:layout_constraintStart_toEndOf="@+id/exp_date_box_1"
-                app:layout_constraintTop_toBottomOf="@+id/card_number_box_1" />
+                android:nextFocusDown="@+id/billing_zip_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/card_number_box_2"
+                app:layout_constraintStart_toEndOf="@+id/exp_date_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/card_number_box_2" />
 
             <EditText
-                android:id="@+id/card_number_box_1"
+                android:id="@+id/card_number_box_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="#CCFFFFFF"
@@ -268,12 +270,13 @@
                 android:textColor="#808080"
                 android:textColorHint="#808080"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fullName_box_1"
-                app:layout_constraintStart_toStartOf="@+id/fullName_box_1"
-                app:layout_constraintTop_toBottomOf="@+id/fullName_box_1" />
+                android:nextFocusDown="@+id/exp_date_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/fullName_box_2"
+                app:layout_constraintStart_toStartOf="@+id/fullName_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/fullName_box_2" />
 
             <EditText
-                android:id="@+id/exp_date_box_1"
+                android:id="@+id/exp_date_box_2"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="#CCFFFFFF"
@@ -286,8 +289,9 @@
                 android:textColor="#808080"
                 android:textColorHint="#808080"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/card_number_box_1"
-                app:layout_constraintTop_toBottomOf="@+id/card_number_box_1" />
+                android:nextFocusDown="@+id/ccv_num_box_2"
+                app:layout_constraintStart_toStartOf="@+id/card_number_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/card_number_box_2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

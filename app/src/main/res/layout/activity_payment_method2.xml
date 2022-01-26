@@ -8,6 +8,20 @@
     tools:context=".PaymentMethod_2_Activity">
 
     <TextView
+    android:id="@+id/paymentTopBox2"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    android:background="@drawable/top_page_red_curved_sides"
+    android:fontFamily="@font/sofia_regular"
+    android:text="Payment 1"
+    android:textAlignment="center"
+    android:textColor="#000000"
+    android:textSize="60sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/topMessage4"
         android:layout_width="match_parent"
         android:layout_height="26dp"
@@ -22,51 +36,266 @@
         app:layout_constraintTop_toBottomOf="@+id/paymentTopBox2" />
 
     <TextView
-        android:id="@+id/paymentTopBox2"
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:background="@drawable/top_page_red_curved_sides"
-        android:fontFamily="@font/sofia_regular"
-        android:text="Payment 2"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/backArrow3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/left_arrow"
+        android:foreground="@drawable/ripple"
+        android:onClick="editPaymentPlansPage"
+        app:itemRippleColor="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/paymentTopBox2"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/backGroundCover"
+    <ScrollView
+        android:id="@+id/scroll_view2"
         android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="#CCC6BEBE"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
+        android:layout_height="0dp"
+
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topMessage4" />
+        app:layout_constraintTop_toBottomOf="@+id/topMessage4"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/WalletArtCover"
-        android:layout_width="0dp"
-        android:layout_height="210dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/walletcover"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topMessage4" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cvLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/backGroundCover"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="-32dp"
+                android:background="@drawable/settings_page_all_gray_curved_corners"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/back_button_3"
+                app:layout_constraintEnd_toEndOf="@+id/WalletArtCover"
+                app:layout_constraintHorizontal_bias="0.47"
+                app:layout_constraintStart_toStartOf="@+id/WalletArtCover"
+                app:layout_constraintTop_toBottomOf="@+id/WalletArtCover" />
+
+            <TextView
+                android:id="@+id/WalletArtCover"
+                android:layout_width="0dp"
+                android:layout_height="210dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/walletcover"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/billing_zip_box_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="Zip"
+                android:inputType="number"
+                android:maxLength="5"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/ccv_num_box_2"
+                app:layout_constraintStart_toStartOf="@+id/exp_date_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/exp_date_box_2" />
+
+            <TextView
+                android:id="@+id/display_card_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="Full Name"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/WalletArtCover"
+                app:layout_constraintStart_toStartOf="@+id/WalletArtCover"
+                app:layout_constraintTop_toTopOf="@+id/WalletArtCover" />
+
+            <TextView
+                android:id="@+id/display_card_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="Card Num"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/display_card_name"
+                app:layout_constraintStart_toStartOf="@+id/display_card_name"
+                app:layout_constraintTop_toBottomOf="@+id/display_card_name" />
+
+            <TextView
+                android:id="@+id/display_card_exp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="Exp Date"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/display_card_num"
+                app:layout_constraintStart_toStartOf="@+id/display_card_num"
+                app:layout_constraintTop_toBottomOf="@+id/display_card_num" />
+
+            <Button
+                android:id="@+id/back_button_3"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                android:fontFamily="@font/sofia_regular"
+                android:foreground="@drawable/ripple_grayc1c1"
+                android:letterSpacing="0.25"
+                android:onClick="editPaymentPlansPage"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="Back"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:backgroundTint="@color/red_ec"
+                app:layout_constraintStart_toStartOf="@+id/billing_zip_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_2" />
+
+            <Button
+                android:id="@+id/add_payment_method_button_2"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                android:fontFamily="@font/sofia_regular"
+                android:foreground="@drawable/ripple_grayc1c1"
+                android:letterSpacing="0.25"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="Add"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:backgroundTint="@color/red_ec"
+                app:layout_constraintEnd_toEndOf="@+id/billing_zip_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/billing_zip_box_2" />
+
+            <EditText
+                android:id="@+id/fullName_box_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="Full Name"
+                android:inputType="textCapWords|textCapSentences"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                android:nextFocusDown="@+id/card_number_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/backGroundCover"
+                app:layout_constraintStart_toStartOf="@+id/backGroundCover"
+                app:layout_constraintTop_toBottomOf="@+id/WalletArtCover" />
+
+            <EditText
+                android:id="@+id/ccv_num_box_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="CCV"
+                android:inputType="number"
+                android:maxLength="3"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                android:nextFocusDown="@+id/billing_zip_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/card_number_box_2"
+                app:layout_constraintStart_toEndOf="@+id/exp_date_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/card_number_box_2" />
+
+            <EditText
+                android:id="@+id/card_number_box_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="Card Number"
+                android:inputType="phone"
+                android:maxLength="19"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                android:nextFocusDown="@+id/exp_date_box_2"
+                app:layout_constraintEnd_toEndOf="@+id/fullName_box_2"
+                app:layout_constraintStart_toStartOf="@+id/fullName_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/fullName_box_2" />
+
+            <EditText
+                android:id="@+id/exp_date_box_2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="#CCFFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/sofia_regular"
+                android:hint="Exp"
+                android:inputType="phone"
+                android:maxLength="5"
+                android:padding="10dp"
+                android:textColor="#808080"
+                android:textColorHint="#808080"
+                android:textStyle="bold"
+                android:nextFocusDown="@+id/ccv_num_box_2"
+                app:layout_constraintStart_toStartOf="@+id/card_number_box_2"
+                app:layout_constraintTop_toBottomOf="@+id/card_number_box_2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -82,67 +311,4 @@
         app:menu="@menu/navigation_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="First Name "
-        app:layout_constraintStart_toStartOf="@+id/WalletArtCover"
-        app:layout_constraintTop_toBottomOf="@+id/WalletArtCover" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Last Name "
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType=""
-        android:text="Card Number "
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
-
-    <EditText
-        android:id="@+id/editTextNumber2"
-        android:layout_width="109dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType=""
-        android:text="Exp:"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumber"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
-
-    <EditText
-        android:id="@+id/editTextNumber3"
-        android:layout_width="93dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:text="CCV:"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
-
-    <EditText
-        android:id="@+id/editTextNumber4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="Zip Code"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumber2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

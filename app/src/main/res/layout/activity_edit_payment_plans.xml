@@ -143,27 +143,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/payment_method_box_1" />
 
-            <TextView
-                android:id="@+id/bottom_account_White_Curved_Box3"
-                android:layout_width="0dp"
-                android:layout_height="280dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/settings_page_all_white_curved_corners"
-                android:fontFamily="@font/sofia_regular"
-                android:letterSpacing="0.5"
-                android:paddingStart="40dp"
-                android:paddingTop="20dp"
-                android:text="Blank"
-                android:textAlignment="textStart"
-                android:textColor="#EC3939"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/payment_method_box_2" />
-
 
             <ImageView
                 android:id="@+id/card_icon_1"
@@ -239,145 +218,24 @@
                 android:id="@+id/logOutButton"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginTop="32dp"
                 android:layout_marginBottom="80dp"
                 android:background="@drawable/profile_page_all_curved_corners_red"
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
                 android:letterSpacing="0.25"
-                android:onClick="logout"
+                android:onClick="settingsPage"
                 android:paddingStart="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingEnd="0dp"
                 android:paddingBottom="0dp"
-                android:text="   Log Out   "
+                android:text="Back"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="@color/red_ec"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bottom_account_White_Curved_Box3"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/scroll_view"
-                android:layout_width="0dp"
-                android:layout_height="220dp"
-                android:layout_marginTop="40dp"
-                android:fillViewport="true"
-                app:layout_constraintBottom_toBottomOf="@+id/bottom_account_White_Curved_Box3"
-                app:layout_constraintEnd_toEndOf="@+id/bottom_account_White_Curved_Box3"
-                app:layout_constraintStart_toStartOf="@+id/bottom_account_White_Curved_Box3"
-                app:layout_constraintTop_toTopOf="@+id/bottom_account_White_Curved_Box3"
-                tools:ignore="MissingConstraints">
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cvLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/profile_button"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/settings_page_all_gray_curved_corners"
-                        android:fontFamily="@font/sofia_regular"
-                        android:foreground="@drawable/ripple"
-                        android:letterSpacing="0.5"
-                        android:onClick="profileButton"
-                        android:paddingStart="20dp"
-                        android:paddingTop="5dp"
-                        android:text="Blank"
-                        android:textAlignment="viewStart"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/c1c1_gray"
-                        app:itemRippleColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="@+id/cvLayout"
-                        app:layout_constraintHorizontal_bias="0.506"
-                        app:layout_constraintStart_toStartOf="@+id/cvLayout"
-                        app:layout_constraintTop_toTopOf="@+id/cvLayout" />
-
-                    <Button
-                        android:id="@+id/change_password_button"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/settings_page_all_gray_curved_corners"
-                        android:fontFamily="@font/sofia_regular"
-                        android:foreground="@drawable/ripple"
-                        android:letterSpacing="0.5"
-                        android:onClick="changePasswordButton"
-                        android:paddingStart="20dp"
-                        android:paddingTop="5dp"
-                        android:text="Blank"
-                        android:textAlignment="viewStart"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/c1c1_gray"
-                        app:itemRippleColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.495"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_button" />
-
-                    <Button
-                        android:id="@+id/setting_button"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="32dp"
-                        android:background="@drawable/settings_page_all_gray_curved_corners"
-                        android:fontFamily="@font/sofia_regular"
-                        android:foreground="@drawable/ripple"
-                        android:letterSpacing="0.5"
-                        android:onClick="appSettingsPageButton"
-                        android:paddingStart="20dp"
-                        android:paddingTop="5dp"
-                        android:text="Blank"
-                        android:textAlignment="viewStart"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/c1c1_gray"
-                        app:itemRippleColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.506"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/customer_support_button"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                    <Button
-                        android:id="@+id/customer_support_button"
-                        android:layout_width="300dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@drawable/settings_page_all_gray_curved_corners"
-                        android:fontFamily="@font/sofia_regular"
-                        android:foreground="@drawable/ripple"
-                        android:letterSpacing="0.5"
-                        android:onClick="customerSupportButton"
-                        android:paddingStart="20dp"
-                        android:paddingTop="5dp"
-                        android:text="Blank"
-                        android:textAlignment="viewStart"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/c1c1_gray"
-                        app:itemRippleColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.495"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/change_password_button" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.core.widget.NestedScrollView>
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/edit_cards_button"

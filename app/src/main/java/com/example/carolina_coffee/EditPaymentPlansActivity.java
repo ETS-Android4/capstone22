@@ -3,8 +3,11 @@ package com.example.carolina_coffee;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +40,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
     private static final String TAG = "TAG";
     EditText mBilling_Name_1, mCardNumber_1, mExp_Date_1, mCCV_Num_1, mZip_1;
     Button mAdd_Payment_1,mDelete_payment_1,mDelete_payment_2;
+    Button mPayment_method_box_1, mPayment_method_box_2;
     TextView mCard_Ending_1, mCard_Ending_2;
     FirebaseAuth fAuth;
     FirebaseUser user;
@@ -84,10 +88,6 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         // instance of our FIrebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        // below line is used to get reference for our database.
-        // Not sure if we will use this.
-        databaseReference = firebaseDatabase.getReference("CardInformation_1");
-
 
         // ** METHOD TO DELETE 1
         mDelete_payment_1.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +105,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                 user.remove("Billing_Exp_Date_1");
                 user.remove("Billing_CCV_Num_1");
                 user.remove("Billing_Zip_1");
+                edit_payment_button_done(view);
 
                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -137,6 +138,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                 user.remove("Billing_Exp_Date_2");
                 user.remove("Billing_CCV_Num_2");
                 user.remove("Billing_Zip_2");
+                edit_payment_button_done(view);
 
                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -158,6 +160,8 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         //Display last 4 digits on card if user added one.
         displayDigits_1();
         displayDigits_2();
+
+
 
 
 
@@ -286,21 +290,46 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         payment_Button_2.setEnabled(true);
     }
 
-    public void delete_payment_method_1(View view) {
-    }
 
-    public void delete_payment_method_2(View view) {
-    }
-
-    /*
     //Disable PaymentMethod 1 button from PaymentMethod_1_Activity
     public void disablePaymentMethod_1_Button() {
-        View payment_Button_1 = findViewById(R.id.payment_method_box_1);
-        payment_Button_1.setEnabled(true);
+        View mPayment_method_box_1 = findViewById(R.id.payment_method_box_1);
+        mPayment_method_box_1.setEnabled(false);
+        View mPayment_method_arrow_1 = findViewById(R.id.card_arrow_1);
+        mPayment_method_arrow_1.setEnabled(false);
+        mPayment_method_arrow_1.setVisibility(View.INVISIBLE);
+
     }
-     */
+    //ENABLE PaymentMethod 1 button from PaymentMethod_1_Activity
+    public void enablePaymentMethod_1_Button() {
+        View mPayment_method_box_1 = findViewById(R.id.payment_method_box_1);
+        mPayment_method_box_1.setEnabled(true);
+        View mPayment_method_arrow_1 = findViewById(R.id.card_arrow_1);
+        mPayment_method_arrow_1.setEnabled(true);
+        mPayment_method_arrow_1.setVisibility(View.VISIBLE);
+    }
+
+    //Disable PaymentMethod 2 button from PaymentMethod_2_Activity
+    public void disablePaymentMethod_2_Button() {
+        View mPayment_method_box_2 = findViewById(R.id.payment_method_box_2);
+        mPayment_method_box_2.setEnabled(false);
+        View mPayment_method_arrow_2 = findViewById(R.id.card_arrow_2);
+        mPayment_method_arrow_2.setEnabled(false);
+        mPayment_method_arrow_2.setVisibility(View.INVISIBLE);
+
+    }
+    //ENABLE PaymentMethod 2 button from PaymentMethod_2_Activity
+    public void enablePaymentMethod_2_Button() {
+        View mPayment_method_box_2 = findViewById(R.id.payment_method_box_2);
+        mPayment_method_box_2.setEnabled(true);
+        View mPayment_method_arrow_2 = findViewById(R.id.card_arrow_2);
+        mPayment_method_arrow_2.setEnabled(true);
+        mPayment_method_arrow_2.setVisibility(View.VISIBLE);
+    }
 
 
+
+    // DISPLAY Last 4 digits for payment method 1
     public void displayDigits_1() {
         //Display last 4 digits if user has card
         mCard_Ending_1 = findViewById(R.id.card_ending_1);
@@ -315,6 +344,8 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                     String lastFourDigits_1 = "";
                     if(documentSnapshot.getString("Billing_Card_Num_1") == null) {
                         mCard_Ending_1.setText("No Card.");
+                        enablePaymentMethod_1_Button();
+
                         return;
                     } else {
                         if (card_1.length() > 4) {
@@ -323,8 +354,8 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                             lastFourDigits_1 = card_1;
                         }
                     }
-                    //mCard_Ending_1.setText(documentSnapshot.getString("Billing_Card_Num_1"));
                     mCard_Ending_1.setText("Card Ending in: " + lastFourDigits_1);
+                    disablePaymentMethod_1_Button();
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
@@ -332,6 +363,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         });
 
     }
+    // DISPLAY Last 4 digits for payment method 2
     public void displayDigits_2() {
         //Display last 4 digits if user has card
         mCard_Ending_2 = findViewById(R.id.card_ending_2);
@@ -346,6 +378,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                     String lastFourDigits_2 = "";
                     if(documentSnapshot.getString("Billing_Card_Num_2") == null) {
                         mCard_Ending_2.setText("No Card.");
+                        enablePaymentMethod_2_Button();
                         return;
                     } else {
                         if (card_2.length() > 4) {
@@ -355,6 +388,7 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
                         }
                     }
                     mCard_Ending_2.setText("Card Ending in: " + lastFourDigits_2);
+                    disablePaymentMethod_2_Button();
                 } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }

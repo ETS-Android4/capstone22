@@ -1,10 +1,8 @@
 package com.example.carolina_coffee;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,13 +27,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+//import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+//import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +45,8 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore fStore;
     String userID;
+
+    EditPaymentPlansActivity editPaymentPlansActivity;
 
     // creating a variable for our
     // Firebase Database.
@@ -79,12 +76,12 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
         statusBarColor();
         setContentView(R.layout.activity_payment_method1);
 
-        mAdd_Payment_1     = findViewById(R.id.add_payment_method_button_1);
-        mBilling_Name_1    = findViewById(R.id.fullName_box_1);
-        mCardNumber_1      = findViewById(R.id.card_number_box_1);
-        mExp_Date_1        = findViewById(R.id.exp_date_box_1);
-        mCCV_Num_1         = findViewById(R.id.ccv_num_box_1);
-        mZip_1             = findViewById(R.id.billing_zip_box_1);
+        mAdd_Payment_1     = findViewById(R.id.add_payment_method_button_2);
+        mBilling_Name_1    = findViewById(R.id.fullName_box_2);
+        mCardNumber_1      = findViewById(R.id.card_number_box_2);
+        mExp_Date_1        = findViewById(R.id.exp_date_box_2);
+        mCCV_Num_1         = findViewById(R.id.ccv_num_box_2);
+        mZip_1             = findViewById(R.id.billing_zip_box_2);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -96,8 +93,6 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
         // instance of our Firebase database.
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        // below line is used to get reference for our database.
-        databaseReference = firebaseDatabase.getReference("CardInformation_1");
 
         // *** Collecting User Payment Method 1 ***
         //-----------------------------------------------
@@ -144,8 +139,9 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
                     addDataToFireBase(fullName_String, cardNumber_String, exp_Date_String, CCV_Num_String,zip_Code_String);
                     // Start new Page
                     startActivity(new Intent(getApplicationContext(), EditPaymentPlansActivity.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(2,5);
                 }
+
 
             }
         });
@@ -153,7 +149,7 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
         // FORMAT LAYOUT FOR TEXT EDITS
         //-------------------------------------------------------------------------------
         // CREDIT CARD Formatting
-        TextView card_number_format = (TextView) findViewById(R.id.card_number_box_1);
+        TextView card_number_format = (TextView) findViewById(R.id.card_number_box_2);
         card_number_format.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int arg1, int arg2, int arg3) { }
@@ -176,7 +172,7 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
 
         });
         // EXPIRATION DATE Formatting
-        TextView exp_date_format = (TextView) findViewById(R.id.exp_date_box_1);
+        TextView exp_date_format = (TextView) findViewById(R.id.exp_date_box_2);
         exp_date_format.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -200,7 +196,7 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
         });
 
         // Displaying Card info FROM FireBase
-        //
+/*
         dFullName = findViewById(R.id.display_card_name);
         dExp_Date = findViewById(R.id.display_card_exp);
         dCardNum  = findViewById(R.id.display_card_num);
@@ -217,7 +213,7 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
                 }
             }
         });
-
+*/
         // *** END Collecting User Payment Method 1 ***
         //-----------------------------------------------
 
@@ -230,7 +226,6 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
         //--------------------------------------------------------------------------------------
         //Initialize and assign variables - bottom_navigation = nav bar inside activity_main.xml
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
         //Set home Selected
         bottomNavigationView.setSelectedItemId(R.id.accountPageButton);
         //perform itemSelectedListener
@@ -296,15 +291,8 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
             }
         });
         //Start new activity
-        /*
-        // ****************************
-        // Disable payment 1 edit button from working on EditPaymentMethodActivity.class
-        EditPaymentPlansActivity eppa1 = new EditPaymentPlansActivity();
-        eppa1.disablePaymentMethod_1_Button();
 
-         */
-
-        }
+    }
 
     // *** END of Collecting Payment Method 1 to FireBase
     //--------------------------------------------
