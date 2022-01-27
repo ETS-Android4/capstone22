@@ -187,7 +187,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/payment_method_box_2"
                 app:layout_constraintTop_toTopOf="@+id/payment_method_box_2"
                 app:layout_constraintVertical_bias="0.461"
-                app:srcCompat="@drawable/right_arrow" />
+                app:srcCompat="@drawable/right_arrow"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/card_ending_1"
@@ -235,7 +236,8 @@
                 app:backgroundTint="@color/red_ec"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/edit_cards_button"
@@ -258,7 +260,8 @@
                 android:textStyle="bold"
                 app:backgroundTint="@color/red_ec"
                 app:layout_constraintBottom_toTopOf="@+id/payment_method_box_1"
-                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1" />
+                app:layout_constraintEnd_toEndOf="@+id/payment_method_box_1"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/edit_cards_button_done"

@@ -32,7 +32,8 @@
         android:onClick="settingsPage"
         app:itemRippleColor="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/topMessage2"

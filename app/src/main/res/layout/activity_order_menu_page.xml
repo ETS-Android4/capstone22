@@ -32,7 +32,8 @@
         android:onClick="backButton"
         app:itemRippleColor="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/topMessage2"
@@ -40,7 +41,7 @@
         android:layout_height="26dp"
         android:background="@drawable/profile_page_top_curved_box"
         android:fontFamily="@font/sofia_regular"
-        android:text="Customize your drink"
+        android:text="@string/customize_your_drink"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -211,7 +212,7 @@
             android:id="@+id/radioButton6"
             android:layout_width="105dp"
             android:layout_height="match_parent"
-            android:text="Medium"
+            android:text="@string/medium"
             android:textColor="@color/white" />
 
         <RadioButton
@@ -250,8 +251,9 @@
             android:layout_width="83dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sofia_regular"
-            android:text="Hot"
-            android:textColor="@color/white" />
+            android:text="@string/hot"
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck" />
 
         <RadioButton
             android:id="@+id/radioButton10"
@@ -259,7 +261,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sofia_regular"
             android:text="Iced"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck" />
 
     </RadioGroup>
 
@@ -275,7 +278,8 @@
         app:layout_constraintBottom_toTopOf="@+id/MenuWhiteBox"
         app:layout_constraintEnd_toEndOf="@+id/MenuRedBox"
         app:layout_constraintStart_toStartOf="@+id/MenuRedBox"
-        app:layout_constraintTop_toBottomOf="@+id/TypeRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/TypeRadioGroup"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/drinkPrice"

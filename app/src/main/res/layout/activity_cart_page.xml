@@ -62,7 +62,8 @@
         android:onClick="backButton"
         app:itemRippleColor="#C1C1C1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/topMessage2"
@@ -89,7 +90,6 @@
         android:letterSpacing="0.25"
         android:onClick="paymentPageButton"
         android:paddingStart="0dp"
-        android:paddingLeft="0dp"
         android:paddingTop="0dp"
         android:paddingEnd="0dp"
         android:paddingBottom="0dp"
@@ -100,7 +100,8 @@
         app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/menuWhiteBox"
-        app:layout_constraintTop_toTopOf="@+id/menuWhiteBox" />
+        app:layout_constraintTop_toTopOf="@+id/menuWhiteBox"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
