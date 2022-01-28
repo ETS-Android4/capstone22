@@ -13,9 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.craftman.cardform.Card;
-import com.craftman.cardform.CardForm;
-import com.craftman.cardform.OnPayBtnClickListner;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PaymentActivity_1 extends AppCompatActivity {
