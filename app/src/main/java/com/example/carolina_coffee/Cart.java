@@ -21,6 +21,8 @@ public class Cart {
         cart.add(latte);
     }
 
+    public void removefromCart(Latte latte) { cart.remove(latte);}
+
 
 
 
