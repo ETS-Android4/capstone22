@@ -4,13 +4,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txtDrinkName;
     public TextView txtDrinkPrice;
     public TextView txtDrinkAddOns;
-    public ImageView imageView;
+    public AppCompatButton removeButton;
 
     private ItemClickListener itemClickListener;
 
@@ -20,7 +21,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         txtDrinkName = (TextView)itemView.findViewById(R.id.cart_item_name);
         txtDrinkPrice = (TextView)itemView.findViewById(R.id.cart_item_price);
         txtDrinkAddOns = (TextView)itemView.findViewById(R.id.cart_item_addons);
-        imageView = (ImageView)itemView.findViewById(R.id.cart_item_image);
+        removeButton = (AppCompatButton)itemView.findViewById(R.id.cart_remove_button);
 
         itemView.setOnClickListener(this);
 

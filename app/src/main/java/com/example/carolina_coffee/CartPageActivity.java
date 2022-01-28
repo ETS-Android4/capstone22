@@ -24,6 +24,8 @@ public class CartPageActivity extends AppCompatActivity {
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
 
+    RecyclerView.Adapter<CartViewHolder> adapter;
+
     Cart cart = OrderMenuPageActivity.getCart();
 
     @Override
@@ -46,13 +48,7 @@ public class CartPageActivity extends AppCompatActivity {
         statusBarColor();
         setContentView(R.layout.activity_cart_page);
 
-        //Load menu
-        recyler_menu = (RecyclerView)findViewById(R.id.recyclerView2);
-        recyler_menu.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyler_menu.setLayoutManager(layoutManager);
 
-        loadCart();
 
         // Navigation
         //--------------------------------------------------------------------------------------
@@ -93,6 +89,14 @@ public class CartPageActivity extends AppCompatActivity {
         // End of Navigation
         //--------------------------------------------------------------------------------------
         //End of onCreate
+
+        //Load menu
+        recyler_menu = (RecyclerView)findViewById(R.id.recyclerView2);
+        layoutManager = new LinearLayoutManager(this);
+        recyler_menu.setLayoutManager(layoutManager);
+        recyler_menu.setHasFixedSize(false);
+
+        loadCart();
     }
 
     public void backButton(View view) {
@@ -102,24 +106,42 @@ public class CartPageActivity extends AppCompatActivity {
     }
 
     private void loadCart() {
-        RecyclerView.Adapter<CartViewHolder> adapter = new RecyclerView.Adapter<CartViewHolder>() {
-            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.review_order_item, parent, false);
-                return new CartViewHolder(view);
-            }
+        adapter = new RecyclerView.Adapter<CartViewHolder>() {
             @Override
             public void onBindViewHolder(CartViewHolder viewHolder, int i) {
                 Latte drink = cart.getCart().get(i);
                 viewHolder.txtDrinkName.setText(drink.getFullName());
                 viewHolder.txtDrinkAddOns.setText("Add-ons will be added later!");
                 viewHolder.txtDrinkPrice.setText("$" + drink.getPrice());
-                //Picasso.with(getBaseContext()).load(drink.getImage()).fit().into(viewHolder.imageView);
+                viewHolder.removeButton.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                cart.removefromCart(drink);
+                                Intent intent = new Intent(CartPageActivity.this, CartPageActivity.class);
+                                overridePendingTransition(0, 0);
+                                startActivity(intent);
+                            }
+                        }
+                );
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        Toast.makeText(CartPageActivity.this, "Drink was clicked!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
-
             @Override
             public int getItemCount() {
                 return cart.getCart().size();
+            }
+
+            @NonNull
+            @Override
+            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.review_order_item, parent, false);
+                return new CartViewHolder(view);
             }
         };
         recyler_menu.setAdapter(adapter);
