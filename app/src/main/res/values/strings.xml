@@ -25,7 +25,6 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="rewards">Rewards</string>
     <string name="earn_points_for_free_items">Earn Points for Free items</string>
     <string name="points_collected">Points collected!</string>
     <string name="congrats">Congrats!</string>
