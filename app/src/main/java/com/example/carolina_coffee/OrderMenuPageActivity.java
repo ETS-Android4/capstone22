@@ -2,6 +2,7 @@ package com.example.carolina_coffee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,12 +10,16 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -66,7 +71,7 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
         //Firebase
         database = FirebaseDatabase.getInstance();
-        drinks = database.getReference("Category");
+        drinks = database.getReference("Capstone").child("Category");
 
         //Init view
         drink_name = (TextView) findViewById(R.id.drinkText);
@@ -194,6 +199,26 @@ public class OrderMenuPageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void customizeButton(View view) {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View customizeView = inflater.inflate(R.layout.customize_popup, null);
+
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+        final PopupWindow popupWindow = new PopupWindow(customizeView, width, height);
+
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        Button btnDisplay = (Button)customizeView.findViewById(R.id.customize_close_button);
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
     }
 
     public String getEncoded64ImageStringFromBitmap(Bitmap bitmap) {

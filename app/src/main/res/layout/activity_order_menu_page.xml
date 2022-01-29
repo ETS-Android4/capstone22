@@ -273,6 +273,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/createbutton"
         android:fontFamily="@font/sofia_regular"
+        android:onClick="customizeButton"
         android:text="Customize"
         app:backgroundTint="#491616"
         app:layout_constraintBottom_toTopOf="@+id/MenuWhiteBox"

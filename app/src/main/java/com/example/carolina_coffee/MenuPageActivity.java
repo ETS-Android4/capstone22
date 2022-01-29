@@ -96,7 +96,7 @@ public class MenuPageActivity extends AppCompatActivity {
 
         //Init Firebase
         database = FirebaseDatabase.getInstance();
-        category = database.getReference("Category");
+        category = database.getReference("Capstone").child("Category");
 
         //Load menu
         recyler_menu = (RecyclerView)findViewById(R.id.menuRecycler);
