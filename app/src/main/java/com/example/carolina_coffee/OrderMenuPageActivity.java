@@ -3,6 +3,8 @@ package com.example.carolina_coffee;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,6 +15,7 @@ import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,6 +28,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,6 +50,12 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference drinks;
+
+    DatabaseReference addins;
+    FirebaseRecyclerAdapter<Addin, AddinViewHolder> adapter;
+
+    RecyclerView recyler_menu;
+    RecyclerView.LayoutManager layoutManager;
 
     Latte drink;
 
@@ -211,6 +222,17 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
 
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        database = FirebaseDatabase.getInstance();
+        addins = database.getReference("Capstone").child("Additions");
+        DatabaseReference flavors = addins.child("Flavor");
+
+        //Load menu
+        recyler_menu = (RecyclerView)customizeView.findViewById(R.id.popup_addin_view);
+        recyler_menu.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyler_menu.setLayoutManager(layoutManager);
+
+        loadAddins();
 
         Button btnDisplay = (Button)customizeView.findViewById(R.id.customize_close_button);
         btnDisplay.setOnClickListener(new View.OnClickListener() {
@@ -219,6 +241,28 @@ public class OrderMenuPageActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
+    }
+
+    public void loadAddins() {
+        FirebaseRecyclerOptions<Addin> options =
+                new FirebaseRecyclerOptions.Builder<Addin>().setQuery(addins, Addin.class).build();
+
+        adapter = new FirebaseRecyclerAdapter<Addin, AddinViewHolder>(options) {
+            @Override
+            public void onBindViewHolder(@NonNull AddinViewHolder holder, int position, @NonNull Addin model) {
+                holder.txtAddinType.setText(model.getAddType());
+            }
+
+            @NonNull
+            @Override
+            public AddinViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.addin_category, parent, false);
+                return new AddinViewHolder(view);
+            }
+        };
+        adapter.startListening();
+        recyler_menu.setAdapter(adapter);
     }
 
     public String getEncoded64ImageStringFromBitmap(Bitmap bitmap) {
