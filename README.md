@@ -33,7 +33,6 @@ your repo. Sometimes there is no need for this section, but some apps require
 some first-time configuration from the developer, for example: setting up a
 database for running your webapp locally.
 
-Open Android Studio, select [] + [] +  
 
 ## Running
 
@@ -85,11 +84,9 @@ Email: briana20rovelli@gmail.com
 Name: Christopher Wynne
 Email: chw5225@gmail.com
 
-Name: Haoran Yin
-Email: haorany@email.sc.edu
 
 ## License
-Copyright 2021 Capstone22.
+Copyright 2022 Capstone22.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
