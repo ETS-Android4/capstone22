@@ -39,6 +39,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OrderMenuPageActivity extends AppCompatActivity {
 
@@ -52,10 +55,15 @@ public class OrderMenuPageActivity extends AppCompatActivity {
     DatabaseReference drinks;
 
     DatabaseReference addins;
+    ArrayList<HashMap<String, String>> flavors;
     FirebaseRecyclerAdapter<Addin, AddinViewHolder> adapter;
+    RecyclerView.Adapter<FlavorViewHolder> flavorAdapter;
 
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
+
+    RecyclerView flavor_recyler_menu;
+    RecyclerView.LayoutManager flavorlayoutManager;
 
     Latte drink;
 
@@ -224,7 +232,6 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
         database = FirebaseDatabase.getInstance();
         addins = database.getReference("Capstone").child("Additions");
-        DatabaseReference flavors = addins.child("Flavor");
 
         //Load menu
         recyler_menu = (RecyclerView)customizeView.findViewById(R.id.popup_addin_view);
@@ -250,7 +257,21 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<Addin, AddinViewHolder>(options) {
             @Override
             public void onBindViewHolder(@NonNull AddinViewHolder holder, int position, @NonNull Addin model) {
+                flavors = model.getFlavor();
                 holder.txtAddinType.setText(model.getAddType());
+
+                holder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        Toast.makeText(OrderMenuPageActivity.this, "Flavor Type was clicked!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                flavor_recyler_menu = (RecyclerView)holder.addinFlavors;
+                flavorlayoutManager = new LinearLayoutManager(OrderMenuPageActivity.this);
+                flavor_recyler_menu.setLayoutManager(flavorlayoutManager);
+                flavor_recyler_menu.setHasFixedSize(true);
+                loadFlavors();
             }
 
             @NonNull
@@ -263,6 +284,36 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         };
         adapter.startListening();
         recyler_menu.setAdapter(adapter);
+    }
+
+    public void loadFlavors() {
+        flavorAdapter = new RecyclerView.Adapter<FlavorViewHolder>() {
+            @Override
+            public void onBindViewHolder(FlavorViewHolder viewHolder, int i) {
+                String flavor = flavors.get(i).get("flavorName");
+                viewHolder.flavorCheckbox.setText(flavor);
+
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        Toast.makeText(OrderMenuPageActivity.this, "Flavor was clicked!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            @Override
+            public int getItemCount() {
+                return flavors.size();
+            }
+
+            @NonNull
+            @Override
+            public FlavorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.checkbox_item, parent, false);
+                return new FlavorViewHolder(view);
+            }
+        };
+        flavor_recyler_menu.setAdapter(flavorAdapter);
     }
 
     public String getEncoded64ImageStringFromBitmap(Bitmap bitmap) {
