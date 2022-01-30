@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,6 +32,8 @@ public class CartPageActivity extends AppCompatActivity {
 
     RecyclerView.Adapter<CartViewHolder> adapter;
     RecyclerView.Adapter<CartAddinViewHolder> cart_addin_adapter;
+
+    TextView cart_price;
 
     Cart cart = OrderMenuPageActivity.getCart();
 
@@ -105,6 +108,10 @@ public class CartPageActivity extends AppCompatActivity {
         recyler_menu.setHasFixedSize(false);
 
         loadCart();
+        cart_price = (TextView)findViewById(R.id.cart_cost_text);
+        cart.calaculateCostofCart();
+        cart_price.setText("$" + cart.total_cart_price);
+
     }
 
     public void backButton(View view) {

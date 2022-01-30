@@ -142,6 +142,12 @@ public class MenuPageActivity extends AppCompatActivity {
 
     }
 
+    public void goToCartButton(View view) {
+        Intent cart = new Intent(MenuPageActivity.this, CartPageActivity.class);
+        overridePendingTransition(0,0);
+        startActivity(cart);
+    }
+
 
     // This is method to change the status bar color from default purple to color of choice.
     private void statusBarColor() {

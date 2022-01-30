@@ -29,6 +29,7 @@ public class Cart {
         for(Latte drink : cart) {
             total_cart_price += drink.getPrice();
         }
+        total_cart_price = Math.round(total_cart_price * 100.0)/100.0;
     }
 
 

@@ -10,8 +10,8 @@
     <TextView
         android:id="@+id/menuRedBox"
         android:layout_width="365dp"
-        android:layout_height="450dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/bottom_white_stroke_profile_page"
         android:fontFamily="@font/sofia_regular"
         android:textAlignment="center"
@@ -53,7 +53,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRecycler"
         android:layout_width="365dp"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:scrollbars="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/menuRedBox"
@@ -76,4 +76,20 @@
         app:menu="@menu/navigation_items">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cart_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="#9E322626"
+        android:text="Go to Cart"
+        android:onClick="goToCartButton"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuRedBox"
+        app:layout_constraintVertical_bias="0.134" />
 </androidx.constraintlayout.widget.ConstraintLayout>
