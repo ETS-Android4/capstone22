@@ -7,41 +7,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="147dp"
+        android:layout_height="wrap_content"
         android:background="#00974D4D">
 
-        <ScrollView
-            android:layout_width="310dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cart_item_recycler"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/cart_item_price"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="-2dp"
-            android:layout_marginBottom="94dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/cart_item_addons"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/sofia_regular"
-                    android:text="Add Ons Listed"
-                    android:textAlignment="textStart"
-                    android:textColor="#B4FFFFFF" />
-            </LinearLayout>
-        </ScrollView>
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:id="@+id/cart_item_name"
             android:layout_width="263dp"
-            android:layout_height="39dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="23dp"
             android:layout_marginTop="23dp"
-            android:layout_marginBottom="153dp"
             android:fontFamily="@font/sofia_regular"
             android:text="Item Name"
             android:textColor="@color/white"
@@ -66,11 +50,10 @@
         <TextView
             android:id="@+id/cart_item_price"
             android:layout_width="263dp"
-            android:layout_height="39dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="23dp"
             android:layout_marginTop="55dp"
-            android:layout_marginBottom="125dp"
             android:fontFamily="@font/sofia_regular"
             android:text="Price"
             android:textAlignment="textStart"

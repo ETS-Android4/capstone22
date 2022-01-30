@@ -9,7 +9,7 @@ public abstract class Drink {
     String Name;
     String Image;
     String Description = "";
-    String Price;
+    double Price;
     String DrinkID = "";
 
     List<String> additions = new ArrayList<>();
@@ -20,7 +20,7 @@ public abstract class Drink {
 
     }
 
-    public Drink(String description, String drinkID, String image, String name, String price) {
+    public Drink(String description, String drinkID, String image, String name, double price) {
         Name = name;
         Description = description;
         Image = image;
@@ -52,11 +52,15 @@ public abstract class Drink {
         return additions;
     }
 
-    public String getPrice() {
+    public void setAdditions(List<String> additions) {
+        this.additions = additions;
+    }
+
+    public double getPrice() {
         return Price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         Price = price;
     }
 
