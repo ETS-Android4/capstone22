@@ -8,19 +8,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CartPageActivity extends AppCompatActivity {
 
@@ -38,6 +47,17 @@ public class CartPageActivity extends AppCompatActivity {
     Cart cart = OrderMenuPageActivity.getCart();
 
     Latte drink;
+
+
+    private static final String TAG = "TAG";
+
+    FirebaseAuth fAuth;
+    FirebaseUser user;
+    FirebaseFirestore fStore;
+    String userID;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,14 +121,22 @@ public class CartPageActivity extends AppCompatActivity {
         //--------------------------------------------------------------------------------------
         //End of onCreate
 
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userID = fAuth.getCurrentUser().getUid();
+        user = fAuth.getCurrentUser();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
         //Load menu
-        recyler_menu = (RecyclerView)findViewById(R.id.recyclerView2);
+        recyler_menu = (RecyclerView)findViewById(R.id.reviewOrderRecycler);
         layoutManager = new LinearLayoutManager(this);
         recyler_menu.setLayoutManager(layoutManager);
         recyler_menu.setHasFixedSize(false);
 
         loadCart();
-        cart_price = (TextView)findViewById(R.id.cart_cost_text);
+        cart_price = (TextView)findViewById(R.id.cart_cost_text1);
         cart.calaculateCostofCart();
         cart_price.setText("$" + cart.total_cart_price);
 
@@ -198,16 +226,6 @@ public class CartPageActivity extends AppCompatActivity {
         cart_addin_recyler_menu.setAdapter(cart_addin_adapter);
     }
 
-    public void placeOrder(View view) {
-        Button btnDisplay = (Button)findViewById(R.id.placeOrderButton);
-
-        btnDisplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     // This is method to change the status bar color from default purple to color of choice.
     private void statusBarColor() {
@@ -219,8 +237,43 @@ public class CartPageActivity extends AppCompatActivity {
     }
 
     public void paymentPageButton(View view) {
-        Intent intent = new Intent(this, PaymentActivity_1.class);
-        startActivity(intent);
+        if(cart.getCart().size() == 0) {
+            Toast.makeText(CartPageActivity.this, "Cart is empty!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            addDataToFireBase();
+            cart.getCart().clear();
+            Intent intent = new Intent(CartPageActivity.this, CartPageActivity.class);
+            overridePendingTransition(0, 0);
+            startActivity(intent);
+            Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
+        }
+        //Intent intent = new Intent(this, PaymentActivity_1.class);
+        //startActivity(intent);
+    }
+
+    private void addDataToFireBase() {
+        FirebaseUser fuser = fAuth.getCurrentUser();
+
+
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("Orders").document(userID);
+        Map<String,Object> user = new HashMap<>();
+        user.put("Order_User_Name", userID);
+        user.put("Drinks", cart.getCart());
+        user.put("Order_Price", cart.total_cart_price);
+        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e.toString());
+            }
+        });
+
     }
 
 

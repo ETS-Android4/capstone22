@@ -6,9 +6,10 @@
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/drawable/roundedbutton.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/drawable/top_page_red_curved.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_app_settings_page.xml" value="0.18697916666666667" />
-        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.33" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.1" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_customer_support_page.xml" value="0.2015625" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_defaultpage_examplecode.xml" value="0.22" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_edit_payment_plans.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_edit_profile.xml" value="0.2015625" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_inbox_page.xml" value="0.33" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_login.xml" value="0.18697916666666667" />
@@ -17,6 +18,7 @@
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_order_menu_page.xml" value="0.25" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_payment.xml" value="0.2015625" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_profile.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_review_order_page.xml" value="0.278125" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_rewards.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/activity_setting_page.xml" value="0.33" />
         <entry key="..\:/Users/brian/Desktop/capstone22/app/src/main/res/layout/addin_category.xml" value="0.32563405797101447" />

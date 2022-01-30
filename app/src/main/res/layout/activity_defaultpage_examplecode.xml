@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/historyTopBox"
+        android:id="@+id/historyTopBox1"
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:background="@drawable/top_page_red_curved_sides"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/backArrow2"
+        android:id="@+id/backArrow5"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -36,7 +36,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/topMessage2"
+        android:id="@+id/topMessage5"
         android:layout_width="match_parent"
         android:layout_height="26dp"
         android:background="@drawable/top_page_red_curved"
@@ -47,7 +47,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
+        app:layout_constraintTop_toBottomOf="@+id/historyTopBox1" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
