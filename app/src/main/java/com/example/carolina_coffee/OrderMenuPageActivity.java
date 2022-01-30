@@ -20,6 +20,7 @@ import android.view.Window;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -41,6 +42,7 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OrderMenuPageActivity extends AppCompatActivity {
@@ -55,7 +57,8 @@ public class OrderMenuPageActivity extends AppCompatActivity {
     DatabaseReference drinks;
 
     DatabaseReference addins;
-    ArrayList<HashMap<String, String>> flavors;
+    ArrayList<HashMap<String,String>> flavors;
+    HashMap<String, Double> flavorCosts = new HashMap<String, Double>();
     FirebaseRecyclerAdapter<Addin, AddinViewHolder> adapter;
     RecyclerView.Adapter<FlavorViewHolder> flavorAdapter;
 
@@ -64,6 +67,9 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
     RecyclerView flavor_recyler_menu;
     RecyclerView.LayoutManager flavorlayoutManager;
+
+    List<CheckBox> checkBoxes = new ArrayList<>();
+    List<String> currentlyChecked = new ArrayList<>();
 
     Latte drink;
 
@@ -169,7 +175,6 @@ public class OrderMenuPageActivity extends AppCompatActivity {
                 drink_price.setText("" + drink.getPrice());
                 drink_description.setText(drink.getDescription());
 
-                Toast.makeText(OrderMenuPageActivity.this, drink_name.getText(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -205,19 +210,31 @@ public class OrderMenuPageActivity extends AppCompatActivity {
                 int typeId = rgType.getCheckedRadioButtonId();
                 RadioButton rbType = (RadioButton)findViewById(typeId);
 
-
-
-                Latte order = new Latte(drink_name.getText().toString(), drink_description.getText().toString(), "", drink_price.getText().toString(), drinkID);
-                order.setSize(rbSize.getText().toString());
-                order.setType(rbType.getText().toString());
-                cart.addtoCart(order);
-                Intent intent = new Intent(OrderMenuPageActivity.this, CartPageActivity.class);
-                overridePendingTransition(0,0);
-                startActivity(intent);
-                Toast.makeText(OrderMenuPageActivity.this, rbSize.getText() + " " + rbType.getText() + " " +  "", Toast.LENGTH_SHORT).show();
+                if(sizeId != -1 && typeId != -1) {
+                    Latte order = new Latte(drink_name.getText().toString(), drink_description.getText().toString(), "", Double.parseDouble(drink_price.getText().toString()), drinkID);
+                    order.setSize(rbSize.getText().toString());
+                    order.setType(rbType.getText().toString());
+                    order.setPrice(Math.round(calculateDrinkCostwithAddins(order)*100.0)/100.0);
+                    order.setAdditions(getCurrentlyChecked());
+                    cart.addtoCart(order);
+                    Intent intent = new Intent(OrderMenuPageActivity.this, CartPageActivity.class);
+                    overridePendingTransition(0,0);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(OrderMenuPageActivity.this, "Size and Type must be selected", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+    }
+
+    public double calculateDrinkCostwithAddins(Latte order) {
+        double res = order.getPrice();
+        for(String box : currentlyChecked) {
+            res += flavorCosts.get(box);
+        }
+        return res;
     }
 
     public void customizeButton(View view) {
@@ -240,14 +257,34 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         recyler_menu.setLayoutManager(layoutManager);
 
         loadAddins();
+        fillInCheckboxes();
 
         Button btnDisplay = (Button)customizeView.findViewById(R.id.customize_close_button);
         btnDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkCheckboxes();
                 popupWindow.dismiss();
             }
         });
+    }
+
+    public void fillInCheckboxes() {
+        for(String box : currentlyChecked) {
+            //box.setChecked(true);
+            System.out.println(box);
+        }
+    }
+
+    public void checkCheckboxes() {
+        for(CheckBox box : checkBoxes) {
+            if(box.isChecked() && !currentlyChecked.contains(box.getText().toString())) {
+                currentlyChecked.add(box.getText().toString());
+            }
+            if(!box.isChecked() && currentlyChecked.contains(box.getText().toString())) {
+                currentlyChecked.remove(box.getText().toString());
+            }
+        }
     }
 
     public void loadAddins() {
@@ -291,7 +328,13 @@ public class OrderMenuPageActivity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(FlavorViewHolder viewHolder, int i) {
                 String flavor = flavors.get(i).get("flavorName");
+                Double flavorCost = Double.parseDouble(flavors.get(i).get("flavorPrice"));
+                flavorCosts.put(flavor, flavorCost);
                 viewHolder.flavorCheckbox.setText(flavor);
+                checkBoxes.add(viewHolder.flavorCheckbox);
+                if(currentlyChecked.contains(viewHolder.flavorCheckbox.getText().toString())) {
+                    viewHolder.flavorCheckbox.setChecked(true);
+                }
 
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
@@ -316,19 +359,14 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         flavor_recyler_menu.setAdapter(flavorAdapter);
     }
 
-    public String getEncoded64ImageStringFromBitmap(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-        byte[] byteFormat = stream.toByteArray();
-        // get the base 64 string
-        String imgString = Base64.encodeToString(byteFormat, Base64.NO_WRAP);
-        return imgString;
-    }
-
     public void backButton(View view) {
         Intent intent = new Intent(this, MenuPageActivity.class);
         overridePendingTransition(0,0);
         startActivity(intent);
+    }
+
+    public List<String> getCurrentlyChecked() {
+        return currentlyChecked;
     }
 
 

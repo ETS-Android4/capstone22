@@ -118,7 +118,7 @@ public class DrinkDetail extends AppCompatActivity {
                 Picasso.with(getBaseContext()).load(drink.getImage()).into(drink_image);
 
                 drink_name.setText(drink.getName());
-                drink_price.setText("" + drink.getPrice());
+                drink_price.setText(drink.getPrice() + "");
                 drink_description.setText(drink.getDescription());
 
             }

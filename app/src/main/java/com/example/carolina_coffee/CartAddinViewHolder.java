@@ -3,19 +3,18 @@ package com.example.carolina_coffee;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FlavorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public CheckBox flavorCheckbox;
+public class CartAddinViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public TextView cart_addin_txt;
 
     private ItemClickListener itemClickListener;
 
-    public FlavorViewHolder(View itemView) {
+    public CartAddinViewHolder(View itemView) {
         super(itemView);
 
-        flavorCheckbox = (CheckBox)itemView.findViewById(R.id.addin_checkbox);
+        cart_addin_txt = (TextView)itemView.findViewById(R.id.cart_addin_text);
 
         itemView.setOnClickListener(this);
     }

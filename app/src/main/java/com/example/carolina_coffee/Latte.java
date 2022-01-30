@@ -5,7 +5,7 @@ public class Latte extends Drink{
 
     }
 
-    public Latte(String name, String description, String image, String price, String drinkID) {
+    public Latte(String name, String description, String image, double price, String drinkID) {
         this.Name = name;
         this.Description = description;
         this.Image = image;

@@ -19,14 +19,22 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class CartPageActivity extends AppCompatActivity {
 
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
 
+    RecyclerView cart_addin_recyler_menu;
+    RecyclerView.LayoutManager cart_addin_layoutManager;
+
     RecyclerView.Adapter<CartViewHolder> adapter;
+    RecyclerView.Adapter<CartAddinViewHolder> cart_addin_adapter;
 
     Cart cart = OrderMenuPageActivity.getCart();
+
+    Latte drink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,9 +117,15 @@ public class CartPageActivity extends AppCompatActivity {
         adapter = new RecyclerView.Adapter<CartViewHolder>() {
             @Override
             public void onBindViewHolder(CartViewHolder viewHolder, int i) {
-                Latte drink = cart.getCart().get(i);
+                drink = cart.getCart().get(i);
                 viewHolder.txtDrinkName.setText(drink.getFullName());
-                viewHolder.txtDrinkAddOns.setText("Add-ons will be added later!");
+
+                cart_addin_recyler_menu = viewHolder.addinRecycler;
+                cart_addin_layoutManager = new LinearLayoutManager(CartPageActivity.this);
+                cart_addin_recyler_menu.setLayoutManager(cart_addin_layoutManager);
+                cart_addin_recyler_menu.setHasFixedSize(false);
+                loadCartAddins();
+
                 viewHolder.txtDrinkPrice.setText("$" + drink.getPrice());
                 viewHolder.removeButton.setOnClickListener(
                         new View.OnClickListener() {
@@ -145,6 +159,36 @@ public class CartPageActivity extends AppCompatActivity {
             }
         };
         recyler_menu.setAdapter(adapter);
+    }
+
+    public void loadCartAddins() {
+        cart_addin_adapter = new RecyclerView.Adapter<CartAddinViewHolder>() {
+            @Override
+            public void onBindViewHolder(CartAddinViewHolder viewHolder, int i) {
+                viewHolder.cart_addin_txt.setText(drink.getAdditions().get(i));
+
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        Toast.makeText(CartPageActivity.this, "Add-in was clicked!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public int getItemCount() {
+                return drink.getAdditions().size();
+            }
+
+            @NonNull
+            @Override
+            public CartAddinViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.cart_addin, parent, false);
+                return new CartAddinViewHolder(view);
+            }
+        };
+        cart_addin_recyler_menu.setAdapter(cart_addin_adapter);
     }
 
     public void placeOrder(View view) {
