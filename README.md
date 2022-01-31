@@ -56,7 +56,7 @@ emulator or in a physical phone.
 
 The unit tests are in `/App/build/src/test/java/CartTest`.
 
-The behavioral tests are in `/test/casper/`.
+The behavioral tests are in `/App/androidTest/java/RegisterPageActivity/`.
 
 ## Testing Technology
 
