@@ -10,12 +10,12 @@ public class Cart {
     public Cart() {
         cart = new ArrayList<>();
     }
+
+    public Cart(ArrayList<Latte> cart) {
+        this.cart = cart;
+    }
     public ArrayList<Latte> getCart() {
         return cart;
-    }
-
-    public void setCart(ArrayList<Latte> cart) {
-        this.cart = cart;
     }
 
     public void addtoCart(Latte latte) {
@@ -30,6 +30,10 @@ public class Cart {
             total_cart_price += drink.getPrice();
         }
         total_cart_price = Math.round(total_cart_price * 100.0)/100.0;
+    }
+
+    public double getTotal_cart_price() {
+        return total_cart_price;
     }
 
 
