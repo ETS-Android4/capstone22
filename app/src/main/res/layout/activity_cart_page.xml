@@ -8,7 +8,7 @@
     tools:context=".CartPageActivity">
 
     <TextView
-        android:id="@+id/menuWhiteBox"
+        android:id="@+id/menuWhiteBox1"
         android:layout_width="365dp"
         android:layout_height="100dp"
         android:background="@drawable/profile_page_top_curved_box"
@@ -19,10 +19,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuRedBox2" />
+        app:layout_constraintTop_toBottomOf="@+id/menuRedBox3" />
 
     <TextView
-        android:id="@+id/menuRedBox2"
+        android:id="@+id/menuRedBox3"
         android:layout_width="365dp"
         android:layout_height="350dp"
         android:layout_marginTop="52dp"
@@ -34,10 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
+        app:layout_constraintTop_toBottomOf="@+id/historyTopBox1" />
 
     <TextView
-        android:id="@+id/historyTopBox"
+        android:id="@+id/historyTopBox1"
         android:layout_width="417dp"
         android:layout_height="96dp"
         android:background="#FFFFFF"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/backArrow2"
+        android:id="@+id/backArrow5"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
@@ -64,7 +64,7 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/topMessage2"
+        android:id="@+id/topMessage5"
         android:layout_width="0dp"
         android:layout_height="26dp"
         android:background="@drawable/profile_page_top_curved_box"
@@ -76,10 +76,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/historyTopBox" />
+        app:layout_constraintTop_toBottomOf="@+id/historyTopBox1" />
 
     <Button
-        android:id="@+id/placeOrderButton"
+        android:id="@+id/finalplaceOrderButton"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:background="@drawable/profile_page_all_curved_corners_red"
@@ -91,26 +91,26 @@
         android:paddingTop="0dp"
         android:paddingEnd="0dp"
         android:paddingBottom="0dp"
-        android:text="  Confirm Payment  "
+        android:text="  Place Order  "
         android:textColor="#FFFFFF"
         app:backgroundTint="@color/red_ec"
-        app:layout_constraintBottom_toBottomOf="@+id/menuWhiteBox"
-        app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox"
+        app:layout_constraintBottom_toBottomOf="@+id/menuWhiteBox1"
+        app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox1"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/menuWhiteBox"
-        app:layout_constraintTop_toTopOf="@+id/menuWhiteBox"
+        app:layout_constraintStart_toStartOf="@+id/menuWhiteBox1"
+        app:layout_constraintTop_toTopOf="@+id/menuWhiteBox1"
         app:layout_constraintVertical_bias="0.661"
         tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/reviewOrderRecycler"
         android:layout_width="368dp"
         android:layout_height="378dp"
         android:scrollbars="vertical"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/menuRedBox2"
-        app:layout_constraintStart_toStartOf="@+id/menuRedBox2"
-        app:layout_constraintTop_toTopOf="@+id/menuRedBox2" />
+        app:layout_constraintEnd_toEndOf="@+id/menuRedBox3"
+        app:layout_constraintStart_toStartOf="@+id/menuRedBox3"
+        app:layout_constraintTop_toTopOf="@+id/menuRedBox3" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -129,15 +129,15 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <TextView
-        android:id="@+id/cart_cost_text"
+        android:id="@+id/cart_cost_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Cost"
-        app:layout_constraintBottom_toBottomOf="@+id/menuWhiteBox"
-        app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox"
+        app:layout_constraintBottom_toBottomOf="@+id/menuWhiteBox1"
+        app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox1"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/menuWhiteBox"
-        app:layout_constraintTop_toTopOf="@+id/menuWhiteBox"
+        app:layout_constraintStart_toStartOf="@+id/menuWhiteBox1"
+        app:layout_constraintTop_toTopOf="@+id/menuWhiteBox1"
         app:layout_constraintVertical_bias="0.197" />
 
 
