@@ -1,7 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+
 }
+
 
 android {
     compileSdk 31
@@ -15,6 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -36,15 +39,6 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
-    android {
-        testOptions {
-            execution 'ANDROIDX_TEST_ORCHESTRATOR'
-
-            unitTests.all {
-                useJUnitPlatform() // <--- this is the important part
-            }
-        }
-    }
 }
 
 dependencies {
@@ -61,7 +55,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
-    implementation 'junit:junit:4.13.2'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha03'
         // Import the BoM for the Firebase platform
@@ -85,17 +79,14 @@ dependencies {
     implementation 'com.google.android.gms:play-services-base:17.5.0'
     implementation 'com.google.firebase:firebase-analytics:18.0.0'
 
-
     implementation 'androidx.biometric:biometric:1.1.0'
     implementation 'com.google.firebase:firebase-auth'
     implementation platform('com.google.firebase:firebase-bom:29.0.4')
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
     androidTestImplementation 'androidx.test:rules:1.4.0-alpha05'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0-alpha03'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation 'androidx.test:runner:1.4.0'
-    androidTestImplementation 'androidx.test:rules:1.4.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'org.hamcrest:hamcrest-all:1.3'
+    androidTestImplementation 'com.android.support:support-annotations:24.0.0'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+
 
 }
