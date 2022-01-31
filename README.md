@@ -58,7 +58,7 @@ The unit tests are in `/App/build/src/test/java/CartTest`.
 
 The behavioral tests are in `/App/androidTest/java/RegisterPageActivity/`.
 
-## Testing Technology
+## Testing Technology 
 
 Android Studio comes with a built in selection of library testing dependencies and functions,
 for this application the dependencies are already added to the build gradle for testing and functionality
