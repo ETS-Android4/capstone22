@@ -54,20 +54,21 @@ emulator or in a physical phone.
 
 # Testing
 
-In 492 you will write automated tests. When you do you will need to add a
-section that explains how to run them.
-
-The unit tests are in `/test/unit`.
+The unit tests are in `/App/build/src/test/java/CartTest`.
 
 The behavioral tests are in `/test/casper/`.
 
 ## Testing Technology
 
-In some cases you need to install test runners, etc. Explain how. []
+Android Studio comes with a built in selection of library testing dependencies and functions,
+for this application the dependencies are already added to the build gradle for testing and functionality
+purposes. 
 
 ## Running Tests
 
-Explain how to run the automated tests.
+One the user has located the appropriate test folder and its corresponding classes,
+[right click]+[Run] on the drop down menu. This process will automatically run the test 
+for the user.
 
 # Authors
 Your names and emails
