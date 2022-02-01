@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rewardspage1"
@@ -54,7 +55,6 @@
             android:layout_height="wrap_content">
 
 
-
             <TextView
                 android:id="@+id/rewards_white_box_top"
                 android:layout_width="match_parent"
@@ -71,62 +71,53 @@
                 android:id="@+id/point_count_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/sofia_regular"
                 android:letterSpacing="0.1"
+                android:progress="70"
                 android:text="@string/_100_points_collected"
                 android:textColor="#000000"
                 android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
-                app:layout_constraintTop_toTopOf="@+id/rewards_white_box_top" />
-
-            <TextView
-                android:id="@+id/point_bar_leftside"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="100dp"
-                android:background="@drawable/settings_page_all_gray_curved_corners"
+                app:layout_constraintBottom_toBottomOf="@+id/redeemPointsBar"
                 app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
-                app:layout_constraintHorizontal_bias="0.479"
                 app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
-                app:layout_constraintTop_toBottomOf="@+id/point_count_text" />
+                app:layout_constraintTop_toTopOf="@+id/rewards_white_box_top"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/point_bar_leftside2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="150dp"
-                android:background="@drawable/profile_page_all_curved_corners_red"
+            <ProgressBar
+                android:id="@+id/redeemPointsBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="290dp"
+                android:layout_height="50dp"
+                android:background="#FFFFFF"
+                android:max="100"
+                android:progress="70"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/rewards_white_box_top"
                 app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
-                app:layout_constraintHorizontal_bias="0.479"
+                app:layout_constraintHorizontal_bias="0.185"
                 app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
-                app:layout_constraintTop_toBottomOf="@+id/point_count_text" />
+                app:layout_constraintTop_toTopOf="@+id/rewards_white_box_top"
+                app:layout_constraintVertical_bias="0.785" />
 
             <TextView
                 android:id="@+id/circle_coffee"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="-5dp"
                 android:background="@drawable/settings_page_all_gray_curved_corners"
-                app:layout_constraintBottom_toBottomOf="@+id/point_bar_leftside"
-                app:layout_constraintStart_toEndOf="@+id/point_bar_leftside"
-                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside" />
+                tools:layout_editor_absoluteX="308dp"
+                tools:layout_editor_absoluteY="107dp" />
 
             <ImageView
                 android:id="@+id/coffee_cup"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="@+id/circle_coffee"
                 app:layout_constraintEnd_toEndOf="@+id/circle_coffee"
                 app:layout_constraintStart_toStartOf="@+id/circle_coffee"
                 app:layout_constraintTop_toTopOf="@+id/circle_coffee"
-                app:srcCompat="@drawable/coffee_cup"
-                android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/coffee_cup" />
 
             <TextView
                 android:id="@+id/coffee_image"
@@ -204,7 +195,7 @@
         app:itemRippleColor="#C1C1C1"
         app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/navigation_items"/>
+        app:menu="@menu/navigation_items" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
