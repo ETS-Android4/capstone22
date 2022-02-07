@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -242,14 +243,44 @@ public class CartPageActivity extends AppCompatActivity {
         }
         else {
             addDataToFireBase();
+
+            // Fire Base Increment for tracking rewards.
+            //-----------------------------------------
+            //addIncrementRewardsToFireBase();
+            //-----------------------------------------
+
             cart.getCart().clear();
             Intent intent = new Intent(CartPageActivity.this, CartPageActivity.class);
             overridePendingTransition(0, 0);
             startActivity(intent);
             Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
+
+
         }
         //Intent intent = new Intent(this, PaymentActivity_1.class);
         //startActivity(intent);
+
+    }
+
+    private void addIncrementRewardsToFireBase() {
+
+        FirebaseUser fuser = fAuth.getCurrentUser();
+
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
+
+        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e.toString());
+            }
+        });
+
     }
 
     private void addDataToFireBase() {
