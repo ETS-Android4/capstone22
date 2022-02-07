@@ -28,8 +28,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -279,15 +277,14 @@ public class CartPageActivity extends AppCompatActivity {
 
 
         // Needs to read existing data from firebase
-        int increment = 0;
+
+        //int increment = documentReference.collection("rewards_increment").document(userID);
         //int increment = documentReference.getFirestore();
         //Call increment from firebase so we can +5 points below. otherwise the increment doesnt work and it only stays +5.
 
+        int increment = 0;
         Map<String,Integer> user = new HashMap<>();
-        user.put("Increment", +5 );
-
-        
-
+        user.put("Increment", increment+1 );
 
         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
