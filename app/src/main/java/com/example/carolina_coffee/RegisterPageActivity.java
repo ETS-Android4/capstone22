@@ -78,7 +78,6 @@ public class RegisterPageActivity extends AppCompatActivity {
         mRegisterButton = findViewById(R.id.registerButton);
         mLoginButton    = findViewById(R.id.loginButton);
         mPhone          = findViewById(R.id.phone);
-        mCardNum        = findViewById(R.id.CardNum);
 
 
         fAuth = FirebaseAuth.getInstance();
@@ -238,6 +237,9 @@ public class RegisterPageActivity extends AppCompatActivity {
                                     user.put("phone",phone);
                                     user.put("Card_Number",cardNum);
 
+                                    //DECLARING Users rewards status to zero on firebase.
+                                    declareUsersRewardStatusToZero();
+
                                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -281,6 +283,31 @@ public class RegisterPageActivity extends AppCompatActivity {
         }else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
+    }
+
+    //Declaring users rewards increment to zero upon registration.
+    private void declareUsersRewardStatusToZero() {
+
+        FirebaseUser fuser = fAuth.getCurrentUser();
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
+
+        int increment = 0;
+        Map<String,Integer> user = new HashMap<>();
+        user.put("Increment", increment );
+
+        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e.toString());
+            }
+        });
+
     }
 
 

@@ -274,16 +274,17 @@ public class CartPageActivity extends AppCompatActivity {
     private void addIncrementRewardsToFireBase() {
 
         FirebaseUser fuser = fAuth.getCurrentUser();
-
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
 
 
         // Needs to read existing data from firebase
         int increment = 0;
+        //int increment = documentReference.getFirestore();
+        //Call increment from firebase so we can +5 points below. otherwise the increment doesnt work and it only stays +5.
 
         Map<String,Integer> user = new HashMap<>();
-        user.put("Increment", increment+5 );
+        user.put("Increment", +5 );
 
         
 
