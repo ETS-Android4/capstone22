@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +39,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.prefs.AbstractPreferences;
 
 public class CartPageActivity extends AppCompatActivity {
+    int score=0;
 
     private static final String SCORE = "Score";
     RecyclerView recyler_menu;
@@ -147,6 +151,23 @@ public class CartPageActivity extends AppCompatActivity {
         cart_price = (TextView)findViewById(R.id.cart_cost_text1);
         cart.calaculateCostofCart();
         cart_price.setText("$" + cart.total_cart_price);
+
+        //for rewards
+        setContentView(R.layout.activity_cart_page);
+        SharedPreferences sp=this.getSharedPreferences("MyScore", Context.MODE_PRIVATE);
+        score=sp.getInt("score", 0);
+
+    }
+
+    public void CartPageActivity(View view){
+        score += 1;
+        SharedPreferences sp=getSharedPreferences("Myscore", Context.MODE_PRIVATE);
+        AbstractPreferences editor = null;
+        editor.putInt("score", score);
+        //editor.apply();
+
+        Intent in = new Intent(CartPageActivity.this, MainActivity.class);
+        startActivity(in);
 
     }
 
@@ -325,5 +346,8 @@ public class CartPageActivity extends AppCompatActivity {
     }
 
 
-
+    public void placeOrder(View view) {
+        Intent in=new Intent(CartPageActivity.this,MainActivity.class);
+        startActivity(in);
+    }
 }

@@ -86,7 +86,7 @@
         android:fontFamily="@font/sofia_regular"
         android:foreground="@drawable/ripple_grayc1c1"
         android:letterSpacing="0.25"
-        android:onClick="paymentPageButton"
+        android:onClick="placeOrder"
         android:paddingStart="0dp"
         android:paddingTop="0dp"
         android:paddingEnd="0dp"

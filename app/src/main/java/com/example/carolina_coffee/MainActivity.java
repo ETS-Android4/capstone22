@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,7 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView t1;
+    int score=0;
     TextView fullName,email,phone;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -108,8 +110,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
- */
+ */     //for rewards
+        setContentView(R.layout.activity_main);
+        t1=findViewById(R.id.earned_points);
 
+        SharedPreferences sp = this.getSharedPreferences("Myscore", Context.MODE_PRIVATE);
+        score = sp.getInt("score", 0);
+        t1.setText(Integer.toString(score));
 
     }
 
