@@ -135,6 +135,27 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
                     mZip_1.setError("Zip Code is required.");
                     return;
                 }
+                // if exp date is invalid format:
+                String[] string = exp_Date_String.replaceAll("\\[", "").replaceAll("]","").split("/");
+                int[] arr = new int[string.length];
+
+                arr[0] = Integer.parseInt(string[0]);
+                arr[1] = Integer.parseInt(string[1]);
+                //If month is > 12
+                if(arr[0] > 12) {
+                    //invalid date
+                    Toast.makeText(PaymentMethod_1_Activity.this, "invalid date.", Toast.LENGTH_SHORT).show();
+                    mExp_Date_1.setError("invalid date");
+                    return;
+                }
+                //if year is < 22 or greater than 30
+                if(arr[1] < 22 || arr[1] > 30) {
+                    //invalid date
+                    Toast.makeText(PaymentMethod_1_Activity.this, "invalid date.", Toast.LENGTH_SHORT).show();
+                    mExp_Date_1.setError("invalid date");
+                    return;
+                }
+
                 else {
                     addDataToFireBase(fullName_String, cardNumber_String, exp_Date_String, CCV_Num_String,zip_Code_String);
                     // Start new Page
@@ -161,7 +182,7 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
                 // remove all non-digits characters.
                 String processed = initial.replaceAll("\\D", "");
                 // insert a space after all groups of 4 digits that are followed by another digit.
-                processed = processed.replaceAll("(\\d{4})(?=\\d)", "$1 ");
+                processed = processed.replaceAll("(\\d{4})(?=\\d)", "$1-");
                 // to avoid stackoverflow errors, check that the processed is different from what's already
                 //  there before setting
                 if (!initial.equals(processed)) {
@@ -172,27 +193,25 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
 
         });
         // EXPIRATION DATE Formatting
-        TextView exp_date_format = (TextView) findViewById(R.id.exp_date_box_2);
-        exp_date_format.addTextChangedListener(new TextWatcher() {
+        EditText exp_date_box= (EditText) findViewById(R.id.exp_date_box_2);
+        exp_date_box.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
-            @Override
-            public void afterTextChanged(Editable exp_date) {
-                if (exp_date.length() > 0 && (exp_date.length() % 3) == 0) {
-                    final char c = exp_date.charAt(exp_date.length() - 1);
-                    if ('/' == c) {
-                        exp_date.delete(exp_date.length() - 1, exp_date.length());
-                    }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String curr = s.toString();
+                if (curr.length() == 2 && start == 1) {
+                    exp_date_box.setText(curr + "/");
+                    exp_date_box.setSelection(curr.length() + 1);
                 }
-                if (exp_date.length() > 0 && (exp_date.length() % 3) == 0) {
-                    char c = exp_date.charAt(exp_date.length() - 1);
-                    if (Character.isDigit(c) && TextUtils.split(exp_date.toString(), String.valueOf("/")).length <= 2) {
-                        exp_date.insert(exp_date.length() - 1, String.valueOf("/"));
-                    }
+                else if (curr.length() == 2 && before == 1) {
+                    curr = curr.substring(0, 1);
+                    exp_date_box.setText(curr);
+                    exp_date_box.setSelection(curr.length());
                 }
             }
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
 
         // Displaying Card info FROM FireBase
@@ -279,6 +298,7 @@ public class PaymentMethod_1_Activity extends AppCompatActivity {
         user.put("Billing_Exp_Date_1",exp_date_string);
         user.put("Billing_CCV_Num_1",ccv_num_string);
         user.put("Billing_Zip_1",zip_code_string);
+
         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

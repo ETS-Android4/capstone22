@@ -152,10 +152,13 @@ public class CartPageActivity extends AppCompatActivity {
         cart.calaculateCostofCart();
         cart_price.setText("$" + cart.total_cart_price);
 
+        /*
         //for rewards
         setContentView(R.layout.activity_cart_page);
         SharedPreferences sp=this.getSharedPreferences("MyScore", Context.MODE_PRIVATE);
         score=sp.getInt("score", 0);
+
+         */
 
     }
 
