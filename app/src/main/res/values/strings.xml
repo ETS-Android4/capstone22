@@ -54,4 +54,6 @@
     <string name="customize_your_drink">Customize your drink</string>
     <string name="privacy_statement">Privacy Statement</string>
     <string name="help">Help</string>
+    <string name="points_collected_txt">points_collected</string>
+    <string name="points_collected_text">points collected</string>
 </resources>
