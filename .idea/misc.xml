@@ -100,13 +100,18 @@
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_order_menu_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_payment_method2.xml" value="0.19882246376811594" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.15081521739130435" />
         <entry key="app/src/main/res/layout/activity_profile7.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.19882246376811594" />
-        <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rewards2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rewards9.xml" value="0.1546875" />
         <entry key="app/src/main/res/layout/activity_saved_orders_page.xml" value="0.15081521739130435" />
+        <entry key="app/src/main/res/layout/addin_category.xml" value="0.19882246376811594" />
+        <entry key="app/src/main/res/layout/cart_addin.xml" value="0.19882246376811594" />
+        <entry key="app/src/main/res/layout/menu_item.xml" value="0.19882246376811594" />
+        <entry key="app/src/main/res/layout/review_order_item.xml" value="0.19882246376811594" />
         <entry key="app/src/main/res/menu/navigation_items.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19322916666666667" />
       </map>
