@@ -92,12 +92,10 @@ public class RewardsPageActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         }
     }
+
     //details button to show pop up
     public void details_button_popup(View view) {
         TextView output = findViewById(R.id.suprisePopUp);
         output.setText("Surprise you've won a free drink!");
     }
-
-
-
 }
