@@ -50,8 +50,6 @@
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_menu.xml" value="0.33" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_order_menu_page.xml" value="0.33" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_payment.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_payment_method1.xml" value="0.3944746376811594" />
-        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_payment_method2.xml" value="0.55" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_profile.xml" value="0.5" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_rewards.xml" value="0.25" />
@@ -89,6 +87,7 @@
         <entry key="..\:/Users/howar/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_wallet7.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/howar/AndroidStudioProjects/capstone22/app/src/main/res/layout/settings_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jyinh/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
+        <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/drawable/custom_rewards_progress.xml" value="0.195" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout-v23/activity_rewards.xml" value="0.25104166666666666" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_customer_support_page.xml" value="0.32971014492753625" />
@@ -100,9 +99,10 @@
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_menu.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_order_menu_page.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_payment.xml" value="0.23822463768115942" />
+        <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_payment_method1.xml" value="0.32518115942028986" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_profile.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_register.xml" value="0.26197916666666665" />
-        <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_rewards.xml" value="0.365625" />
+        <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_rewards.xml" value="0.33" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_saved_orders_page.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/activity_setting_page.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/winga/StudioProjects/capstone22/app/src/main/res/layout/cart_addin.xml" value="0.23822463768115942" />
