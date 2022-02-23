@@ -155,7 +155,7 @@ public class RegisterPageActivity extends AppCompatActivity {
                         String password = mPassword.getText().toString().trim();
                         String confirmPassword = mConfirmPassword.getText().toString().trim();
                         String phone = mPhone.getText().toString();
-                        String cardNum = mCardNum.getText().toString();
+                        //tring cardNum = mCardNum.getText().toString();
 
 
 
@@ -235,10 +235,9 @@ public class RegisterPageActivity extends AppCompatActivity {
                                     user.put("fName",fullName);
                                     user.put("email",email);
                                     user.put("phone",phone);
-                                    user.put("Card_Number",cardNum);
+                                    //user.put("Card_Number",cardNum);
 
-                                    //DECLARING Users rewards status to zero on firebase.
-                                    declareUsersRewardStatusToZero();
+
 
                                     documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -251,6 +250,9 @@ public class RegisterPageActivity extends AppCompatActivity {
                                             Log.d(TAG, "onFailure: " + e.toString());
                                         }
                                     });
+
+                                    //DECLARING Users rewards status to zero on firebase.
+                                    declareUsersRewardStatusToZero();
 
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
