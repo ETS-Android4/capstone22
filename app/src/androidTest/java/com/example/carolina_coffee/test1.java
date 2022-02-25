@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AndroidJUnit5.class)
 public class test1 {
 
     @Rule
@@ -206,15 +206,7 @@ public class test1 {
                         isDisplayed()));
         appCompatEditText16.perform(pressImeActionButton());
 
-        ViewInteraction appCompatEditText17 = onView(
-                allOf(withId(R.id.CardNum),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                7),
-                        isDisplayed()));
-        appCompatEditText17.perform(pressImeActionButton());
+
 
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.registerButton), withText("  Register  "),
@@ -267,7 +259,7 @@ public class test1 {
         materialTextView.perform(scrollTo(), click());
 
         ViewInteraction materialTextView2 = onView(
-                allOf(withId(R.id.backArrow2),
+                allOf(withId(R.id.backArrow),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
