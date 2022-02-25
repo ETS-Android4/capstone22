@@ -85,6 +85,10 @@ public class RegisterPageActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
 
+       // getIntent().getExtras().getString("activity")
+
+       // insertNewMessage();
+
         // ** AUTO FORMAT Phone Number
         //-----------------------------------------------------------
         final EditText editText = (EditText) findViewById(R.id.phone);
