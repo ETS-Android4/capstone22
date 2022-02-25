@@ -24,8 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    TextView t1;
-    int score=0;
+    //TextView t1;
+    //int score=0;
     TextView fullName,email,phone;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;

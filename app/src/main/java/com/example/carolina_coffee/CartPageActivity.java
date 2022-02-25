@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.prefs.AbstractPreferences;
 
 public class CartPageActivity extends AppCompatActivity {
-    int score=0;
+    //int score=0;
 
     private static final String SCORE = "Score";
     RecyclerView recyler_menu;
@@ -161,7 +161,7 @@ public class CartPageActivity extends AppCompatActivity {
          */
 
     }
-
+    /*
     public void CartPageActivity(View view){
         score += 1;
         SharedPreferences sp=getSharedPreferences("Myscore", Context.MODE_PRIVATE);
@@ -173,6 +173,8 @@ public class CartPageActivity extends AppCompatActivity {
         startActivity(in);
 
     }
+
+     */
 
     public void backButton(View view) {
         Intent intent = new Intent(this, MenuPageActivity.class);
