@@ -149,6 +149,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LockScreenActivity.class);
         startActivity(intent);
     }
+    public void inboxPage(View view) {
+        Intent intent = new Intent(this, InboxPageActivity.class);
+        startActivity(intent);
+    }
 
 
 }

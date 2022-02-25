@@ -281,7 +281,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:foreground="@drawable/ripple_red_25_corners"
-        android:onClick="profilePage"
+        android:onClick="inboxPage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MenuRedBox"
         app:srcCompat="@drawable/mail" />
