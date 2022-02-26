@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @LargeTest
-@RunWith(AndroidJUnit5.class)
+@RunWith(androidx.test.ext.junit.runners.AndroidJUnit4.class)
 public class test1 {
 
     @Rule
