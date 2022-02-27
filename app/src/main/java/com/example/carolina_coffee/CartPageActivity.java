@@ -1,11 +1,14 @@
 package com.example.carolina_coffee;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,16 +26,25 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.prefs.AbstractPreferences;
 
 public class CartPageActivity extends AppCompatActivity {
+    //int score=0;
 
+    private static final String SCORE = "Score";
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
 
@@ -140,7 +152,29 @@ public class CartPageActivity extends AppCompatActivity {
         cart.calaculateCostofCart();
         cart_price.setText("$" + cart.total_cart_price);
 
+        /*
+        //for rewards
+        setContentView(R.layout.activity_cart_page);
+        SharedPreferences sp=this.getSharedPreferences("MyScore", Context.MODE_PRIVATE);
+        score=sp.getInt("score", 0);
+
+         */
+
     }
+    /*
+    public void CartPageActivity(View view){
+        score += 1;
+        SharedPreferences sp=getSharedPreferences("Myscore", Context.MODE_PRIVATE);
+        AbstractPreferences editor = null;
+        editor.putInt("score", score);
+        //editor.apply();
+
+        Intent in = new Intent(CartPageActivity.this, MainActivity.class);
+        startActivity(in);
+
+    }
+
+     */
 
     public void backButton(View view) {
         Intent intent = new Intent(this, MenuPageActivity.class);
@@ -240,28 +274,51 @@ public class CartPageActivity extends AppCompatActivity {
         if(cart.getCart().size() == 0) {
             Toast.makeText(CartPageActivity.this, "Cart is empty!", Toast.LENGTH_SHORT).show();
         }
+
+        //TODO
+        // -----------------------------------------------------
+        // Needs to ask user which payment method and only accept the payment method if it is valid,
+        // and then keeps track of that data of last 4 card digits to order.
+
+
+        // -----------------------------------------------------
+
         else {
+            // Adds data to firebase for order history
             addDataToFireBase();
+
+            // Fire Base Increment for tracking rewards.
+            //-----------------------------------------
+            addIncrementRewardsToFireBase();
+            //-----------------------------------------
+
             cart.getCart().clear();
-            Intent intent = new Intent(CartPageActivity.this, CartPageActivity.class);
+            Intent intent = new Intent(CartPageActivity.this, MainActivity.class);
             overridePendingTransition(0, 0);
             startActivity(intent);
             Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
+
+
         }
-        //Intent intent = new Intent(this, PaymentActivity_1.class);
-        //startActivity(intent);
     }
 
-    private void addDataToFireBase() {
+    private void addIncrementRewardsToFireBase() {
+
         FirebaseUser fuser = fAuth.getCurrentUser();
-
-
         userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fStore.collection("Orders").document(userID);
-        Map<String,Object> user = new HashMap<>();
-        user.put("Order_User_Name", userID);
-        user.put("Drinks", cart.getCart());
-        user.put("Order_Price", cart.total_cart_price);
+        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
+
+
+        // Needs to read existing data from firebase
+
+        //int increment = documentReference.collection("rewards_increment").document(userID);
+        //int increment = documentReference.getFirestore();
+        //Call increment from firebase so we can +5 points below. otherwise the increment doesnt work and it only stays +5.
+
+        int increment = 0;
+        Map<String,Integer> user = new HashMap<>();
+        user.put("Increment", increment+1 );
+
         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -276,6 +333,41 @@ public class CartPageActivity extends AppCompatActivity {
 
     }
 
+    private void addDataToFireBase() {
+        FirebaseUser fuser = fAuth.getCurrentUser();
+
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("Orders").document(userID);
+        Map<String,Object> user = new HashMap<>();
+        user.put("Order_User_Name", userID);
+        user.put("Drinks", cart.getCart());
+        user.put("Order_Price", cart.total_cart_price);
+
+        //TODO
+        // Input credit card 4 digits data
+        // -------------------------------
 
 
+
+
+        // -------------------------------
+        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e.toString());
+            }
+        });
+
+    }
+
+    public boolean order_More(View view) {
+        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
+        overridePendingTransition(0,0);
+        return true;
+    }
 }

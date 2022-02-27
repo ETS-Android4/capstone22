@@ -33,7 +33,6 @@ your repo. Sometimes there is no need for this section, but some apps require
 some first-time configuration from the developer, for example: setting up a
 database for running your webapp locally.
 
-Open Android Studio, select [] + [] +  
 
 ## Running
 
@@ -55,20 +54,21 @@ emulator or in a physical phone.
 
 # Testing
 
-In 492 you will write automated tests. When you do you will need to add a
-section that explains how to run them.
+The unit tests are in `/App/build/src/test/java/CartTest`.
 
-The unit tests are in `/test/unit`.
+The behavioral tests are in `/App/build/src/androidTest/java/RegisterPageActivity/`.
 
-The behavioral tests are in `/test/casper/`.
+## Testing Technology 
 
-## Testing Technology
-
-In some cases you need to install test runners, etc. Explain how. []
+Android Studio comes with a built in selection of library testing dependencies and functions,
+for this application the dependencies are already added to the build gradle for testing and functionality
+purposes. 
 
 ## Running Tests
 
-Explain how to run the automated tests.
+One the user has located the appropriate test folder and its corresponding classes,
+[right click]+[Run] on the drop down menu. This process will automatically run the test 
+for the user.
 
 # Authors
 Your names and emails
@@ -85,11 +85,9 @@ Email: briana20rovelli@gmail.com
 Name: Christopher Wynne
 Email: chw5225@gmail.com
 
-Name: Haoran Yin
-Email: haorany@email.sc.edu
 
 ## License
-Copyright 2021 Capstone22.
+Copyright 2022 Capstone22.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

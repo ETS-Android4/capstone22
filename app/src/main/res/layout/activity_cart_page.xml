@@ -42,7 +42,7 @@
         android:layout_height="96dp"
         android:background="#FFFFFF"
         android:fontFamily="@font/sofia_regular"
-        android:text="Order"
+        android:text="@string/order_text"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="60sp"
@@ -69,7 +69,7 @@
         android:layout_height="26dp"
         android:background="@drawable/profile_page_top_curved_box"
         android:fontFamily="@font/sofia_regular"
-        android:text="Review your Order"
+        android:text="@string/review_your_order"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -100,7 +100,30 @@
         app:layout_constraintStart_toStartOf="@+id/menuWhiteBox1"
         app:layout_constraintTop_toTopOf="@+id/menuWhiteBox1"
         app:layout_constraintVertical_bias="0.661"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    <Button
+        android:id="@+id/finalplaceOrderButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/profile_page_all_curved_corners_red"
+        android:fontFamily="@font/sofia_regular"
+        android:foreground="@drawable/ripple_grayc1c1"
+        android:letterSpacing="0.25"
+        android:onClick="order_More"
+        android:paddingStart="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp"
+        android:text=" Order More "
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/red_ec"
+        app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox1"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/menuWhiteBox1"
+        app:layout_constraintTop_toBottomOf="@+id/menuWhiteBox1"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewOrderRecycler"
