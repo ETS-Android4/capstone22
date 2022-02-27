@@ -336,6 +336,15 @@ public class CartPageActivity extends AppCompatActivity {
         user.put("Order_User_Name", userID);
         user.put("Drinks", cart.getCart());
         user.put("Order_Price", cart.total_cart_price);
+
+        //TODO
+        // Input credit card 4 digits data
+        // -------------------------------
+
+
+
+
+        // -------------------------------
         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -352,6 +361,20 @@ public class CartPageActivity extends AppCompatActivity {
 
 
     public void placeOrder(View view) {
+        // adds data to firebase.
+        addDataToFireBase();
+
+        //TODO
+        // -----------------------------------------------------
+        // Needs to ask user which payment method and only accept the payment method if it is valid,
+        // and then keeps track of that data of last 4 card digits to order.
+
+
+
+
+        // -----------------------------------------------------
+
+        //sends user to home page after sending in order.
         Intent in=new Intent(CartPageActivity.this,MainActivity.class);
         startActivity(in);
     }
