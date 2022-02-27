@@ -46,7 +46,7 @@ go to Build > Make Project. After that, there should be no issues running the ap
 
 Webapps need a deployment section that explains how to get it deployed on the
 Internet. These should be detailed enough so anyone can re-deploy if needed
-. Note that you **do not put passwords in git**.
+.Note that you **do not put passwords in git**.
 
 Mobile apps will also sometimes need some instructions on how to build a
 "release" version, maybe how to sign it, and how to run that binary in an
