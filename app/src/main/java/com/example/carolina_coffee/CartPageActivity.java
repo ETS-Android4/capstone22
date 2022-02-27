@@ -370,9 +370,11 @@ public class CartPageActivity extends AppCompatActivity {
         // and then keeps track of that data of last 4 card digits to order.
 
 
-
-
         // -----------------------------------------------------
+
+        //Remove items from cart
+        cart.removefromCart(drink);
+        cart.getCart().clear();
 
         //sends user to home page after sending in order.
         Intent in=new Intent(CartPageActivity.this,MainActivity.class);
