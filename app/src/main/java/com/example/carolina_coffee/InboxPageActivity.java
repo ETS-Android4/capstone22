@@ -62,6 +62,7 @@ ArrayList<MessageData> list;
         list = new ArrayList<>();
         myAdapter = new MyAdapter( list);
         recyclerView.setAdapter(myAdapter);
+
         database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -82,6 +83,8 @@ ArrayList<MessageData> list;
             }
         });
 
+
+
         ////////
 
         ((RecyclerView)findViewById(R.id.messageList)).setAdapter(new DefautAdapter());
@@ -101,7 +104,10 @@ ArrayList<MessageData> list;
 
             }
         });
+
+
 //*****************************************************************************************************
+
  */
 
 
