@@ -47,8 +47,13 @@ ArrayList<MessageData> list;
         statusBarColor();
 
         setContentView(R.layout.activity_inbox_page);
+        //------------------------
+
+
 
 /*
+//Issue with this code, keeps crashing.
+//*****************************************************************************************************
         recyclerView = findViewById(R.id.messageList);
         database = FirebaseDatabase.getInstance().getReference("Capstone/Message");
         recyclerView.setHasFixedSize(true);
@@ -77,12 +82,9 @@ ArrayList<MessageData> list;
             }
         });
 
- */
+        ////////
 
-/*
-//Issue with this code, keeps crashing.
-//*****************************************************************************************************
-        ((RecyclerView)findViewById(R.id.recyclerView)).setAdapter(new DefautAdapter());
+        ((RecyclerView)findViewById(R.id.messageList)).setAdapter(new DefautAdapter());
 
         FirebaseDatabase.getInstance().getReference("thePathToUserMessages").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -101,6 +103,8 @@ ArrayList<MessageData> list;
         });
 //*****************************************************************************************************
  */
+
+
 
 
         // Navigation
