@@ -274,7 +274,17 @@ public class CartPageActivity extends AppCompatActivity {
         if(cart.getCart().size() == 0) {
             Toast.makeText(CartPageActivity.this, "Cart is empty!", Toast.LENGTH_SHORT).show();
         }
+
+        //TODO
+        // -----------------------------------------------------
+        // Needs to ask user which payment method and only accept the payment method if it is valid,
+        // and then keeps track of that data of last 4 card digits to order.
+
+
+        // -----------------------------------------------------
+
         else {
+            // Adds data to firebase for order history
             addDataToFireBase();
 
             // Fire Base Increment for tracking rewards.
@@ -283,16 +293,13 @@ public class CartPageActivity extends AppCompatActivity {
             //-----------------------------------------
 
             cart.getCart().clear();
-            Intent intent = new Intent(CartPageActivity.this, CartPageActivity.class);
+            Intent intent = new Intent(CartPageActivity.this, MainActivity.class);
             overridePendingTransition(0, 0);
             startActivity(intent);
             Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
 
 
         }
-        //Intent intent = new Intent(this, PaymentActivity_1.class);
-        //startActivity(intent);
-
     }
 
     private void addIncrementRewardsToFireBase() {
@@ -329,7 +336,6 @@ public class CartPageActivity extends AppCompatActivity {
     private void addDataToFireBase() {
         FirebaseUser fuser = fAuth.getCurrentUser();
 
-
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fStore.collection("Orders").document(userID);
         Map<String,Object> user = new HashMap<>();
@@ -357,28 +363,6 @@ public class CartPageActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-
-    public void placeOrder(View view) {
-        // adds data to firebase.
-        addDataToFireBase();
-
-        //TODO
-        // -----------------------------------------------------
-        // Needs to ask user which payment method and only accept the payment method if it is valid,
-        // and then keeps track of that data of last 4 card digits to order.
-
-
-        // -----------------------------------------------------
-
-        //Remove items from cart
-        cart.removefromCart(drink);
-        cart.getCart().clear();
-
-        //sends user to home page after sending in order.
-        Intent in=new Intent(CartPageActivity.this,MainActivity.class);
-        startActivity(in);
     }
 
     public boolean order_More(View view) {
