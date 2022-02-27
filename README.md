@@ -71,7 +71,7 @@ One the user has located the appropriate test folder and its corresponding class
 for the user.
 
 # Authors
-Your names and emails
+Your names and emails:
 
 Name: Caleb Howard
 Email: Howardc484@gmail.com
