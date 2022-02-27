@@ -355,4 +355,10 @@ public class CartPageActivity extends AppCompatActivity {
         Intent in=new Intent(CartPageActivity.this,MainActivity.class);
         startActivity(in);
     }
+
+    public boolean order_More(View view) {
+        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
+        overridePendingTransition(0,0);
+        return true;
+    }
 }

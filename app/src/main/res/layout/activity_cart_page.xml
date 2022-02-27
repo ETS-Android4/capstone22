@@ -102,6 +102,29 @@
         app:layout_constraintVertical_bias="0.661"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
+    <Button
+        android:id="@+id/finalplaceOrderButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/profile_page_all_curved_corners_red"
+        android:fontFamily="@font/sofia_regular"
+        android:foreground="@drawable/ripple_grayc1c1"
+        android:letterSpacing="0.25"
+        android:onClick="order_More"
+        android:paddingStart="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="0dp"
+        android:text=" Order More "
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/red_ec"
+        app:layout_constraintEnd_toEndOf="@+id/menuWhiteBox1"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/menuWhiteBox1"
+        app:layout_constraintTop_toBottomOf="@+id/menuWhiteBox1"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reviewOrderRecycler"
         android:layout_width="368dp"

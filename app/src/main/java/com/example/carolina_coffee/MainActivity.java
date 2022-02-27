@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -16,10 +17,16 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
+
 
 import java.util.List;
 
@@ -27,9 +34,14 @@ public class MainActivity extends AppCompatActivity {
     //TextView t1;
     //int score=0;
     TextView fullName,email,phone;
+    TextView caccount_box, caccount_settings, caccount_settings2;
+    Button cact_btn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
+    FirebaseUser user;
+    StorageReference storageReference;
+
     private ImageView loadingImage;
 
     private Button loginButton;
@@ -44,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
         // May change this later. ALSO This is also linking to Themes.xml's under Res/Values/themes.
         setTheme(R.style.Theme_Carolina_Coffee);
         //------------------------
-
-
-
         // Get rid of the top "Carolina_Coffee" purple bar on top of each page.
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
@@ -54,8 +63,14 @@ public class MainActivity extends AppCompatActivity {
         // This will change the action bar color from the default purple, to color of choice here.
         // Calling to method that will make this action happen.
         statusBarColor();
-
         setContentView(R.layout.activity_main);
+
+
+
+
+
+
+
 
 
 
@@ -97,6 +112,36 @@ public class MainActivity extends AppCompatActivity {
         });
         // End of Navigation
         //--------------------------------------------------------------------------------------
+
+
+        // Display user verified box on main page
+        // -----------------------------------------------------
+        // Verify account creation
+        caccount_box = findViewById(R.id.account_box);
+        caccount_settings = findViewById(R.id.account_settings);
+        caccount_settings2 = findViewById(R.id.account_settings2);
+        cact_btn = findViewById(R.id.act_btn);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userID = fAuth.getCurrentUser().getUid();
+        user = fAuth.getCurrentUser();
+
+        // user VERIFIED?
+
+        if(!user.isEmailVerified()) {
+            caccount_box.setVisibility(View.VISIBLE);
+            caccount_settings.setVisibility(View.VISIBLE);
+            caccount_settings2.setVisibility(View.VISIBLE);
+            cact_btn.setVisibility(View.VISIBLE);
+        }
+
+
+
+
+        // -----------------------------------------------------
+
 
 
 
@@ -145,13 +190,22 @@ public class MainActivity extends AppCompatActivity {
     }
      */
 
-    public void profilePage(View view) {
-        Intent intent = new Intent(this, LockScreenActivity.class);
+    public void historyPageButton(View view) {
+        Intent intent = new Intent(this, HistoryPageActivity.class);
         startActivity(intent);
     }
     public void inboxPage(View view) {
         Intent intent = new Intent(this, InboxPageActivity.class);
         startActivity(intent);
+    }
+    public void account_page(View view) {
+        Intent intent = new Intent(this, ProfilePageActivity.class);
+        startActivity(intent);
+    }
+    public boolean order_coffee(View view) {
+        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
+        overridePendingTransition(0,0);
+        return true;
     }
 
 
