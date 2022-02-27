@@ -58,4 +58,6 @@
     <string name="points_collected_text">points collected</string>
     <string name="review_your_order">Review your Order</string>
     <string name="order_text">Order</string>
+    <string name="lbl_message">"Message: "</string>
+    <string name="subject">"Subject: "</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.carolina_coffee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,13 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InboxPageActivity extends AppCompatActivity {
 
 RecyclerView recyclerView;
-DatabaseReference database;
+
 MyAdapter myAdapter;
-ArrayList<MessageData> list;
+final List<MessageData> list = new ArrayList<>();
 
 
     @Override
@@ -51,30 +53,32 @@ ArrayList<MessageData> list;
 
 
 
-/*
+
 //Issue with this code, keeps crashing.
+
 //*****************************************************************************************************
         recyclerView = findViewById(R.id.messageList);
-        database = FirebaseDatabase.getInstance().getReference("Capstone/Message");
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        this.recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        list = new ArrayList<>();
+
+
+
         myAdapter = new MyAdapter( list);
         recyclerView.setAdapter(myAdapter);
-        database.addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Capstone/Message").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChildren()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-                    MessageData message = dataSnapshot.getValue(MessageData.class);
-                    list.add(message);
+                        MessageData message = dataSnapshot.getValue(MessageData.class);
+                        list.add(message);
+                    }
+                    if (list.size() > 0)
+                        myAdapter.notifyItemRangeInserted(0, list.size());
                 }
-                if(list.size()>0)
-                    myAdapter.notifyItemRangeInserted(0,list.size());
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -84,25 +88,12 @@ ArrayList<MessageData> list;
 
         ////////
 
-        ((RecyclerView)findViewById(R.id.messageList)).setAdapter(new DefautAdapter());
 
-        FirebaseDatabase.getInstance().getReference("thePathToUserMessages").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChildren()){
-                    for(DataSnapshot it : snapshot.getChildren()){
-                        //    if(it.child("irRead"))
-                    }
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 //*****************************************************************************************************
- */
+
+
+
 
 
 

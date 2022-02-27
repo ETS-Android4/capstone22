@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.core.Context;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.security.auth.Subject;
 
@@ -19,9 +20,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
 
-        ArrayList<MessageData> list;
+        List<MessageData> list;
 
-    public MyAdapter(  ArrayList<MessageData> list) {
+    public MyAdapter(  List<MessageData> list) {
 
         this.list = list;
     }
@@ -30,8 +31,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         @Override
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_inbox_page, parent, false);
-            return new MyViewHolder(v);
+
+            return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.message, parent, false));
         }
 
         @Override
@@ -42,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.subject.setText(messageData.getSubject());
         holder.body.setText(messageData.getBody());
         }
+
 
         @Override
         public int getItemCount() {
