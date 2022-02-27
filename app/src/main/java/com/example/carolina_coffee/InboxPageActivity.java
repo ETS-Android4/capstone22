@@ -32,7 +32,6 @@ public class InboxPageActivity extends AppCompatActivity {
         //------------------------
 
 
-
         // Get rid of the top "Carolina_Coffee" purple bar on top of each page.
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);

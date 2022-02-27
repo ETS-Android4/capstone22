@@ -12,6 +12,7 @@
         android:id="@+id/new_reward_box"
         android:layout_width="335dp"
         android:layout_height="105dp"
+        android:layout_marginTop="12dp"
         android:background="@color/red_ec"
         android:backgroundTint="#CC800B0B"
         android:fontFamily="@font/sofia_regular"
@@ -21,7 +22,8 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/messages_box" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -38,7 +40,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_reward_box" />
 
     <TextView
         android:id="@+id/inboxTopBox"
@@ -66,6 +69,7 @@
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inboxTopBox" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -109,8 +113,9 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="227dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/new_reward_box"
+        app:layout_constraintEnd_toEndOf="@+id/new_reward_box"
+        app:layout_constraintStart_toStartOf="@+id/new_reward_box"
+        app:layout_constraintTop_toTopOf="@+id/new_reward_box" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
