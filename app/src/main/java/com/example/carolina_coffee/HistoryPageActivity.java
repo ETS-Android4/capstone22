@@ -107,16 +107,24 @@ public class HistoryPageActivity extends AppCompatActivity {
                     //c_price.setText("Total Price = $"+documentSnapshot.get("Order_Price").toString());
 
 
+
                     //Load menu
                     recyler_menu = (RecyclerView)findViewById(R.id.history_recycler_view);
                     layoutManager = new LinearLayoutManager(HistoryPageActivity.this);
                     recyler_menu.setLayoutManager(layoutManager);
                     recyler_menu.setHasFixedSize(false);
+                    c_card_used = findViewById(R.id.card_used);
 
                     TextView txtView = (TextView) findViewById(R.id.orderNameAndPrice);
                     Object orderPrice = documentSnapshot.get("Order_Price");
                     txtView.setText("Previous Order | $"+ orderPrice);
                     loadDrinks(documentSnapshot);
+
+                    //Display last 4 digits of card to set Text.
+                    String card_used = documentSnapshot.getString("Payment_Used");
+                    String lastFourDigits = "";
+                    lastFourDigits = card_used.substring(card_used.length() - 4);
+                    c_card_used.setText("Card Used: xxxx-xxxx-xxxx-"+lastFourDigits);
 
 
                 }else {
