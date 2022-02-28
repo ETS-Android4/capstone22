@@ -41,7 +41,7 @@ import java.util.Map;
 
 public class HistoryPageActivity extends AppCompatActivity {
 
-    TextView c_drink, c_price;
+    TextView c_drink, c_price, c_card_used;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
