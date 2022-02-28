@@ -320,7 +320,7 @@ public class CartPageActivity extends AppCompatActivity {
                         //  Check that card is existing and use.
                         checkPayment_1_Exists(view);
                     }
-                    if(result == "Payment Method 2") {
+                    else if(result == "Payment Method 2") {
                         //  Check that card is existing and use.
                         checkPayment_2_Exists(view);
                     }else {
