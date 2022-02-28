@@ -317,13 +317,13 @@ public class OrderDrinkAndCustomizeTest {
         materialButton5.perform(click());
 
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.cart_item_name), withText("Medium Hot Latte"),
+                allOf(withId(R.id.order_item_name), withText("Medium Hot Latte"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
         textView3.check(matches(withText("Medium Hot Latte")));
 
         ViewInteraction textView4 = onView(
-                allOf(withId(R.id.cart_item_price), withText("$3.75"),
+                allOf(withId(R.id.order_item_price), withText("$3.75"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
         textView4.check(matches(withText("$3.75")));
@@ -384,13 +384,13 @@ public class OrderDrinkAndCustomizeTest {
         materialButton6.perform(click());
 
         ViewInteraction textView6 = onView(
-                allOf(withId(R.id.cart_item_name), withText("Small Iced Coffee"),
+                allOf(withId(R.id.order_item_name), withText("Small Iced Coffee"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
         textView6.check(matches(withText("Small Iced Coffee")));
 
         ViewInteraction textView7 = onView(
-                allOf(withId(R.id.cart_item_price), withText("$2.65"),
+                allOf(withId(R.id.order_item_price), withText("$2.65"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
         textView7.check(matches(withText("$2.65")));
@@ -413,13 +413,13 @@ public class OrderDrinkAndCustomizeTest {
 
         ViewInteraction textView9 = onView(
                 allOf(withId(R.id.cart_addin_text), withText("Caramel"),
-                        withParent(withParent(withId(R.id.cart_item_recycler))),
+                        withParent(withParent(withId(R.id.order_item_recycler))),
                         isDisplayed()));
         textView9.check(matches(withText("Caramel")));
 
         ViewInteraction textView10 = onView(
                 allOf(withId(R.id.cart_addin_text), withText("Caramel Drizzle"),
-                        withParent(withParent(withId(R.id.cart_item_recycler))),
+                        withParent(withParent(withId(R.id.order_item_recycler))),
                         isDisplayed()));
         textView10.check(matches(withText("Caramel Drizzle")));
 

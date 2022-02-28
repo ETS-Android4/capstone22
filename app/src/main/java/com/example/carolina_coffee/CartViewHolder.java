@@ -1,7 +1,6 @@
 package com.example.carolina_coffee;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -18,9 +17,9 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public CartViewHolder(View itemView) {
         super(itemView);
 
-        txtDrinkName = (TextView)itemView.findViewById(R.id.cart_item_name);
-        txtDrinkPrice = (TextView)itemView.findViewById(R.id.cart_item_price);
-        addinRecycler = (RecyclerView)itemView.findViewById(R.id.cart_item_recycler);
+        txtDrinkName = (TextView)itemView.findViewById(R.id.order_item_name);
+        txtDrinkPrice = (TextView)itemView.findViewById(R.id.order_item_price);
+        addinRecycler = (RecyclerView)itemView.findViewById(R.id.order_item_recycler);
         removeButton = (AppCompatButton)itemView.findViewById(R.id.cart_remove_button);
 
         itemView.setOnClickListener(this);

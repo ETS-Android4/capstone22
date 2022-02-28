@@ -1,25 +1,24 @@
 package com.example.carolina_coffee;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView txtMenuName;
-    public ImageView imageView;
-
+public class OrderHistoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public TextView drinkName;
+    public TextView drinkPrice;
+    public RecyclerView addins;
     private ItemClickListener itemClickListener;
 
-    public MenuViewHolder(View itemView) {
+    public OrderHistoryViewHolder(View itemView) {
         super(itemView);
 
-        txtMenuName = (TextView)itemView.findViewById(R.id.order_item_name);
-        imageView = (ImageView)itemView.findViewById(R.id.cart_item_image);
+        addins = (RecyclerView)itemView.findViewById(R.id.order_item_recycler);
+        drinkName = (TextView)itemView.findViewById(R.id.order_item_name);
+        drinkPrice = (TextView)itemView.findViewById(R.id.order_item_price);
 
         itemView.setOnClickListener(this);
-
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {

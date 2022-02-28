@@ -162,19 +162,19 @@ public class FindDrinkFromMenuTest {
         bottomNavigationItemView2.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.cart_item_name), withText("Coffee"),
+                allOf(withId(R.id.order_item_name), withText("Coffee"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
         textView.check(matches(withText("Coffee")));
 
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.cart_item_name), withText("Americano"),
+                allOf(withId(R.id.order_item_name), withText("Americano"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
         textView2.check(matches(withText("Americano")));
 
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.cart_item_name), withText("Latte"),
+                allOf(withId(R.id.order_item_name), withText("Latte"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
                         isDisplayed()));
         textView3.check(matches(withText("Latte")));
