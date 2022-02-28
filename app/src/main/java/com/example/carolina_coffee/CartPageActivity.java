@@ -325,7 +325,7 @@ public class CartPageActivity extends AppCompatActivity {
                     }else {
                         //TODO
                         // this error plays when i select payment 1, not sure why.
-                        //Toast.makeText(getApplicationContext(), "You did not select a payment", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "You did not select a payment", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -368,7 +368,7 @@ public class CartPageActivity extends AppCompatActivity {
                         addDataToFireBase(card_1);
                     }
                 }else {
-                    Log.d("tag", "onEvent: Document do not exists");
+                    Toast.makeText(getApplicationContext(), "Payment method does not exist.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -396,7 +396,7 @@ public class CartPageActivity extends AppCompatActivity {
                         addDataToFireBase(card_2);
                     }
                 }else {
-                    Log.d("tag", "onEvent: Document do not exists");
+                    Toast.makeText(getApplicationContext(), "Payment method does not exist.", Toast.LENGTH_LONG).show();
                 }
             }
         });
