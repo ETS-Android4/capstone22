@@ -301,7 +301,7 @@ public class CartPageActivity extends AppCompatActivity {
             user = fAuth.getCurrentUser();
 
             //Confirm Payment Dialog
-            // Creating pop-up dialog box.
+            // Creating pop-up dialog box..
             builder = new AlertDialog.Builder(CartPageActivity.this);
             builder.setTitle("Select Payment Method");
             builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
