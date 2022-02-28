@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
  */
 
         //for rewards
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
         t1=findViewById(R.id.earned_points);
 
         SharedPreferences sp = this.getSharedPreferences("Myscore", Context.MODE_PRIVATE);

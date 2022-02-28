@@ -174,7 +174,7 @@
                 android:paddingBottom="0dp"
                 android:text="Rewards"
                 android:textColor="#FFFFFF"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:backgroundTint="@color/red_ec"
                 app:layout_constraintBottom_toBottomOf="@+id/order_now_box"
                 app:layout_constraintEnd_toEndOf="@+id/order_now_box"
