@@ -74,7 +74,6 @@ public class EditPaymentPlansActivity extends AppCompatActivity {
         // Calling to method that will make this action happen.
         statusBarColor();
         setContentView(R.layout.activity_edit_payment_plans);
-        setContentView(R.layout.activity_edit_payment_plans);
 
         // Delete User DATA for Payment 1 & 2
         //-------------------------------------------
