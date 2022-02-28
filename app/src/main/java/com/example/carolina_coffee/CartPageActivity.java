@@ -44,6 +44,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.prefs.AbstractPreferences;
+import android.widget.TextView;
 
 public class CartPageActivity extends AppCompatActivity {
     //int score=0;
@@ -78,7 +79,9 @@ public class CartPageActivity extends AppCompatActivity {
     String[] items = {"Payment Method 1", "Payment Method 2"};
     String result = "";
 
-
+    //TextView rewardsNum;
+    //Button increase;
+    //int newRewardsNum=0;
 
 
 
@@ -156,13 +159,13 @@ public class CartPageActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         //Load menu
-        recyler_menu = (RecyclerView)findViewById(R.id.reviewOrderRecycler);
+        recyler_menu = findViewById(R.id.reviewOrderRecycler);
         layoutManager = new LinearLayoutManager(this);
         recyler_menu.setLayoutManager(layoutManager);
         recyler_menu.setHasFixedSize(false);
 
         loadCart();
-        cart_price = (TextView)findViewById(R.id.cart_cost_text1);
+        cart_price = findViewById(R.id.cart_cost_text1);
         cart.calaculateCostofCart();
         cart_price.setText("$" + cart.total_cart_price);
 
@@ -171,24 +174,22 @@ public class CartPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cart_page);
         SharedPreferences sp=this.getSharedPreferences("MyScore", Context.MODE_PRIVATE);
         score=sp.getInt("score", 0);
-
          */
+        //Button finalPlaceOrderButtonRewards = findViewById(R.id.finalplaceOrderButton);
+        //finalPlaceOrderButtonRewards.setOnClickListener(this);
+        /*
+        rewardsNum = (TextView) findViewById(R.id.earned_points);
+        increase = (Button) findViewById(R.id.finalplaceOrderButton);
+        increase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newRewardsNum++;
+                rewardsNum.setText(String.valueOf(newRewardsNum));
+            }
+        });
+        */
 
     }
-    /*
-    public void CartPageActivity(View view){
-        score += 1;
-        SharedPreferences sp=getSharedPreferences("Myscore", Context.MODE_PRIVATE);
-        AbstractPreferences editor = null;
-        editor.putInt("score", score);
-        //editor.apply();
-
-        Intent in = new Intent(CartPageActivity.this, MainActivity.class);
-        startActivity(in);
-
-    }
-
-     */
 
     public void backButton(View view) {
         Intent intent = new Intent(this, MenuPageActivity.class);
@@ -345,6 +346,14 @@ public class CartPageActivity extends AppCompatActivity {
             // -----------------------------------------------------
 
         }
+        //for rewards example
+        //TextView textView = findViewById(R.id.point_count_text);{
+        //    textView.setText(1+" ");
+        //}
+        //TextView textView = findViewById(R.id.earned_points);{
+        //    textView.setText(1+" ");
+        //}
+
     }
     public void checkPayment_1_Exists(View view) {
         DocumentReference documentReference = fStore.collection("PaymentMethod_1").document(userID);
@@ -428,7 +437,7 @@ public class CartPageActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: " + e.toString());
+                Log.d(TAG, "onFailure: " + e);
             }
         });
 
@@ -459,7 +468,7 @@ public class CartPageActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: " + e.toString());
+                Log.d(TAG, "onFailure: " + e);
             }
         });
 
@@ -469,6 +478,7 @@ public class CartPageActivity extends AppCompatActivity {
         overridePendingTransition(0, 0);
         startActivity(intent);
         Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CartPageActivity.this, "You've earned a reward point!", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -477,4 +487,14 @@ public class CartPageActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
         return true;
     }
+/*
+    @Override
+    public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.payPageButton:
+                    Toast.makeText(this, "You've earned" +1+" reward point!" , Toast.LENGTH_SHORT).show();
+                    break;
+            }
+    }
+ */
 }

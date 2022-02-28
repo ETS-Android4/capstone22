@@ -52,8 +52,10 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_blank_inbox_saved"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
 
 
@@ -155,6 +157,31 @@
                 app:layout_constraintStart_toStartOf="@+id/order_now_box"
                 app:layout_constraintTop_toBottomOf="@+id/order_now2"
                 app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/testRewardsButton"
+                android:layout_width="97dp"
+                android:layout_height="56dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                android:fontFamily="@font/sofia_regular"
+                android:foreground="@drawable/ripple_grayc1c1"
+                android:letterSpacing="0.25"
+
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="rewards Test"
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@color/red_ec"
+                app:layout_constraintBottom_toBottomOf="@+id/order_now_box"
+                app:layout_constraintEnd_toEndOf="@+id/order_now_box"
+                app:layout_constraintHorizontal_bias="0.973"
+                app:layout_constraintStart_toStartOf="@+id/order_now_box"
+                app:layout_constraintTop_toTopOf="@+id/order_now_box"
+                app:layout_constraintVertical_bias="0.861"
+                tools:ignore="NotSibling" />
 
             <TextView
                 android:id="@+id/account_box"
@@ -288,6 +315,7 @@
                 app:layout_constraintStart_toStartOf="@+id/circle_coffee"
                 app:layout_constraintTop_toTopOf="@+id/circle_coffee"
                 app:srcCompat="@drawable/coffee_cup" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

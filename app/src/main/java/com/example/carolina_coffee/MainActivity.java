@@ -31,8 +31,8 @@ import com.google.firebase.storage.StorageReference;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    //TextView t1;
-    //int score=0;
+    TextView t1;
+    int score=0;
     TextView fullName,email,phone;
     TextView caccount_box, caccount_settings, caccount_settings2;
     Button cact_btn;
@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView loadingImage;
 
     private Button loginButton;
+    TextView rewardsNum;
+    Button increase;
+    int newRewardsNum=0;
 
 
     @Override
@@ -156,16 +159,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
  */
-        /*
+
         //for rewards
         setContentView(R.layout.activity_main);
         t1=findViewById(R.id.earned_points);
 
         SharedPreferences sp = this.getSharedPreferences("Myscore", Context.MODE_PRIVATE);
-        score = sp.getInt("score", 0);
-        t1.setText(Integer.toString(score));
+        newRewardsNum = sp.getInt("score", 0);
+        t1.setText(Integer.toString(newRewardsNum));
 
-         */
+        rewardsNum = (TextView) findViewById(R.id.earned_points);
+        increase = (Button) findViewById(R.id.testRewardsButton);
+        increase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newRewardsNum++;
+                rewardsNum.setText(String.valueOf(newRewardsNum));
+            }
+        });
+
 
     }
 
