@@ -160,8 +160,8 @@
 
             <Button
                 android:id="@+id/testRewardsButton"
-                android:layout_width="97dp"
-                android:layout_height="56dp"
+                android:layout_width="101dp"
+                android:layout_height="36dp"
                 android:background="@drawable/profile_page_all_curved_corners_red"
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
@@ -172,15 +172,15 @@
                 android:paddingTop="0dp"
                 android:paddingEnd="0dp"
                 android:paddingBottom="0dp"
-                android:text="rewards Test"
+                android:text="Rewards"
                 android:textColor="#FFFFFF"
                 app:backgroundTint="@color/red_ec"
                 app:layout_constraintBottom_toBottomOf="@+id/order_now_box"
                 app:layout_constraintEnd_toEndOf="@+id/order_now_box"
-                app:layout_constraintHorizontal_bias="0.973"
+                app:layout_constraintHorizontal_bias="0.908"
                 app:layout_constraintStart_toStartOf="@+id/order_now_box"
                 app:layout_constraintTop_toTopOf="@+id/order_now_box"
-                app:layout_constraintVertical_bias="0.861"
+                app:layout_constraintVertical_bias="0.947"
                 tools:ignore="NotSibling" />
 
             <TextView
