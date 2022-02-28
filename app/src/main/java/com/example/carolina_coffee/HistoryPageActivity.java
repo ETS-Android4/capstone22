@@ -106,10 +106,6 @@ public class HistoryPageActivity extends AppCompatActivity {
                     //c_drink.setText(documentSnapshot.get("Drinks").toString());
                     //c_price.setText("Total Price = $"+documentSnapshot.get("Order_Price").toString());
 
-                    //LOAD ORDER WITH ORDER NUMBER
-                         //DRINKS ARRAY FOR ORDER
-                            //LOAD DRINKS
-                                //LOAD ADDINS OF DRINKS
 
                     //Load menu
                     recyler_menu = (RecyclerView)findViewById(R.id.history_recycler_view);
