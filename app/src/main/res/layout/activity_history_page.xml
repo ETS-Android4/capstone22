@@ -29,16 +29,15 @@
         app:backgroundTint="@color/red_ec"
         app:layout_constraintBottom_toBottomOf="@+id/whiteBox"
         app:layout_constraintEnd_toEndOf="@+id/whiteBox"
-        app:layout_constraintStart_toStartOf="@+id/whiteBox"
-        app:layout_constraintTop_toBottomOf="@+id/messageList" />
+        app:layout_constraintStart_toStartOf="@+id/whiteBox" />
 
     <TextView
         android:id="@+id/whiteBox"
-        android:layout_width="342dp"
-        android:layout_height="425dp"
+        android:layout_width="344dp"
+        android:layout_height="486dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/profile_page_bottom_curved_box"
-        android:backgroundTint="#99FFFFFF"
+        android:backgroundTint="#D22C2626"
         android:fontFamily="@font/sofia_regular"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
@@ -47,7 +46,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topMessage5" />
 
     <TextView
         android:id="@+id/historyTopBox1"
@@ -105,39 +105,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation_items" />
 
-    <TextView
-        android:id="@+id/drink1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/sofia_regular"
-        android:text="Drinks: "
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="@+id/whiteBox"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/whiteBox"
-        app:layout_constraintTop_toTopOf="@+id/whiteBox" />
+        app:layout_constraintTop_toBottomOf="@+id/card_used" />
 
     <TextView
-        android:id="@+id/total_price"
+        android:id="@+id/orderNameAndPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/sofia_regular"
-        android:text="Total Price: $"
+        android:text="History"
+        android:textColor="#EAE0E0"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/whiteBox"
         app:layout_constraintStart_toStartOf="@+id/whiteBox"
-        app:layout_constraintTop_toBottomOf="@+id/drink1" />
+        app:layout_constraintTop_toTopOf="@+id/whiteBox" />
 
     <TextView
         android:id="@+id/card_used"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:fontFamily="@font/sofia_regular"
-        android:text="Card Used:"
-        app:layout_constraintStart_toStartOf="@+id/whiteBox"
-        app:layout_constraintTop_toBottomOf="@+id/total_price" />
+        android:text="Currently no order history"
+        android:textColor="#EAE0E0"
+        app:layout_constraintEnd_toEndOf="@+id/orderNameAndPrice"
+        app:layout_constraintStart_toStartOf="@+id/orderNameAndPrice"
+        app:layout_constraintTop_toBottomOf="@+id/orderNameAndPrice" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
