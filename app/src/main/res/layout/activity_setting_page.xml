@@ -347,6 +347,7 @@
                         android:textAlignment="viewStart"
                         android:textColor="#000000"
                         android:textStyle="bold"
+                        android:visibility="invisible"
                         app:backgroundTint="@color/c1c1_gray"
                         app:itemRippleColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
