@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class HistoryPageActivity extends AppCompatActivity {
 
-    TextView c_drink, c_price;
+    TextView c_drink, c_price, c_card_used;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
@@ -67,6 +67,7 @@ public class HistoryPageActivity extends AppCompatActivity {
         //------------------------------------------
         c_drink = findViewById(R.id.drink1);
         c_price = findViewById(R.id.total_price);
+        c_card_used = findViewById(R.id.card_used);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -87,9 +88,16 @@ public class HistoryPageActivity extends AppCompatActivity {
                     // Currently this below is not formatting correctly.
                     // Im not sure how to call sub collection or child of Drinks array map.
                     c_drink.setText(documentSnapshot.get("Drinks").toString());
+
+
+                    // Displays total price PAID. $$
                     c_price.setText("Total Price = $"+documentSnapshot.get("Order_Price").toString());
 
-
+                    //Display last 4 digits of card to set Text.
+                    String card_used = documentSnapshot.getString("Payment_Used");
+                    String lastFourDigits = "";
+                    lastFourDigits = card_used.substring(card_used.length() - 4);
+                    c_card_used.setText("Card Used: xxxx-xxxx-xxxx-"+lastFourDigits);
 
                 }else {
                     Log.d("tag", "onEvent: Document do not exists");
