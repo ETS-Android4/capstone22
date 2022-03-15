@@ -1,10 +1,13 @@
 package com.example.carolina_coffee;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -24,11 +27,17 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     TextView t1;
@@ -46,8 +55,24 @@ public class MainActivity extends AppCompatActivity {
 
     private Button loginButton;
     TextView rewardsNum;
-    Button increase;
+    Button increase, decrease;
     int newRewardsNum=0;
+
+    // Rewards Increment - save data
+    private TextView point_bar_red_p1;
+    private TextView point_bar_red_p2;
+    private TextView point_bar_red_p3;
+    private TextView point_bar_red_p4;
+    private TextView circle_coffee_MAX;
+    Button redeem_rewards_btn;
+    public static final String SHARED_PREF = "Myscore";
+    public static final String SHARED_PREFS = "sharedPrefs";
+    private static final String TAG = "TAG";
+
+    //Dialog box for payment method
+    AlertDialog dialog;
+    AlertDialog.Builder builder;
+    String result = "";
 
 
     @Override
@@ -67,13 +92,6 @@ public class MainActivity extends AppCompatActivity {
         // Calling to method that will make this action happen.
         statusBarColor();
         setContentView(R.layout.activity_main);
-
-
-
-
-
-
-
 
 
 
@@ -139,47 +157,244 @@ public class MainActivity extends AppCompatActivity {
             caccount_settings2.setVisibility(View.VISIBLE);
             cact_btn.setVisibility(View.VISIBLE);
         }
-
-
-
-
         // -----------------------------------------------------
 
 
 
-
-
-/*
-        loginButton = (Button) findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openLoginActivity2();
-            }
-        });
-
- */
-
-        //for rewards
+        //for rewards - Modified by Chris
         //setContentView(R.layout.activity_main);
+        // --------------------------------------------------------------------------------------------
+        point_bar_red_p1 = findViewById(R.id.point_bar_red_p1);
+        point_bar_red_p2 = findViewById(R.id.point_bar_red_p2);
+        point_bar_red_p3 = findViewById(R.id.point_bar_red_p3);
+        point_bar_red_p4 = findViewById(R.id.point_bar_red_p4);
+        circle_coffee_MAX = findViewById(R.id.circle_coffee_MAX);
+        redeem_rewards_btn = findViewById(R.id.redeem_rewards_btn);
         t1=findViewById(R.id.earned_points);
 
-        SharedPreferences sp = this.getSharedPreferences("Myscore", Context.MODE_PRIVATE);
-        newRewardsNum = sp.getInt("score", 0);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
+        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
         t1.setText(Integer.toString(newRewardsNum));
-
         rewardsNum = (TextView) findViewById(R.id.earned_points);
+
+        // Increase Button tester / code.
         increase = (Button) findViewById(R.id.testRewardsButton);
         increase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 newRewardsNum++;
                 rewardsNum.setText(String.valueOf(newRewardsNum));
+                setBars();
+
+                saveRewardData();
             }
         });
 
+        // Decrease Button Tester / code
+        decrease = (Button) findViewById(R.id.testRewardsButton2);
+        decrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // only allows decrements if greater than or equal to 4.
+                if(newRewardsNum >= 4) {
+                    newRewardsNum --;
+                    newRewardsNum --;
+                    newRewardsNum --;
+                    newRewardsNum --;
+                } else {
+                    return;
+                }
+                rewardsNum.setText(String.valueOf(newRewardsNum));
+                setBars();
+                saveRewardData();
+            }
+        });
+
+        // Redeem Rewards Button
+        redeem_rewards_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Creating pop-up dialog box..
+                builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("You have a $5 Coupon!");
+                builder.setMessage("In order to redeem your $5 coupon, you must have a minimum purchase of $6.");
+
+                // YES button - User clicked YES
+                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(getApplicationContext(), MenuPageActivity.class));
+                        overridePendingTransition(0,0);
+                    }
+                });
+
+                // CANCEL button - user clicked CANCEL
+                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        result = "";
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
+                // -----------------------------------------------------
+            }
+        });
+        // Needed to update rewards.
+        updateRewards();
+
+        // End of increment Rewards.
+        // --------------------------------------------------------------------------------------------
+
+
+
 
     }
+    // Working function for Rewards Increments
+    //----------------------------------------------------------------------------------------------
+    private void setBars() {
+        if(newRewardsNum == 0) {
+            point_bar_red_p1.setVisibility(View.INVISIBLE);
+            point_bar_red_p2.setVisibility(View.INVISIBLE);
+            point_bar_red_p3.setVisibility(View.INVISIBLE);
+            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            // Increment.
+            int increment = 0;
+            incrementRewards(increment);
+        } else if(newRewardsNum == 1) {
+            point_bar_red_p1.setVisibility(View.VISIBLE);
+            point_bar_red_p2.setVisibility(View.INVISIBLE);
+            point_bar_red_p3.setVisibility(View.INVISIBLE);
+            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            // Increment.
+            int increment = 1;
+            incrementRewards(increment);
+        } else if(newRewardsNum == 2) {
+            point_bar_red_p1.setVisibility(View.VISIBLE);
+            point_bar_red_p2.setVisibility(View.VISIBLE);
+            point_bar_red_p3.setVisibility(View.INVISIBLE);
+            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            // Increment.
+            int increment = 2;
+            incrementRewards(increment);
+        } else if(newRewardsNum == 3) {
+            point_bar_red_p1.setVisibility(View.VISIBLE);
+            point_bar_red_p2.setVisibility(View.VISIBLE);
+            point_bar_red_p3.setVisibility(View.VISIBLE);
+            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            // Increment.
+            int increment = 3;
+            incrementRewards(increment);
+        } else if(newRewardsNum == 4) {
+            point_bar_red_p1.setVisibility(View.VISIBLE);
+            point_bar_red_p2.setVisibility(View.VISIBLE);
+            point_bar_red_p3.setVisibility(View.VISIBLE);
+            point_bar_red_p4.setVisibility(View.VISIBLE);
+            circle_coffee_MAX.setVisibility(View.VISIBLE);
+            // Increment.
+            int increment = 4;
+            incrementRewards(increment);
+        } else if(newRewardsNum < 0) {
+            // Something went wrong if this happens
+            point_bar_red_p1.setVisibility(View.INVISIBLE);
+            point_bar_red_p2.setVisibility(View.INVISIBLE);
+            point_bar_red_p3.setVisibility(View.INVISIBLE);
+            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            circle_coffee_MAX.setVisibility(View.VISIBLE);
+            // Increment.
+            int increment = 0;
+            incrementRewards(increment);
+        } else {
+            point_bar_red_p1.setVisibility(View.VISIBLE);
+            point_bar_red_p2.setVisibility(View.VISIBLE);
+            point_bar_red_p3.setVisibility(View.VISIBLE);
+            point_bar_red_p4.setVisibility(View.VISIBLE);
+            circle_coffee_MAX.setVisibility(View.VISIBLE);
+            // Increment.
+            //int increment = 5;
+            int increment = newRewardsNum;
+            incrementRewards(increment);
+        }
+        //Display / Update Redeem button
+        secret_Menu_FireBase();
+    }
+
+    // Add increment to firebase.
+    private void incrementRewards(int increment) {
+        FirebaseUser fuser = fAuth.getCurrentUser();
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
+        Map<String,Object> user = new HashMap<>();
+        user.put("Increment", increment );
+        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e);
+            }
+        });
+    }
+
+    private void saveRewardData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(SHARED_PREF, newRewardsNum);
+        editor.apply();
+        Toast.makeText(this, "Rewards Saved", Toast.LENGTH_SHORT).show();
+    }
+    public void updateRewards() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
+        rewardsNum.setText(String.valueOf(newRewardsNum));
+        setBars();
+    }
+
+    public void secret_Menu_FireBase() {
+        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot.exists()) {
+                    // Checks firebase and which value is located in increment to update buttons.
+                    if(documentSnapshot.getLong("Increment") == 0) {
+                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        return;
+                    } else if(documentSnapshot.getLong("Increment") == 1) {
+                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        return;
+                    } else if(documentSnapshot.getLong("Increment") == 2) {
+                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        return;
+                    } else if(documentSnapshot.getLong("Increment") == 3) {
+                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        return;
+                    } else if(documentSnapshot.getLong("Increment") == 4) {
+                        redeem_rewards_btn.setVisibility(View.VISIBLE);
+                        return;
+                    } else {
+                        redeem_rewards_btn.setVisibility(View.VISIBLE);
+                        return;
+                    }
+                } else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                }
+            }
+        });
+    }
+
+    // END OF Working function for Rewards Increments
+    //----------------------------------------------------------------------------------------------
+
+
 
     // Status Bar Color
     public void statusBarColor() {
@@ -190,20 +405,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    //Fire Base Sign Out Method
-    public void logout(View view) {
-        // Logout
-        FirebaseAuth.getInstance().signOut();
-        // Send user to login page
-        startActivity(new Intent(getApplicationContext(), LoginPageAtivity.class));
-        overridePendingTransition(0,0);
-        finish();
-    }
-     */
-
     public void historyPageButton(View view) {
-        Intent intent = new Intent(this, HistoryPageActivity.class);
+        //Takes user to duplicate history page, except this dupe page allows back buttons to send user to home screen instead.
+        Intent intent = new Intent(this, HistoryPageActivity2.class);
         startActivity(intent);
     }
     public void inboxPage(View view) {
@@ -219,6 +423,5 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
         return true;
     }
-
 
 }

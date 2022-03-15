@@ -197,9 +197,15 @@
         android:id="@+id/resendCode"
         android:layout_width="139dp"
         android:layout_height="47dp"
+        android:background="@drawable/profile_page_all_curved_corners_red"
+        android:backgroundTint="@color/red_ec"
+        android:foreground="@drawable/ripple_grayc1c1"
+
         android:text="resendCode"
-        android:visibility="invisible"
         android:textColor="@color/black"
+        android:visibility="invisible"
+        app:backgroundTint="@color/red_ec"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

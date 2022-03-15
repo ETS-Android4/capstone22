@@ -80,7 +80,7 @@
                 android:id="@+id/point_count_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/sofia_regular"
                 android:letterSpacing="0.1"
                 android:text="points collected!"
@@ -160,28 +160,76 @@
 
             <Button
                 android:id="@+id/testRewardsButton"
-                android:layout_width="101dp"
+                android:layout_width="wrap_content"
                 android:layout_height="36dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/profile_page_all_curved_corners_red"
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
-                android:letterSpacing="0.25"
 
+                android:letterSpacing="0.25"
                 android:paddingStart="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingEnd="0dp"
                 android:paddingBottom="0dp"
-                android:text="Rewards"
+                android:text="  Increment  "
                 android:textColor="#FFFFFF"
                 android:visibility="invisible"
                 app:backgroundTint="@color/red_ec"
-                app:layout_constraintBottom_toBottomOf="@+id/order_now_box"
-                app:layout_constraintEnd_toEndOf="@+id/order_now_box"
-                app:layout_constraintHorizontal_bias="0.908"
-                app:layout_constraintStart_toStartOf="@+id/order_now_box"
-                app:layout_constraintTop_toTopOf="@+id/order_now_box"
-                app:layout_constraintVertical_bias="0.947"
+                app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
+                app:layout_constraintHorizontal_bias="0.893"
+                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
+                app:layout_constraintTop_toBottomOf="@+id/rewards_white_box_top"
+                tools:ignore="NotSibling" />
+
+            <Button
+                android:id="@+id/redeem_rewards_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+
+                android:fontFamily="@font/sofia_regular"
+                android:foreground="@drawable/ripple_grayc1c1"
+                android:letterSpacing="0.25"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="  Redeem  "
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"
+                app:backgroundTint="@color/red_ec"
+                app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
+                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
+                app:layout_constraintTop_toBottomOf="@+id/point_count_text"
+                tools:ignore="NotSibling" />
+
+            <Button
+                android:id="@+id/testRewardsButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                android:fontFamily="@font/sofia_regular"
+                android:foreground="@drawable/ripple_grayc1c1"
+
+                android:letterSpacing="0.25"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="  Decr  "
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"
+                app:backgroundTint="@color/red_ec"
+                app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
+                app:layout_constraintHorizontal_bias="0.071"
+                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
+                app:layout_constraintTop_toBottomOf="@+id/rewards_white_box_top"
                 tools:ignore="NotSibling" />
 
             <TextView
@@ -257,45 +305,82 @@
 
             <TextView
                 android:id="@+id/earned_points"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sofia_regular"
                 android:letterSpacing="0.1"
                 android:text="0"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="@+id/rewards_white_box_top"
-                app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
-                app:layout_constraintHorizontal_bias="0.092"
+                app:layout_constraintEnd_toStartOf="@+id/point_count_text"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
                 app:layout_constraintTop_toTopOf="@+id/rewards_white_box_top"
-                app:layout_constraintVertical_bias="0.275" />
+                app:layout_constraintVertical_bias="0.181" />
 
             <TextView
-                android:id="@+id/point_bar_leftside"
+                android:id="@+id/point_bar_leftside_gray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="100dp"
                 android:background="@drawable/settings_page_all_gray_curved_corners"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
                 app:layout_constraintHorizontal_bias="0.479"
                 app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
                 app:layout_constraintTop_toBottomOf="@+id/point_count_text" />
 
             <TextView
-                android:id="@+id/point_bar_leftside2"
-                android:layout_width="match_parent"
+                android:id="@+id/point_bar_red_p1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="-1dp"
                 android:layout_marginEnd="150dp"
-                android:background="@drawable/profile_page_all_curved_corners_red"
-                app:layout_constraintEnd_toEndOf="@+id/rewards_white_box_top"
-                app:layout_constraintHorizontal_bias="0.479"
-                app:layout_constraintStart_toStartOf="@+id/rewards_white_box_top"
-                app:layout_constraintTop_toBottomOf="@+id/point_count_text" />
+                android:background="@drawable/red_all_curved_corners"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintHorizontal_bias="0.233"
+                app:layout_constraintStart_toStartOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside_gray" />
+
+            <TextView
+                android:id="@+id/point_bar_red_p2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/red_all_curved_corners"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintHorizontal_bias="0.233"
+                app:layout_constraintStart_toStartOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside_gray" />
+
+            <TextView
+                android:id="@+id/point_bar_red_p3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:background="@drawable/red_all_curved_corners"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintHorizontal_bias="0.233"
+                app:layout_constraintStart_toStartOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside_gray" />
+
+            <TextView
+                android:id="@+id/point_bar_red_p4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_all_curved_corners"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintHorizontal_bias="0.233"
+                app:layout_constraintStart_toStartOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside_gray" />
 
             <TextView
                 android:id="@+id/circle_coffee"
@@ -303,12 +388,23 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="-5dp"
                 android:background="@drawable/settings_page_all_gray_curved_corners"
-                app:layout_constraintBottom_toBottomOf="@+id/point_bar_leftside"
-                app:layout_constraintStart_toEndOf="@+id/point_bar_leftside"
-                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside" />
+                app:layout_constraintBottom_toBottomOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintStart_toEndOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside_gray" />
+
+            <TextView
+                android:id="@+id/circle_coffee_MAX"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="-5dp"
+                android:background="@drawable/red_all_curved_corners"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintStart_toEndOf="@+id/point_bar_leftside_gray"
+                app:layout_constraintTop_toTopOf="@+id/point_bar_leftside_gray" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/coffee_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 app:layout_constraintBottom_toBottomOf="@+id/circle_coffee"

@@ -44,9 +44,12 @@
             android:layout_marginTop="555dp"
             android:layout_marginEnd="80dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/roundedbutton"
-            android:backgroundTint="@color/red_ec"
             android:text="Save"
+            android:background="@drawable/profile_page_all_curved_corners_red"
+            android:backgroundTint="@color/red_ec"
+            app:backgroundTint="@color/red_ec"
+            android:foreground="@drawable/ripple_grayc1c1"
+
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp" />

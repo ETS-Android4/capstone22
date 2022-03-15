@@ -16,6 +16,12 @@
         android:theme="@style/splashScreenTheme"
         tools:replace="android:label">
         <activity
+            android:name=".MenuPageActivity_Rewards"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryPageActivity2"
+            android:exported="false" />
+        <activity
             android:name=".PaymentMethod_2_Activity"
             android:exported="false" />
         <activity
