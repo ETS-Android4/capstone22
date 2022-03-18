@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     int newRewardsNum=0;
 
     // Rewards Increment - save data
+    private ProgressBar progressBar;
     private TextView point_bar_red_p1;
     private TextView point_bar_red_p2;
     private TextView point_bar_red_p3;
@@ -171,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
         circle_coffee_MAX = findViewById(R.id.circle_coffee_MAX);
         redeem_rewards_btn = findViewById(R.id.redeem_rewards_btn);
         t1=findViewById(R.id.earned_points);
+        progressBar = findViewById(R.id.default_gray_circle);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
         newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
@@ -211,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Redeem Rewards Button
-        redeem_rewards_btn.setOnClickListener(new View.OnClickListener() {
+        circle_coffee_MAX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Creating pop-up dialog box..
@@ -252,68 +255,76 @@ public class MainActivity extends AppCompatActivity {
     }
     // Working function for Rewards Increments
     //----------------------------------------------------------------------------------------------
+
     private void setBars() {
         if(newRewardsNum == 0) {
-            point_bar_red_p1.setVisibility(View.INVISIBLE);
-            point_bar_red_p2.setVisibility(View.INVISIBLE);
-            point_bar_red_p3.setVisibility(View.INVISIBLE);
-            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            //point_bar_red_p1.setVisibility(View.INVISIBLE);
+            //point_bar_red_p2.setVisibility(View.INVISIBLE);
+            //point_bar_red_p3.setVisibility(View.INVISIBLE);
+            //point_bar_red_p4.setVisibility(View.INVISIBLE);
             circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            progressBar.setProgress(0);
             // Increment.
             int increment = 0;
             incrementRewards(increment);
         } else if(newRewardsNum == 1) {
-            point_bar_red_p1.setVisibility(View.VISIBLE);
-            point_bar_red_p2.setVisibility(View.INVISIBLE);
-            point_bar_red_p3.setVisibility(View.INVISIBLE);
-            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            //point_bar_red_p1.setVisibility(View.VISIBLE);
+            //point_bar_red_p2.setVisibility(View.INVISIBLE);
+            //point_bar_red_p3.setVisibility(View.INVISIBLE);
+            //point_bar_red_p4.setVisibility(View.INVISIBLE);
             circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            progressBar.setProgress(12);
             // Increment.
             int increment = 1;
             incrementRewards(increment);
         } else if(newRewardsNum == 2) {
-            point_bar_red_p1.setVisibility(View.VISIBLE);
-            point_bar_red_p2.setVisibility(View.VISIBLE);
-            point_bar_red_p3.setVisibility(View.INVISIBLE);
-            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            //point_bar_red_p1.setVisibility(View.VISIBLE);
+            //point_bar_red_p2.setVisibility(View.VISIBLE);
+            //point_bar_red_p3.setVisibility(View.INVISIBLE);
+            //point_bar_red_p4.setVisibility(View.INVISIBLE);
             circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            progressBar.setProgress(25);
             // Increment.
             int increment = 2;
             incrementRewards(increment);
         } else if(newRewardsNum == 3) {
-            point_bar_red_p1.setVisibility(View.VISIBLE);
-            point_bar_red_p2.setVisibility(View.VISIBLE);
-            point_bar_red_p3.setVisibility(View.VISIBLE);
-            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            //point_bar_red_p1.setVisibility(View.VISIBLE);
+            //point_bar_red_p2.setVisibility(View.VISIBLE);
+            //point_bar_red_p3.setVisibility(View.VISIBLE);
+            //point_bar_red_p4.setVisibility(View.INVISIBLE);
             circle_coffee_MAX.setVisibility(View.INVISIBLE);
+            progressBar.setProgress(37);
             // Increment.
             int increment = 3;
             incrementRewards(increment);
         } else if(newRewardsNum == 4) {
-            point_bar_red_p1.setVisibility(View.VISIBLE);
-            point_bar_red_p2.setVisibility(View.VISIBLE);
-            point_bar_red_p3.setVisibility(View.VISIBLE);
-            point_bar_red_p4.setVisibility(View.VISIBLE);
+            //point_bar_red_p1.setVisibility(View.VISIBLE);
+            //point_bar_red_p2.setVisibility(View.VISIBLE);
+            //point_bar_red_p3.setVisibility(View.VISIBLE);
+            //point_bar_red_p4.setVisibility(View.VISIBLE);
             circle_coffee_MAX.setVisibility(View.VISIBLE);
+            progressBar.setProgress(100);
             // Increment.
             int increment = 4;
             incrementRewards(increment);
         } else if(newRewardsNum < 0) {
             // Something went wrong if this happens
-            point_bar_red_p1.setVisibility(View.INVISIBLE);
-            point_bar_red_p2.setVisibility(View.INVISIBLE);
-            point_bar_red_p3.setVisibility(View.INVISIBLE);
-            point_bar_red_p4.setVisibility(View.INVISIBLE);
+            //point_bar_red_p1.setVisibility(View.INVISIBLE);
+            //point_bar_red_p2.setVisibility(View.INVISIBLE);
+            //point_bar_red_p3.setVisibility(View.INVISIBLE);
+            //point_bar_red_p4.setVisibility(View.INVISIBLE);
             circle_coffee_MAX.setVisibility(View.VISIBLE);
+            progressBar.setProgress(0);
             // Increment.
             int increment = 0;
             incrementRewards(increment);
         } else {
-            point_bar_red_p1.setVisibility(View.VISIBLE);
-            point_bar_red_p2.setVisibility(View.VISIBLE);
-            point_bar_red_p3.setVisibility(View.VISIBLE);
-            point_bar_red_p4.setVisibility(View.VISIBLE);
+            //point_bar_red_p1.setVisibility(View.VISIBLE);
+            //point_bar_red_p2.setVisibility(View.VISIBLE);
+            //point_bar_red_p3.setVisibility(View.VISIBLE);
+            //point_bar_red_p4.setVisibility(View.VISIBLE);
             circle_coffee_MAX.setVisibility(View.VISIBLE);
+            progressBar.setProgress(100);
             // Increment.
             //int increment = 5;
             int increment = newRewardsNum;
@@ -366,22 +377,22 @@ public class MainActivity extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     // Checks firebase and which value is located in increment to update buttons.
                     if(documentSnapshot.getLong("Increment") == 0) {
-                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        circle_coffee_MAX.setVisibility(View.INVISIBLE);
                         return;
                     } else if(documentSnapshot.getLong("Increment") == 1) {
-                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        circle_coffee_MAX.setVisibility(View.INVISIBLE);
                         return;
                     } else if(documentSnapshot.getLong("Increment") == 2) {
-                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        circle_coffee_MAX.setVisibility(View.INVISIBLE);
                         return;
                     } else if(documentSnapshot.getLong("Increment") == 3) {
-                        redeem_rewards_btn.setVisibility(View.INVISIBLE);
+                        circle_coffee_MAX.setVisibility(View.INVISIBLE);
                         return;
                     } else if(documentSnapshot.getLong("Increment") == 4) {
-                        redeem_rewards_btn.setVisibility(View.VISIBLE);
+                        circle_coffee_MAX.setVisibility(View.VISIBLE);
                         return;
                     } else {
-                        redeem_rewards_btn.setVisibility(View.VISIBLE);
+                        circle_coffee_MAX.setVisibility(View.VISIBLE);
                         return;
                     }
                 } else {
