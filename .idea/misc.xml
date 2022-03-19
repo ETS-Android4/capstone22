@@ -52,9 +52,10 @@
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/drawable/support_red_box.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/drawable/top_page_red_curved.xml" value="0.5703125" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/drawable/top_page_red_curved_sides.xml" value="0.5703125" />
+        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/drawable/white_box_red_stroke.xml" value="0.4785" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/font/sofia.xml" value="0.396875" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_app_settings_page.xml" value="0.5" />
-        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.33" />
+        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_cart_page.xml" value="0.5" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_customer_support_page.xml" value="0.5" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_defaultpage_examplecode.xml" value="0.25" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_edit_payment_plans.xml" value="0.55" />
@@ -66,13 +67,14 @@
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_menu.xml" value="0.33" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_menu_page_rewards.xml" value="0.55" />
-        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_order_menu_page.xml" value="0.33" />
+        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_order_menu_page.xml" value="0.5" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_payment.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_payment_method1.xml" value="0.33" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_profile.xml" value="0.5" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_rewards.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_saved_orders_page.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_setting_page.xml" value="0.33" />
+        <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/activity_setting_page.xml" value="0.5" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/addin_category.xml" value="0.55" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/cart_addin.xml" value="0.55" />
         <entry key="..\:/Users/chw52/AndroidStudioProjects/capstone22/app/src/main/res/layout/checkbox_item.xml" value="0.55" />

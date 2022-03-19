@@ -10,9 +10,9 @@
 
     <TextView
         android:id="@+id/historyTopBox1"
-        android:layout_width="417dp"
+        android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/top_page_red_curved_sides"
         android:fontFamily="@font/sofia_regular"
         android:text="Menu"
         android:textAlignment="center"
@@ -37,9 +37,9 @@
 
     <TextView
         android:id="@+id/topMessage5"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="26dp"
-        android:background="@drawable/profile_page_top_curved_box"
+        android:background="@drawable/top_page_red_curved"
         android:fontFamily="@font/sofia_regular"
         android:text="@string/customize_your_drink"
         android:textAlignment="center"
@@ -70,11 +70,11 @@
         android:layout_height="130dp"
         android:layout_marginTop="432dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/profile_page_top_curved_box"
         android:fontFamily="@font/sofia_regular"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
+        android:background="@drawable/top_page_red_curved"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"

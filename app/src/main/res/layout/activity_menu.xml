@@ -23,9 +23,9 @@
 
     <TextView
         android:id="@+id/historyTopBox2"
-        android:layout_width="417dp"
+        android:layout_width="match_parent"
         android:layout_height="96dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/top_page_red_curved_sides"
         android:fontFamily="@font/sofia_regular"
         android:text="Menu"
         android:textAlignment="center"
@@ -37,9 +37,9 @@
 
     <TextView
         android:id="@+id/topMessage3"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="26dp"
-        android:background="@drawable/profile_page_top_curved_box"
+        android:background="@drawable/top_page_red_curved"
         android:fontFamily="@font/sofia_regular"
         android:text="Choose your drink"
         android:textAlignment="center"
