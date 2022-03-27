@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
@@ -19,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,6 +48,10 @@ public class RegisterPageActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     String userID;
+
+    // Rewards Increment - save data
+    public static final String SHARED_PREF = "Myscore";
+    public static final String SHARED_PREFS = "sharedPrefs";
 
 
 
@@ -257,6 +263,7 @@ public class RegisterPageActivity extends AppCompatActivity {
 
                                     //DECLARING Users rewards status to zero on firebase.
                                     declareUsersRewardStatusToZero();
+                                    //declareUsersSHARED_PREF_Zero();
 
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
@@ -314,6 +321,15 @@ public class RegisterPageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Declare SHARED PREF to zero if user makes new account
+    private void declareUsersSHARED_PREF_Zero() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(SHARED_PREF, 0);
+        editor.apply();
     }
 
 

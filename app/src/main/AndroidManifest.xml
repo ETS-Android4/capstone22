@@ -16,6 +16,9 @@
         android:theme="@style/splashScreenTheme"
         tools:replace="android:label">
         <activity
+            android:name=".Example_Increment_FireBase_Code"
+            android:exported="false" />
+        <activity
             android:name=".MenuPageActivity_Rewards"
             android:exported="false" />
         <activity

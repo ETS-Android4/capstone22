@@ -52,10 +52,10 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_blank_inbox_saved"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints">
 
 
@@ -231,6 +231,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/order_now_box" />
 
+            <Button
+                android:id="@+id/example_page_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginTop="136dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                android:fontFamily="@font/sofia_regular"
+                android:foreground="@drawable/ripple_grayc1c1"
+                android:letterSpacing="0.25"
+                android:onClick="example_page"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="0dp"
+                android:text="   example page   "
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:backgroundTint="@color/red_ec"
+                app:layout_constraintTop_toBottomOf="@+id/account_box"
+                tools:layout_editor_absoluteX="105dp" />
+
             <TextView
                 android:id="@+id/account_settings"
                 android:layout_width="wrap_content"
@@ -267,6 +289,7 @@
                 android:id="@+id/act_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/profile_page_all_curved_corners_red"
                 android:fontFamily="@font/sofia_regular"
                 android:foreground="@drawable/ripple_grayc1c1"
@@ -281,7 +304,6 @@
                 android:textColor="#FFFFFF"
                 android:visibility="invisible"
                 app:backgroundTint="@color/red_ec"
-                android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
                 app:layout_constraintEnd_toEndOf="@+id/account_box"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -422,9 +444,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/red_all_curved_corners"
-                android:visibility="invisible"
-
                 android:foreground="@drawable/ripple_grayc1c1"
+
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/rewards_white_box_top"
                 app:layout_constraintEnd_toEndOf="@+id/point_count_text"
                 app:layout_constraintHorizontal_bias="0.491"
@@ -436,8 +458,8 @@
                 android:id="@+id/coffee_icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:visibility="visible"
                 android:foreground="@drawable/ripple_grayc1c1"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/default_gray_circle"
                 app:layout_constraintEnd_toEndOf="@+id/circle_coffee_MAX"
                 app:layout_constraintStart_toStartOf="@+id/circle_coffee_MAX"

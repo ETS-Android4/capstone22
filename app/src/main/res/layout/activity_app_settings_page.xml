@@ -19,7 +19,6 @@
         android:fontFamily="@font/sofia_regular"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
-        android:text="Need a change?"
         android:textAlignment="textStart"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,11 +132,11 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/inbox_messages_text_box"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/inbox_messages_text_box"
-        app:layout_constraintTop_toBottomOf="@+id/biometric_text_box" />
+        app:layout_constraintTop_toBottomOf="@+id/passcode_text_box" />
 
     <TextView
         android:id="@+id/help_policies_text"
@@ -155,7 +154,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/help_text_box"
         app:layout_constraintStart_toStartOf="@+id/help_text_box"
-        app:layout_constraintTop_toBottomOf="@+id/inbox_messages_text_box" />
+        app:layout_constraintTop_toTopOf="@+id/notifications_text" />
 
     <TextView
         android:id="@+id/passcode_text_box"
@@ -186,6 +185,7 @@
         android:textAlignment="textStart"
         android:textColor="#CCFFFFFF"
         android:textSize="15sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -203,46 +203,11 @@
         android:textAlignment="textStart"
         android:textColor="#CCFFFFFF"
         android:textSize="15sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notifications_text" />
-
-    <ImageView
-        android:id="@+id/help_icon"
-        android:layout_width="40dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/help_text_box"
-        app:layout_constraintEnd_toEndOf="@+id/help_text_box"
-        app:layout_constraintTop_toTopOf="@+id/help_text_box"
-        app:srcCompat="@drawable/question" />
-
-    <ImageView
-        android:id="@+id/app_terms_icon"
-        android:layout_width="40dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/app_terms_text_box"
-        app:layout_constraintEnd_toEndOf="@+id/app_terms_text_box"
-        app:layout_constraintTop_toTopOf="@+id/app_terms_text_box"
-        app:srcCompat="@drawable/contact" />
-
-    <ImageView
-        android:id="@+id/privacy_icon"
-        android:layout_width="40dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/privacy_text_box"
-        app:layout_constraintEnd_toEndOf="@+id/privacy_text_box"
-        app:layout_constraintTop_toTopOf="@+id/privacy_text_box"
-        app:srcCompat="@drawable/padlock" />
 
     <Button
         android:id="@+id/help_text_box"
@@ -342,6 +307,7 @@
         android:layout_height="41dp"
         android:layout_marginEnd="8dp"
         android:onClick="biometric_scanner_switch"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/biometric_text_box"
         app:layout_constraintEnd_toEndOf="@+id/biometric_text_box"
         app:layout_constraintTop_toTopOf="@+id/biometric_text_box"
@@ -352,11 +318,49 @@
         android:layout_width="106dp"
         android:layout_height="41dp"
         android:layout_marginEnd="8dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/inbox_messages_text_box"
         app:layout_constraintEnd_toEndOf="@+id/inbox_messages_text_box"
         app:layout_constraintTop_toTopOf="@+id/inbox_messages_text_box"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/app_terms_icon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/app_terms_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/app_terms_text_box"
+        app:layout_constraintTop_toTopOf="@+id/app_terms_text_box"
+        app:srcCompat="@drawable/contact" />
+
+    <ImageView
+        android:id="@+id/help_icon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="2dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/help_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/help_text_box"
+        app:layout_constraintTop_toTopOf="@+id/help_text_box"
+        app:srcCompat="@drawable/question" />
+
+    <ImageView
+        android:id="@+id/privacy_icon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/privacy_text_box"
+        app:layout_constraintEnd_toEndOf="@+id/privacy_text_box"
+        app:layout_constraintTop_toTopOf="@+id/privacy_text_box"
+        app:srcCompat="@drawable/padlock" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
