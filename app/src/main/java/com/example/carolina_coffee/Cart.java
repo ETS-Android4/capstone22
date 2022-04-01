@@ -25,7 +25,7 @@ public class Cart {
     public void removefromCart(Latte latte) { cart.remove(latte);}
 
     public void calaculateCostofCart() {
-        total_cart_price = 0;
+        total_cart_price = 0.00;
         for(Latte drink : cart) {
             total_cart_price += drink.getPrice();
         }

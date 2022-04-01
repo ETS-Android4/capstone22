@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         // Navigation
         //--------------------------------------------------------------------------------------
         //Initialize and assign variables - bottom_navigation = nav bar inside activity_main.xml
@@ -199,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // only allows decrements if greater than or equal to 4.
                 if(newRewardsNum >= 4) {
-                    // Could do -4 but for some reason it did not play out so well, hence i did the longer way.
                     newRewardsNum --;
                     newRewardsNum --;
                     newRewardsNum --;
@@ -366,38 +366,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
         newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
         rewardsNum.setText(String.valueOf(newRewardsNum));
-
-
-/*
-        // Set NEW shared pref rewards # based off firebase.
-        FirebaseUser fuser = fAuth.getCurrentUser();
-        userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
-                    DocumentReference increment = fStore.collection("rewards_increment").document("increment");
-
-                    if(documentSnapshot.getValue()) {
-                        newRewardsNum = 15;
-                        rewardsNum.setText(String.valueOf(newRewardsNum));
-                    } else {
-                        newRewardsNum = -1;
-                        rewardsNum.setText(String.valueOf(newRewardsNum));
-                    }
-
-                }else {
-                    Log.d("tag", "onEvent: Document do not exists");
-                }
-            }
-        });
-
- */
-
-
-
-        // Update & Set bars
         setBars();
     }
 
@@ -467,35 +435,4 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //Declaring users rewards increment to zero
-    private void declareUsersRewardStatusToZero() {
-
-        FirebaseUser fuser = fAuth.getCurrentUser();
-        userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
-
-        int increment = 0;
-        Map<String,Integer> user = new HashMap<>();
-        user.put("Increment", increment );
-
-        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: " + e.toString());
-            }
-        });
-
-    }
-
-
-    // Temporary
-    public void example_page(View view) {
-        Intent intent = new Intent(this, Example_Increment_FireBase_Code.class);
-        startActivity(intent);
-    }
 }
