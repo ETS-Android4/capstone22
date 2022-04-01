@@ -89,7 +89,7 @@ public class CartPageActivity extends AppCompatActivity {
     public static final String SHARED_PREFS = "sharedPrefs";
     int newRewardsNum=0;
 
-
+    NumberFormat f;
 
 
     private static final String TAG = "TAG";
@@ -177,18 +177,17 @@ public class CartPageActivity extends AppCompatActivity {
         recyler_menu.setLayoutManager(layoutManager);
         recyler_menu.setHasFixedSize(false);
 
-        loadCart();
-        cart_price = findViewById(R.id.cart_cost_text1);
-        cart.calaculateCostofCart();
-        cart_price.setText("$" + cart.total_cart_price);
-
         //Brianna- can be used for formatting currency
-        NumberFormat f = NumberFormat.getInstance();
+        f = NumberFormat.getInstance();
         if (f instanceof DecimalFormat) {
             ((DecimalFormat) f).setDecimalSeparatorAlwaysShown(true);
             ((DecimalFormat) f).setMinimumFractionDigits(2);
         }
 
+        loadCart();
+        cart_price = findViewById(R.id.cart_cost_text1);
+        cart.calaculateCostofCart();
+        cart_price.setText("$" + f.format(cart.total_cart_price));
 
         /*
         //for rewards
@@ -233,12 +232,13 @@ public class CartPageActivity extends AppCompatActivity {
                 cart_addin_recyler_menu.setHasFixedSize(false);
                 loadCartAddins();
 
-                viewHolder.txtDrinkPrice.setText("$" + drink.getPrice());
+                viewHolder.txtDrinkPrice.setText("$" + f.format(drink.getPrice()));
+
                 viewHolder.removeButton.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                cart.removefromCart(drink);
+                                cart.removefromCart(cart.getCart().get(viewHolder.getAdapterPosition()));
                                 Intent intent = new Intent(CartPageActivity.this, CartPageActivity.class);
                                 overridePendingTransition(0, 0);
                                 startActivity(intent);

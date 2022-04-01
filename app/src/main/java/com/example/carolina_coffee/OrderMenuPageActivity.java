@@ -62,6 +62,8 @@ public class OrderMenuPageActivity extends AppCompatActivity {
     FirebaseRecyclerAdapter<Addin, AddinViewHolder> adapter;
     RecyclerView.Adapter<FlavorViewHolder> flavorAdapter;
 
+    TextView drink_caffeine, drink_calories, drink_cholesterol, drink_dietaryfiber, drink_protein, drink_satfat, drink_servingsize, drink_sodium, drink_sugars, drink_totalcarbs, drink_totalfat, drink_transfat;
+
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
 
@@ -103,6 +105,8 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         drink_description = (TextView) findViewById(R.id.drinkDescription);
         drink_price = (TextView) findViewById(R.id.drinkPrice);
         drink_image = (ImageView) findViewById(R.id.drinkCircle);
+
+
 
         //Get Food Id from Intent
         if (getIntent() != null){
@@ -174,6 +178,8 @@ public class OrderMenuPageActivity extends AppCompatActivity {
                 drink_name.setText(drink.getName());
                 drink_price.setText("" + drink.getPrice());
                 drink_description.setText(drink.getDescription());
+
+
 
 
             }
@@ -357,6 +363,53 @@ public class OrderMenuPageActivity extends AppCompatActivity {
             }
         };
         flavor_recyler_menu.setAdapter(flavorAdapter);
+    }
+
+    public void nutritionButton(View view) {
+        LayoutInflater nutinflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View nutritionView = nutinflater.inflate(R.layout.nutrition_popup, null);
+
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+        final PopupWindow nutritionpopupWindow = new PopupWindow(nutritionView, width, height);
+
+
+        nutritionpopupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        //Init Nutrition View
+        drink_caffeine = (TextView) nutritionView.findViewById(R.id.caffeineAMO);
+        drink_calories = (TextView) nutritionView.findViewById(R.id.caloriesAmo);
+        drink_cholesterol = (TextView) nutritionView.findViewById(R.id.cholesterolAmo);
+        drink_dietaryfiber = (TextView) nutritionView.findViewById(R.id.dietaryFiberAmo);
+        drink_protein = (TextView) nutritionView.findViewById(R.id.proteinAmo);
+        drink_satfat = (TextView) nutritionView.findViewById(R.id.satFatAmo);
+        drink_servingsize = (TextView) nutritionView.findViewById(R.id.servingSizeAmo);
+        drink_sodium = (TextView) nutritionView.findViewById(R.id.sodiumAmo);
+        drink_sugars = (TextView) nutritionView.findViewById(R.id.sugarsAmo);
+        drink_totalcarbs = (TextView) nutritionView.findViewById(R.id.totalCarbsAmo);
+        drink_totalfat = (TextView) nutritionView.findViewById(R.id.totalFatAmo);
+        drink_transfat = (TextView) nutritionView.findViewById(R.id.transFatAmo);
+
+        drink_caffeine.setText(drink.getCaffeine());
+        drink_calories.setText(drink.getCalories() + "");
+        drink_cholesterol.setText(drink.getCholesterol());
+        drink_dietaryfiber.setText(drink.getDietaryFiber());
+        drink_protein.setText(drink.getProtein());
+        drink_satfat.setText(drink.getSaturatedFat());
+        drink_servingsize.setText(drink.getServingSize());
+        drink_sodium.setText(drink.getSodium());
+        drink_sugars.setText(drink.getSugars());
+        drink_totalcarbs.setText(drink.getTotalCarbs());
+        drink_totalfat.setText(drink.getTotalFat());
+        drink_transfat.setText(drink.getTransFat());
+
+        Button btnDisplay = (Button)nutritionView.findViewById(R.id.nutrition_close_button);
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nutritionpopupWindow.dismiss();
+            }
+        });
     }
 
     public void backButton(View view) {

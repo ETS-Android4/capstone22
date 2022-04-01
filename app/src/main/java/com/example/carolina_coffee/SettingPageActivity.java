@@ -178,6 +178,9 @@ public class SettingPageActivity extends AppCompatActivity {
 
     //Fire Base Sign Out Method
     public void logout(View view) {
+        //Clear Cart
+        Cart cart = OrderMenuPageActivity.getCart();
+        cart.getCart().clear();
         // Logout
         FirebaseAuth.getInstance().signOut();
         // Send user to login page

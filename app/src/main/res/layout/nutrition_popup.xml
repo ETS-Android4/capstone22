@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#92433636"
+    tools:context=".OrderMenuPageActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#92433636"
+        tools:context=".OrderMenuPageActivity">
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="50dp"
+            android:background="#F4F4F4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/caloriesAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nutritinfoText"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="99dp"
+                android:layout_marginTop="44dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Calories Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/servingSize"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Calories"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/nutrition_close_button"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="555dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/profile_page_all_curved_corners_red"
+                android:backgroundTint="@color/red_ec"
+                android:foreground="@drawable/ripple_grayc1c1"
+                android:text="Close"
+                android:textAlignment="center"
+
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:backgroundTint="@color/red_ec" />
+
+            <TextView
+                android:id="@+id/nutritinfoText"
+                android:layout_width="302dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Nutrition information is calculated based on our standard medium recipes. Other customizations will not change this information."
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/servingSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nutritinfoText"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Serving Size"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/servingSizeAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nutritinfoText"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="127dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Serving Size Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/totalFatAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Total Fat Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/satFatAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="154dp"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Sat Fat Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/transFatAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="66dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Trans Fat Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/cholesterolAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="118dp"
+                android:layout_marginTop="94dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Cholesterol Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/sodiumAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="95dp"
+                android:layout_marginTop="123dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Sodium Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/totalCarbsAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="185dp"
+                android:layout_marginTop="153dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Carbs Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/dietaryFiberAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="184dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Dietary Fiber Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/sugarsAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="109dp"
+                android:layout_marginTop="211dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Sugars Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/proteinAmo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="241dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Protein Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/caffeineAMO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/caloriesAmo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="111dp"
+                android:layout_marginTop="271dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Caffeine Amount"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/totalFat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Total Fat"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/cholesterol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="94dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Cholesterol"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/sodium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="123dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Sodium"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/totalCarbs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="153dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Total Carbohydrates"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="242dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Protein"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/caffeine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="272dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Caffeine"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/satFat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="37dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Saturated Fat"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/dietaryFiber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="184dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Dietary Fiber"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/Sugars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="211dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Sugars"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/transFat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calories"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="66dp"
+                android:fontFamily="@font/sofia_regular"
+                android:text="Trans Fat"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
