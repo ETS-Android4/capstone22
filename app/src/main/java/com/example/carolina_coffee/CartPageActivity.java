@@ -42,10 +42,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.prefs.AbstractPreferences;
 import android.widget.TextView;
+import java.text.DecimalFormat;
 
 public class CartPageActivity extends AppCompatActivity {
     //int score=0;
@@ -179,6 +181,14 @@ public class CartPageActivity extends AppCompatActivity {
         cart_price = findViewById(R.id.cart_cost_text1);
         cart.calaculateCostofCart();
         cart_price.setText("$" + cart.total_cart_price);
+
+        //Brianna- can be used for formatting currency
+        NumberFormat f = NumberFormat.getInstance();
+        if (f instanceof DecimalFormat) {
+            ((DecimalFormat) f).setDecimalSeparatorAlwaysShown(true);
+            ((DecimalFormat) f).setMinimumFractionDigits(2);
+        }
+
 
         /*
         //for rewards
