@@ -159,7 +159,7 @@ public class CartPageActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
+        newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0);
 
         //End of onCreate
         //--------------------------------------------------------------------------------------------------------
@@ -327,7 +327,7 @@ public class CartPageActivity extends AppCompatActivity {
             // If user has rewards
             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
+            newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0);
             //TODO
             // User has >4 = rewards points
             // ////
@@ -450,6 +450,12 @@ public class CartPageActivity extends AppCompatActivity {
 
                         FirebaseUser fuser = fAuth.getCurrentUser();
                         userID = fAuth.getCurrentUser().getUid();
+
+                        // increment value in firestore
+                       // addIncFirebaseStore();
+
+
+
 
                         // Establish card used:
                         String card_1 = documentSnapshot.getString("Billing_Card_Num_1");
@@ -608,7 +614,7 @@ public class CartPageActivity extends AppCompatActivity {
                         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0) -4;
-                        editor.putInt(SHARED_PREF, newRewardsNum);
+                        editor.putInt(SHARED_PREF + userID, newRewardsNum);
                         editor.apply();
 
                         FirebaseUser fuser = fAuth.getCurrentUser();
@@ -646,7 +652,7 @@ public class CartPageActivity extends AppCompatActivity {
                         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0) -4;
-                        editor.putInt(SHARED_PREF, newRewardsNum);
+                        editor.putInt(SHARED_PREF + userID, newRewardsNum);
                         editor.apply();
 
                         FirebaseUser fuser = fAuth.getCurrentUser();
@@ -670,11 +676,31 @@ public class CartPageActivity extends AppCompatActivity {
     private void addIncSharedPref() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0) +1;
-        editor.putInt(SHARED_PREF, newRewardsNum);
+        newRewardsNum = sharedPreferences.getInt(SHARED_PREF+ userID, 0) +1 ;
+        editor.putInt(SHARED_PREF+ userID, newRewardsNum);
         editor.apply();
     }
 
+    private void addIncFirebaseStore() {
+        userID = fAuth.getCurrentUser().getUid();
+
+        Log.d(TAG, "onSuccess: rewards_increment  " +  userID + " num = " + newRewardsNum);
+
+        DocumentReference documentReference = fStore.collection("rewards_increment").document(userID);
+        Map<String,Object> user = new HashMap<>();
+        user.put("Increment", newRewardsNum );
+        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "onSuccess: Incremented ");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: " + e);
+            }
+        });
+    }
 
     private void addDataToFireBase(String s) {
         // Transfer data to firebase.

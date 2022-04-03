@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.default_gray_circle);
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
-        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
+        newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0);
         t1.setText(Integer.toString(newRewardsNum));
         rewardsNum = (TextView) findViewById(R.id.earned_points);
 
@@ -344,7 +344,7 @@ public class MainActivity extends AppCompatActivity {
         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                Log.d(TAG, "onSuccess: user Profile is created for ::: "+ userID);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -358,13 +358,23 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putInt(SHARED_PREF, newRewardsNum);
+        editor.putInt(SHARED_PREF + userID, newRewardsNum);
         editor.apply();
         Toast.makeText(this, "Rewards Saved", Toast.LENGTH_SHORT).show();
     }
     public void updateRewards() {
+
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
-        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0);
+        newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0);
+
+        if (newRewardsNum > 6) {
+            newRewardsNum = 0;
+        }
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(SHARED_PREF + userID, newRewardsNum);
+        editor.apply();
+
         rewardsNum.setText(String.valueOf(newRewardsNum));
         setBars();
     }
