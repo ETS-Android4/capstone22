@@ -6,12 +6,12 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\howar\.android\avd\new.avd" />
+            <type value="SERIAL_NUMBER" />
+            <value value="adb-RFCNA0E772B-YITJIo._adb-tls-connect._tcp" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-04-03T04:16:23.135757600Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-04-03T17:05:32.217801300Z" />
   </component>
 </project>
