@@ -366,11 +366,11 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
         newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0);
-
+/*
         if (newRewardsNum > 6) {
             newRewardsNum = 0;
        }
-
+*/
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(SHARED_PREF + userID, newRewardsNum);
         editor.apply();
