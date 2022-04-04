@@ -594,7 +594,7 @@ public class CartPageActivity extends AppCompatActivity {
         });
         dialog = builder.create();
         dialog.show();
-        // -----------------------------------------------------
+        // ------------------------------------------------------
     }
 
     // For user redeeming rewards
@@ -651,7 +651,7 @@ public class CartPageActivity extends AppCompatActivity {
                         //decrement
                         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0) -5;
+                        newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0) -4;
                         editor.putInt(SHARED_PREF + userID, newRewardsNum);
                         editor.apply();
 

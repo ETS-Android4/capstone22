@@ -370,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
         if (newRewardsNum > 6) {
             newRewardsNum = 0;
        }
-       .
+       //
 */
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(SHARED_PREF + userID, newRewardsNum);
