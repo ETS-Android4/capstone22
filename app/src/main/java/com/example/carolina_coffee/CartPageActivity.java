@@ -613,7 +613,7 @@ public class CartPageActivity extends AppCompatActivity {
                         //decrement
                         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0) -4;
+                        newRewardsNum = sharedPreferences.getInt(SHARED_PREF+ userID, 0) -5;
                         editor.putInt(SHARED_PREF + userID, newRewardsNum);
                         editor.apply();
 
@@ -651,7 +651,7 @@ public class CartPageActivity extends AppCompatActivity {
                         //decrement
                         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        newRewardsNum = sharedPreferences.getInt(SHARED_PREF, 0) -4;
+                        newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0) -5;
                         editor.putInt(SHARED_PREF + userID, newRewardsNum);
                         editor.apply();
 
