@@ -231,7 +231,7 @@
                 android:background="#CCFFFFFF"
                 android:ems="10"
                 android:fontFamily="@font/sofia_regular"
-                android:hint="Exp"
+                android:hint="Exp: MM/YY"
                 android:inputType="phone"
                 android:maxLength="5"
                 android:padding="10dp"
