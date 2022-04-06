@@ -34,7 +34,7 @@ some first-time configuration from the developer, for example: setting up a
 database for running your webapp locally.
 
 
-## Running
+## Running .
 
 Specify the commands for a developer to run the app from the cloned repo. 
 
