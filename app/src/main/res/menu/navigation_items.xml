@@ -9,12 +9,12 @@
     <item
         android:id="@+id/payPageButton"
         android:icon="@drawable/bag"
-        android:title="Pay"/>
+        android:title="Cart"/>
 
     <item
         android:id="@+id/orderPageButton"
         android:icon="@drawable/order_icon"
-        android:title="Order"/>
+        android:title="Menu"/>
 
     <item
         android:id="@+id/accountPageButton"
