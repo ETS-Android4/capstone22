@@ -87,7 +87,7 @@ public class CartPageActivity extends AppCompatActivity {
     // Rewards Increment - save data
     public static final String SHARED_PREF = "Myscore";
     public static final String SHARED_PREFS = "sharedPrefs";
-    int newRewardsNum=0;
+    int newRewardsNum= 0;
 
     NumberFormat f;
 
