@@ -58,6 +58,8 @@ The unit tests are in `/App/build/src/test/java/CartTest`.
 
 The behavioral tests are in `/App/build/src/androidTest/java/RegisterPageActivity/`.
 
+Please use emulators that are up-to-date (2020-2022).
+
 ## Testing Technology 
 
 Android Studio comes with a built in selection of library testing dependencies and functions,
@@ -70,6 +72,8 @@ One the user has located the appropriate test folder and its corresponding class
 [right click]+[Run] on the drop down menu. This process will automatically run the test 
 for the user.
 
+Please use emulators that are up-to-date (2020-2022).
+The code and API's require this, all other are unacceptable. 
 # Authors
 Your names and emails:
 
