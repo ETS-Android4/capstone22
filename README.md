@@ -66,7 +66,7 @@ Android Studio comes with a built in selection of library testing dependencies a
 for this application the dependencies are already added to the build gradle for testing and functionality
 purposes. 
 
-## Running Tests 
+## Running Tests
 
 One the user has located the appropriate test folder and its corresponding classes,
 [right click]+[Run] on the drop down menu. This process will automatically run the test 
