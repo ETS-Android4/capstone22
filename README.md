@@ -76,7 +76,7 @@ Please use emulators that are up-to-date (2020-2022).
 The code and API's require this, all other are unacceptable. 
 # Authors
 Your names and emails:
-
+ 
 Name: Caleb Howard
 Email: Howardc484@gmail.com
 
