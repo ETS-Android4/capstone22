@@ -41,7 +41,7 @@ import java.util.Map;
 import java.text.DecimalFormat;
 
 public class CartPageActivity extends AppCompatActivity {
-    //int score=0;
+    //int score=0;/
 
     FirebaseAuth fAuth;
     FirebaseUser user;
