@@ -104,19 +104,24 @@ public class SettingPageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Extract the email and send reset link.
-
                         String newPassword = resetPassword.getText().toString();
-                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(SettingPageActivity.this, "Your password has been updated.", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(SettingPageActivity.this, "Password Reset Failed.\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        if(resetPassword.length()<8) {
+                            Toast.makeText(SettingPageActivity.this, "Password must be >= 8 characters.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(SettingPageActivity.this, "Your password has been updated.", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(SettingPageActivity.this, "Password Reset Failed.\n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+
                     }
                 });
 
