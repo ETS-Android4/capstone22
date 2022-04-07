@@ -84,7 +84,7 @@ Name: Westen Wingard
 Email: Westenwingard@gmail.com
 
 Name: Briana Rovelli
-Email: briana20rovelli@gmail.com
+Email: briana20rovelli@gmail.com 
 
 Name: Christopher Wynne
 Email: chw5225@gmail.com
