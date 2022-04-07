@@ -126,6 +126,7 @@ public class ProfilePageActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         //storageReference = FirebaseStorage.getInstance().getReference();
+        fAuth.getCurrentUser().reload();
 
         resendCode = findViewById(R.id.resendCode);
         verifyMsg = findViewById(R.id.verifyMsg);
