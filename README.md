@@ -43,7 +43,7 @@ device to emulate the Android app on. Once they have one selected, the user can
 go to Build > Make Project. After that, there should be no issues running the application.
 
 # Deployment
-
+ 
 Webapps need a deployment section that explains how to get it deployed on the
 Internet. These should be detailed enough so anyone can re-deploy if needed
 .Note that you **do not put passwords in git**.
