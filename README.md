@@ -52,7 +52,7 @@ Mobile apps will also sometimes need some instructions on how to build a
 "release" version, maybe how to sign it, and how to run that binary in an
 emulator or in a physical phone.
 
-# Testing
+# Testing 
 
 The unit tests are in `/App/build/src/test/java/CartTest`.
 
