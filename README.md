@@ -53,7 +53,7 @@ Mobile apps will also sometimes need some instructions on how to build a
 emulator or in a physical phone.
 
 # Testing 
-
+ 
 The unit tests are in `/App/build/src/test/java/CartTest`.
 
 The behavioral tests are in `/App/build/src/androidTest/java/RegisterPageActivity/`.
