@@ -153,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
 
         // user VERIFIED?
 
+        fAuth.getCurrentUser().reload();
+
         if(!user.isEmailVerified()) {
             caccount_box.setVisibility(View.VISIBLE);
             caccount_settings.setVisibility(View.VISIBLE);

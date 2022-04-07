@@ -68,6 +68,8 @@ public class SettingPageActivity extends AppCompatActivity {
         userID = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
+        fAuth.getCurrentUser().reload();
+
         DocumentReference documentReference = fStore.collection("users").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
