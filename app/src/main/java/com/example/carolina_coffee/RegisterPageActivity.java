@@ -160,6 +160,7 @@ public class RegisterPageActivity extends AppCompatActivity {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
                     public void onClick(View v) {
+
                         String fullName = mFullName.getText().toString().trim();
                         String email = mEmail.getText().toString().trim();
                         String password = mPassword.getText().toString().trim();
@@ -204,6 +205,13 @@ public class RegisterPageActivity extends AppCompatActivity {
                             Toast.makeText(RegisterPageActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
                             mPassword.setError("Passwords must be identical!");
                             mConfirmPassword.setError("Passwords must be identical!");
+                            return;
+                        }
+
+                        // if user phone is invalid
+                        if(mPhone.getText().toString().length() >0 && mPhone.getText().toString().length()<14) {
+                            Toast.makeText(RegisterPageActivity.this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
+                            mPhone.setError("Phone number format invalid.");
                             return;
                         }
 

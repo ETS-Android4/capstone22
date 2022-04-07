@@ -143,10 +143,15 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // If any new data is left blank/empty, push an error to user.
-                if(profileName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty() || profilePhone.getText().toString().isEmpty()) {
+                if(profileName.getText().toString().isEmpty() || profileEmail.getText().toString().isEmpty()  /*|| profilePhone.getText().toString().length()==0*/) {
                     Toast.makeText(EditProfileActivity.this, "You cannot leave any fields blank.", Toast.LENGTH_SHORT).show();
                     return;
+                } else if(profilePhone.getText().toString().length() >0 && profilePhone.getText().toString().length()<14) {
+                    Toast.makeText(EditProfileActivity.this, "Please enter a valid phone number", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                //}
 
                 //Extract email
                 String email = profileEmail.getText().toString();
@@ -169,7 +174,7 @@ public class EditProfileActivity extends AppCompatActivity {
                                 finish();
                             }
                         });
-                        Toast.makeText(EditProfileActivity.this, "Email has been changed.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(EditProfileActivity.this, "Email has been changed.", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

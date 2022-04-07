@@ -33,6 +33,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
 
+
 public class ProfilePageActivity extends AppCompatActivity {
 
     TextView fullName,email,phone,verifyMsg,personalText;
@@ -70,6 +71,8 @@ public class ProfilePageActivity extends AppCompatActivity {
         // Calling to method that will make this action happen.
         statusBarColor();
         setContentView(R.layout.activity_profile);
+
+        emailVerified();
 
         // Navigation
         //--------------------------------------------------------------------------------------
@@ -152,6 +155,10 @@ public class ProfilePageActivity extends AppCompatActivity {
                     });
                 }
             });
+        } else {
+            verifyMsg.setVisibility(View.INVISIBLE);
+            resendCode.setVisibility(View.INVISIBLE);
+            personalText.setVisibility(View.VISIBLE);
         }
 
         DocumentReference documentReference = fStore.collection("users").document(userID);
@@ -170,6 +177,54 @@ public class ProfilePageActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void emailVerified() {
+        phone = findViewById(R.id.profilePhone);
+        fullName = findViewById(R.id.profileName);
+        email = findViewById(R.id.profileEmail);
+        //resetPassLocal = findViewById()
+
+        //profileImage = findViewById()
+        //changeProfileImage = findViewById()
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        //storageReference = FirebaseStorage.getInstance().getReference();
+
+        resendCode = findViewById(R.id.resendCode);
+        verifyMsg = findViewById(R.id.verifyMsg);
+        personalText = findViewById(R.id.personalText);
+
+        userID = fAuth.getCurrentUser().getUid();
+        user = fAuth.getCurrentUser();
+
+        if(!user.isEmailVerified()) {
+            verifyMsg.setVisibility(View.VISIBLE);
+            resendCode.setVisibility(View.VISIBLE);
+            personalText.setVisibility(View.INVISIBLE);
+
+            resendCode.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(v.getContext(), "Verification Email has been sent.", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("tag", "onFailure: Email not sent\n" + e.getMessage());
+                        }
+                    });
+                }
+            });
+        } else if(user.isEmailVerified()){
+            verifyMsg.setVisibility(View.INVISIBLE);
+            resendCode.setVisibility(View.INVISIBLE);
+            personalText.setVisibility(View.VISIBLE);
+        }
     }
 
     //Fire Base Sign Out Method

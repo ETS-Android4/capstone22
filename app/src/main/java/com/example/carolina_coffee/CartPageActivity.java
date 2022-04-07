@@ -4,11 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,7 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,23 +27,17 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.storage.StorageReference;
 
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.prefs.AbstractPreferences;
-import android.widget.TextView;
 import java.text.DecimalFormat;
 
 public class CartPageActivity extends AppCompatActivity {
@@ -79,10 +70,16 @@ public class CartPageActivity extends AppCompatActivity {
     //Dialog box for payment method
     AlertDialog dialog;
     AlertDialog.Builder builder;
-    String[] items = {"Payment Method 1", "Payment Method 2"};
+    String[] both_payments = {"Payment Method 1", "Payment Method 2"};
+    String[] payment1_only = {"Payment Method 1"};
+    String[] payment2_only = {"Payment Method 2"};
     String[] items_w_rewards = {"Redeem $5 Coupon", "Do Not Redeem"};
     String result = "";
     String result2 = "";
+
+    // Keep record if payment exists here.
+    String check_payment_1 = "no"; // default
+    String check_payment_2 = "no"; // default
 
     // Rewards Increment - save data
     public static final String SHARED_PREF = "Myscore";
@@ -113,6 +110,8 @@ public class CartPageActivity extends AppCompatActivity {
         // Calling to method that will make this action happen.
         statusBarColor();
         setContentView(R.layout.activity_cart_page);
+
+        updatePaymentMethods();
 
 
 
@@ -154,6 +153,7 @@ public class CartPageActivity extends AppCompatActivity {
         });
         // End of Navigation
         //--------------------------------------------------------------------------------------
+
 
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
@@ -211,6 +211,66 @@ public class CartPageActivity extends AppCompatActivity {
          */
 
 
+    }
+
+    public void updatePaymentMethods() {
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userID = fAuth.getCurrentUser().getUid();
+        user = fAuth.getCurrentUser();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        // Check
+        // Determine if user has payment 1 method activated.
+        //----------------------------------------------------------------------------------------------------------------------
+        DocumentReference documentReference1 = fStore.collection("PaymentMethod_1").document(userID);
+        documentReference1.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            // Card 1
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot1, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot1.exists()) {
+
+                    if(documentSnapshot1.getString("Billing_Card_Num_1") == null) {
+                        // no card
+                        String check_payment_1 = "";
+                        payment_1_no();
+
+                    } else {
+                        // Card found.
+                        payment_1_yes();
+
+                    }
+                } else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                }
+            }
+        });
+
+        // Determine if user has payment 2 method activated.
+        DocumentReference documentReference2 = fStore.collection("PaymentMethod_2").document(userID);
+        documentReference2.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            // Card 2
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot2, @Nullable FirebaseFirestoreException e) {
+                if (documentSnapshot2.exists()) {
+
+                    if(documentSnapshot2.getString("Billing_Card_Num_2") == null) {
+                        // no card
+                        String check_payment_2 = "";
+                        payment_2_no();
+
+                    } else {
+                        String check_payment_2 = "yes";
+                        payment_2_yes();
+                    }
+                } else {
+                    Log.d("tag", "onEvent: Document do not exists");
+                }
+            }
+        });
+
+        //----------------------------------------------------------------------------------------------------------------------
     }
 
     public void backButton(View view) {
@@ -318,6 +378,150 @@ public class CartPageActivity extends AppCompatActivity {
             // Needs to ask user which payment method and only accept the payment method if it is valid,
             // and then keeps track of that data of last 4 card digits to order.
 
+
+
+
+            // User does not have rewards points to spend.
+            //else {
+
+
+                // Determine if user has payment 1 method activated.
+                DocumentReference documentReference1 = fStore.collection("PaymentMethod_1").document(userID);
+                documentReference1.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                    // Card 1
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot1, @Nullable FirebaseFirestoreException e) {
+                        if (documentSnapshot1.exists()) {
+                            String card_1 = documentSnapshot1.getString("Billing_Card_Num_1");
+                            String lastFourDigits_1 = "";
+                            if(documentSnapshot1.getString("Billing_Card_Num_1") == null) {
+                                // no card
+                                String check_payment_1 = "";
+                                payment_1_no();
+
+                            } else {
+                                // Card found.
+                                payment_1_yes();
+
+                            }
+                        } else {
+                            Log.d("tag", "onEvent: Document do not exists");
+                        }
+                    }
+                });
+
+                // Determine if user has payment 2 method activated.
+                DocumentReference documentReference2 = fStore.collection("PaymentMethod_2").document(userID);
+                documentReference2.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                    // Card 2
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot2, @Nullable FirebaseFirestoreException e) {
+                        if (documentSnapshot2.exists()) {
+                            String card_1 = documentSnapshot2.getString("Billing_Card_Num_2");
+                            String lastFourDigits_1 = "";
+                            if(documentSnapshot2.getString("Billing_Card_Num_2") == null) {
+                                // no card
+                                String check_payment_2 = "";
+                                payment_2_no();
+
+                            } else {
+                                String check_payment_2 = "yes";
+                                payment_2_yes();
+                            }
+                        } else {
+                            Log.d("tag", "onEvent: Document do not exists");
+                        }
+                    }
+                });
+
+
+                //Once yes/no values set for payment, run this to run dialog prompt boxes for payment.
+                check_Payment_1_2_yes_no(view);
+
+
+
+
+
+
+
+
+
+/*
+                //--------------------------------------------------------
+                // Creating pop-up dialog box..
+                builder = new AlertDialog.Builder(CartPageActivity.this);
+                builder.setTitle("Select Payment Method");
+                builder.setSingleChoiceItems(both_payments, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        result = both_payments[which];
+                    }
+                });
+
+                // YES button - User clicked YES
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User selects which payment method to use.
+                        if (result == "Payment Method 1") {
+                            //  Check that card is existing and use.
+                            checkPayment_1_Exists(view);
+                        } else if (result == "Payment Method 2") {
+                            //  Check that card is existing and use.
+                            checkPayment_2_Exists(view);
+                        } else {
+                            //TODO
+                            // this error plays when i select payment 1, not sure why.
+                            Toast.makeText(getApplicationContext(), "You did not select a payment", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                // CANCEL button - user clicked CANCEL
+                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Will automatically exit dialog box.
+                        // This will fix a bug that when you click and then unclick "confirm" bubble, it still lets you delete account even if you did not click confirm bubble on second attempt.
+                        // Issue resolved.
+                        result = "";
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
+                // -----------------------------------------------------
+
+ */
+            }
+
+        }
+
+
+    //}
+
+
+    public void payment_1_yes(){
+        check_payment_1 = "yes";
+        return;
+    }
+    public void payment_1_no(){
+        check_payment_1 = "no";
+        return;
+    }
+    public void payment_2_yes(){
+        check_payment_2 = "yes";
+        return;
+    }
+    public void payment_2_no(){
+        check_payment_2 = "no";
+        return;
+    }
+
+
+    public void check_Payment_1_2_yes_no(View view) {
+        // Both payments exists.
+        if(check_payment_1 == "yes" && check_payment_2 == "yes") {
+            //Toast.makeText(getApplicationContext(), "both", Toast.LENGTH_LONG).show();
             fAuth = FirebaseAuth.getInstance();
             fStore = FirebaseFirestore.getInstance();
             userID = fAuth.getCurrentUser().getUid();
@@ -336,10 +540,10 @@ public class CartPageActivity extends AppCompatActivity {
                 // Creating pop-up dialog box..
                 builder = new AlertDialog.Builder(CartPageActivity.this);
                 builder.setTitle("Select Payment Method");
-                builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                builder.setSingleChoiceItems(both_payments, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        result = items[which];
+                        result = both_payments[which];
                     }
                 });
 
@@ -381,18 +585,15 @@ public class CartPageActivity extends AppCompatActivity {
                 });
                 dialog = builder.create();
                 dialog.show();
-            }
-
-
-            // User does not have rewards points to spend.
-            else {
+            } else {
+                //--------------------------------------------------------
                 // Creating pop-up dialog box..
                 builder = new AlertDialog.Builder(CartPageActivity.this);
                 builder.setTitle("Select Payment Method");
-                builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+                builder.setSingleChoiceItems(both_payments, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        result = items[which];
+                        result = both_payments[which];
                     }
                 });
 
@@ -429,11 +630,236 @@ public class CartPageActivity extends AppCompatActivity {
                 dialog.show();
                 // -----------------------------------------------------
             }
-
         }
 
+        // ONLY payment 1 exists.
+        else if(check_payment_1 == "yes" && check_payment_2 == "no") {
+            //Toast.makeText(getApplicationContext(), "only 1", Toast.LENGTH_LONG).show();
+            fAuth = FirebaseAuth.getInstance();
+            fStore = FirebaseFirestore.getInstance();
+            userID = fAuth.getCurrentUser().getUid();
+            user = fAuth.getCurrentUser();
 
+            //Confirm Payment Dialog
+            // If user has rewards
+            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0);
+            //TODO
+            // User has >4 = rewards points
+            // ////
+            // ----------
+            if(newRewardsNum >= 4 && cart.total_cart_price >= 6) {
+                // Creating pop-up dialog box..
+                builder = new AlertDialog.Builder(CartPageActivity.this);
+                builder.setTitle("Select Payment Method");
+                builder.setSingleChoiceItems(payment1_only, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        result = payment1_only[which];
+                    }
+                });
+
+                // YES button - User clicked YES
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User selects which payment method to use.
+                        if (result == "Payment Method 1") {
+                            //  Check that card is existing and use.
+                            //checkPayment_1_Exists_Rewards(view);
+
+                            // Asks user if they want to redeem points
+                            redeem_rewards_box_p1(view);
+
+                        } else {
+                            //TODO
+                            // this error plays when i select payment 1, not sure why.
+                            Toast.makeText(getApplicationContext(), "You did not select a payment", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
+
+                // CANCEL button - user clicked CANCEL
+                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Will automatically exit dialog box.
+                        // This will fix a bug that when you click and then unclick "confirm" bubble, it still lets you delete account even if you did not click confirm bubble on second attempt.
+                        // Issue resolved.
+                        result = "";
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
+            } else {
+                //--------------------------------------------------------
+                // Creating pop-up dialog box..
+                builder = new AlertDialog.Builder(CartPageActivity.this);
+                builder.setTitle("Select Payment Method");
+                builder.setSingleChoiceItems(payment1_only, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        result = payment1_only[which];
+                    }
+                });
+
+                // YES button - User clicked YES
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User selects which payment method to use.
+                        if (result == "Payment Method 1") {
+                            //  Check that card is existing and use.
+                            checkPayment_1_Exists(view);
+
+                        } else {
+                            //TODO
+                            // this error plays when i select payment 1, not sure why.
+                            Toast.makeText(getApplicationContext(), "You did not select a payment", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                // CANCEL button - user clicked CANCEL
+                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Will automatically exit dialog box.
+                        // This will fix a bug that when you click and then unclick "confirm" bubble, it still lets you delete account even if you did not click confirm bubble on second attempt.
+                        // Issue resolved.
+                        result = "";
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
+                // -----------------------------------------------------
+            }
+        }
+
+        // ONLY payment 2 exists.
+        else if(check_payment_1 == "no" && check_payment_2 == "yes") {
+            //Toast.makeText(getApplicationContext(), "only 2", Toast.LENGTH_LONG).show();
+            fAuth = FirebaseAuth.getInstance();
+            fStore = FirebaseFirestore.getInstance();
+            userID = fAuth.getCurrentUser().getUid();
+            user = fAuth.getCurrentUser();
+
+            //Confirm Payment Dialog
+            // If user has rewards
+            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF, 0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            newRewardsNum = sharedPreferences.getInt(SHARED_PREF + userID, 0);
+            //TODO
+            // User has >4 = rewards points
+            // ////
+            // ----------
+            if(newRewardsNum >= 4 && cart.total_cart_price >= 6) {
+                // Creating pop-up dialog box..
+                builder = new AlertDialog.Builder(CartPageActivity.this);
+                builder.setTitle("Select Payment Method");
+                builder.setSingleChoiceItems(payment2_only, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        result = payment2_only[which];
+                    }
+                });
+
+                // YES button - User clicked YES
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User selects which payment method to use.
+                        if (result == "Payment Method 2") {
+                            //  Check that card is existing and use.
+                            //checkPayment_1_Exists_Rewards(view);
+
+                            // Asks user if they want to redeem points
+                            redeem_rewards_box_p1(view);
+
+                        } else {
+                            //TODO
+                            // this error plays when i select payment 1, not sure why.
+                            Toast.makeText(getApplicationContext(), "You did not select a payment", Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                });
+
+                // CANCEL button - user clicked CANCEL
+                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Will automatically exit dialog box.
+                        // This will fix a bug that when you click and then unclick "confirm" bubble, it still lets you delete account even if you did not click confirm bubble on second attempt.
+                        // Issue resolved.
+                        result = "";
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
+            } else {
+                //--------------------------------------------------------
+                // Creating pop-up dialog box..
+                builder = new AlertDialog.Builder(CartPageActivity.this);
+                builder.setTitle("Select Payment Method");
+                builder.setSingleChoiceItems(payment2_only, -1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        result = payment2_only[which];
+                    }
+                });
+
+                // YES button - User clicked YES
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // User selects which payment method to use.
+                        if (result == "Payment Method 2") {
+                            //  Check that card is existing and use.
+                            checkPayment_1_Exists(view);
+
+                        } else {
+                            //TODO
+                            // this error plays when i select payment 1, not sure why.
+                            Toast.makeText(getApplicationContext(), "You did not select a payment", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+                // CANCEL button - user clicked CANCEL
+                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Will automatically exit dialog box.
+                        // This will fix a bug that when you click and then unclick "confirm" bubble, it still lets you delete account even if you did not click confirm bubble on second attempt.
+                        // Issue resolved.
+                        result = "";
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
+                // -----------------------------------------------------
+            }
+        }
+
+        // NO payments exists.
+        else if(check_payment_1 == "no" && check_payment_2 == "no"){
+            Toast.makeText(getApplicationContext(), "You do not have any payment methods.", Toast.LENGTH_LONG).show();
+        }
+
+        // Bad No
+        else {
+            // NO payments exists.
+            Toast.makeText(getApplicationContext(), "Updating, Try again.", Toast.LENGTH_LONG).show();
+            //set_payment_1_2_yes_no();
+        }
     }
+
+
+
+
     public void checkPayment_1_Exists(View view) {
         DocumentReference documentReference = fStore.collection("PaymentMethod_1").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
