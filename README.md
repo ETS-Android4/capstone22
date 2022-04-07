@@ -61,7 +61,7 @@ The behavioral tests are in `/App/build/src/androidTest/java/RegisterPageActivit
 Please use emulators that are up-to-date (2020-2022).
 
 ## Testing Technology  
-
+ 
 Android Studio comes with a built in selection of library testing dependencies and functions,
 for this application the dependencies are already added to the build gradle for testing and functionality
 purposes. 
