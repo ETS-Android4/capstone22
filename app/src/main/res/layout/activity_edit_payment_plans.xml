@@ -28,10 +28,25 @@
         android:text="Payments"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="60sp"
+        android:textSize="50dp"
+        android:paddingTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/backArrow4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/left_arrow"
+        android:foreground="@drawable/ripple"
+        android:onClick="settingsPage"
+        app:itemRippleColor="#C1C1C1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/topMessage"
