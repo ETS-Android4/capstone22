@@ -43,7 +43,7 @@ device to emulate the Android app on. Once they have one selected, the user can
 go to Build > Make Project. After that, there should be no issues running the application.
 
 # Deployment
-
+ 
 Webapps need a deployment section that explains how to get it deployed on the
 Internet. These should be detailed enough so anyone can re-deploy if needed
 .Note that you **do not put passwords in git**.
@@ -61,7 +61,7 @@ The behavioral tests are in `/App/build/src/androidTest/java/RegisterPageActivit
 Please use emulators that are up-to-date (2020-2022).
 
 ## Testing Technology  
-
+ 
 Android Studio comes with a built in selection of library testing dependencies and functions,
 for this application the dependencies are already added to the build gradle for testing and functionality
 purposes. 
