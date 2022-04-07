@@ -159,63 +159,84 @@ public class RegisterPageActivity extends AppCompatActivity {
         // On click method for Register Button.
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
-                    public void onClick(View v) {
+                        public void onClick(View v) {
 
-                        String fullName = mFullName.getText().toString().trim();
-                        String email = mEmail.getText().toString().trim();
-                        String password = mPassword.getText().toString().trim();
-                        String confirmPassword = mConfirmPassword.getText().toString().trim();
-                        String phone = mPhone.getText().toString();
-                        //tring cardNum = mCardNum.getText().toString();
-
-
+                            String fullName = mFullName.getText().toString().trim();
+                            String email = mEmail.getText().toString().trim();
+                            String password = mPassword.getText().toString().trim();
+                            String confirmPassword = mConfirmPassword.getText().toString().trim();
+                            String phone = mPhone.getText().toString();
+                            //tring cardNum = mCardNum.getText().toString();
 
 
 
-                        // If user does not enter a name.
-                        if(TextUtils.isEmpty(fullName)) {
-                            Toast.makeText(RegisterPageActivity.this, "Your name is required.", Toast.LENGTH_SHORT).show();
-                            mFullName.setError("Name is required.");
-                            return;
-                        }
 
-                        // If user does not enter an email in the field
-                        if(TextUtils.isEmpty(email)) {
-                            Toast.makeText(RegisterPageActivity.this, "Email is required.", Toast.LENGTH_SHORT).show();
-                            mEmail.setError("Email is required.");
-                            return;
-                        }
 
-                        // If user does not enter a password in the field
-                        if(TextUtils.isEmpty(password)) {
-                            Toast.makeText(RegisterPageActivity.this, "Password is required.", Toast.LENGTH_SHORT).show();
-                            mPassword.setError("Password is required.");
-                            return;
-                        }
+                            // If user does not enter a name.
+                            if(TextUtils.isEmpty(fullName)) {
+                                Toast.makeText(RegisterPageActivity.this, "Your name is required.", Toast.LENGTH_SHORT).show();
+                                mFullName.setError("Name is required.");
+                                return;
+                            }
 
-                        // If user enters a password <= 8 characters.
-                        if(password.length() < 8) {
-                            Toast.makeText(RegisterPageActivity.this, "Password must be >= 8 characters.", Toast.LENGTH_SHORT).show();
-                            mPassword.setError("Password must be >= 8 characters.");
-                            return;
-                        }
+                            // If user does not enter an email in the field
+                            if(TextUtils.isEmpty(email)) {
+                                Toast.makeText(RegisterPageActivity.this, "Email is required.", Toast.LENGTH_SHORT).show();
+                                mEmail.setError("Email is required.");
+                                return;
+                            }
 
-                        // If user passwords do not match.
-                        if(!password.equals(confirmPassword)) {
-                            Toast.makeText(RegisterPageActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
-                            mPassword.setError("Passwords must be identical!");
-                            mConfirmPassword.setError("Passwords must be identical!");
-                            return;
-                        }
+                            // If user does not enter a password in the field
+                            if(TextUtils.isEmpty(password)) {
+                                Toast.makeText(RegisterPageActivity.this, "Password is required.", Toast.LENGTH_SHORT).show();
+                                mPassword.setError("Password is required.");
+                                return;
+                            }
 
-                        // if user phone is invalid
-                        if(mPhone.getText().toString().length() >0 && mPhone.getText().toString().length()<14) {
-                            Toast.makeText(RegisterPageActivity.this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
-                            mPhone.setError("Phone number format invalid.");
-                            return;
-                        }
+                            // If user enters a password <= 8 characters.
+                            if(password.length() < 8) {
+                                Toast.makeText(RegisterPageActivity.this, "Password must be >= 8 characters.", Toast.LENGTH_SHORT).show();
+                                mPassword.setError("Password must be >= 8 characters.");
+                                return;
+                            }
 
-                        // Sets progress bar to VISIBLE to show the user a background process is occurring.
+                            // If user passwords do not match.
+                            if(!password.equals(confirmPassword)) {
+                                Toast.makeText(RegisterPageActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                                mPassword.setError("Passwords must be identical!");
+                                mConfirmPassword.setError("Passwords must be identical!");
+                                return;
+                            }
+
+                            // if user phone is invalid
+                            if((mPhone.getText().toString().length() >0 && mPhone.getText().toString().length()<14)) {
+                                Toast.makeText(RegisterPageActivity.this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
+                                mPhone.setError("Phone number format invalid.");
+                                return;
+                            }
+
+                if(mPhone.getText().toString().contains("*") ||
+                        mPhone.getText().toString().contains("#")||
+                        mPhone.getText().toString().contains(".")||
+                        mPhone.getText().toString().contains("/")||
+                        mPhone.getText().toString().contains("+")||
+                        mPhone.getText().toString().contains("  ")||
+                        mPhone.getText().toString().contains(";")||
+                        mPhone.getText().toString().contains(",")||
+                        mPhone.getText().toString().contains("*")||
+                        mPhone.getText().toString().contains("--")||
+                        mPhone.getText().toString().contains("---")||
+                        mPhone.getText().toString().contains("((")||
+                        mPhone.getText().toString().contains("))")||
+                        mPhone.getText().toString().contains(")(")||
+                        mPhone.getText().toString().contains("()")||
+                        mPhone.getText().toString().contains("*")) {
+                    Toast.makeText(RegisterPageActivity.this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
+                    mPhone.setError("Phone number format invalid.");
+                    return;
+                }
+
+                // Sets progress bar to VISIBLE to show the user a background process is occurring.
                         progressBar.setVisibility(View.VISIBLE);
 
 

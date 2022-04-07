@@ -149,6 +149,25 @@ public class EditProfileActivity extends AppCompatActivity {
                 } else if(profilePhone.getText().toString().length() >0 && profilePhone.getText().toString().length()<14) {
                     Toast.makeText(EditProfileActivity.this, "Please enter a valid phone number", Toast.LENGTH_SHORT).show();
                     return;
+                } else if(profilePhone.getText().toString().contains("*") ||
+                        profilePhone.getText().toString().contains("#")||
+                        profilePhone.getText().toString().contains(".")||
+                        profilePhone.getText().toString().contains("/")||
+                        profilePhone.getText().toString().contains("+")||
+                        profilePhone.getText().toString().contains("  ")||
+                        profilePhone.getText().toString().contains(";")||
+                        profilePhone.getText().toString().contains(",")||
+                        profilePhone.getText().toString().contains("*")||
+                        profilePhone.getText().toString().contains("--")||
+                        profilePhone.getText().toString().contains("---")||
+                        profilePhone.getText().toString().contains("((")||
+                        profilePhone.getText().toString().contains("))")||
+                        profilePhone.getText().toString().contains(")(")||
+                        profilePhone.getText().toString().contains("()")||
+                        profilePhone.getText().toString().contains("*")) {
+                    Toast.makeText(EditProfileActivity.this, "Invalid Phone Number!", Toast.LENGTH_SHORT).show();
+                    profilePhone.setError("Phone number format invalid.");
+                    return;
                 }
 
                 //}
