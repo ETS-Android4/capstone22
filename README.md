@@ -41,7 +41,7 @@ Specify the commands for a developer to run the app from the cloned repo.
 To run the application from Android Studio, the user must select an available 
 device to emulate the Android app on. Once they have one selected, the user can
 go to Build > Make Project. After that, there should be no issues running the application.
-
+ 
 # Deployment
  
 Webapps need a deployment section that explains how to get it deployed on the
