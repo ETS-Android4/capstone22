@@ -40,6 +40,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,6 +77,9 @@ public class OrderMenuPageActivity extends AppCompatActivity {
 
     Latte drink;
 
+    NumberFormat f;
+    int index = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +111,12 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         drink_price = (TextView) findViewById(R.id.drinkPrice);
         drink_image = (ImageView) findViewById(R.id.drinkCircle);
 
-
+        //Rounding for Currency
+        f = NumberFormat.getInstance();
+        if (f instanceof DecimalFormat) {
+            ((DecimalFormat) f).setDecimalSeparatorAlwaysShown(true);
+            ((DecimalFormat) f).setMinimumFractionDigits(2);
+        }
 
         //Get Food Id from Intent
         if (getIntent() != null){
@@ -117,6 +127,28 @@ public class OrderMenuPageActivity extends AppCompatActivity {
         }else {
             Toast.makeText(this, "Error: drinkId = "+drinkID, Toast.LENGTH_SHORT).show();
         }
+
+        RadioGroup sizeRadioGroup = (RadioGroup) findViewById(R.id.SizeRadioGroup);
+        sizeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = sizeRadioGroup.findViewById(checkedId);
+                index = sizeRadioGroup.indexOfChild(radioButton);
+                Latte order = new Latte(drink_name.getText().toString(), drink_description.getText().toString(), "", drink.getPrice(), drinkID);
+
+                switch(index) {
+                    case 0: // small
+                        drink_price.setText("" + f.format(Double.parseDouble(f.format(calculateDrinkCostwithAddins(order))) - 0.5));
+                        break;
+                    case 1: //medium
+                        drink_price.setText("" + f.format(Double.parseDouble(f.format(calculateDrinkCostwithAddins(order)))));
+                        break;
+                    case 2: // large
+                        drink_price.setText("" + f.format(Double.parseDouble(f.format(calculateDrinkCostwithAddins(order))) + 0.5));
+                }
+            }
+        });
 
         continueButton();
 
@@ -220,7 +252,7 @@ public class OrderMenuPageActivity extends AppCompatActivity {
                     Latte order = new Latte(drink_name.getText().toString(), drink_description.getText().toString(), "", Double.parseDouble(drink_price.getText().toString()), drinkID);
                     order.setSize(rbSize.getText().toString());
                     order.setType(rbType.getText().toString());
-                    order.setPrice(Math.round(calculateDrinkCostwithAddins(order)*100.0)/100.0);
+                    order.setPrice(Double.parseDouble(drink_price.getText().toString()));
                     order.setAdditions(getCurrentlyChecked());
                     cart.addtoCart(order);
                     Intent intent = new Intent(OrderMenuPageActivity.this, CartPageActivity.class);
@@ -270,6 +302,20 @@ public class OrderMenuPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkCheckboxes();
+                Latte order = new Latte(drink_name.getText().toString(), drink_description.getText().toString(), "", drink.getPrice(), drinkID);
+                //drink_price.setText(f.format(calculateDrinkCostwithAddins(order)));
+                switch(index) {
+                    case 0: // small
+                        drink_price.setText("" + f.format(Double.parseDouble(f.format(calculateDrinkCostwithAddins(order))) - 0.5));
+                        break;
+                    case 1: //medium
+                        drink_price.setText("" + f.format(Double.parseDouble(f.format(calculateDrinkCostwithAddins(order)))));
+                        break;
+                    case 2: // large
+                        drink_price.setText("" + f.format(Double.parseDouble(f.format(calculateDrinkCostwithAddins(order))) + 0.5));
+                    default:
+                        break;
+                }
                 popupWindow.dismiss();
             }
         });
