@@ -1,16 +1,9 @@
-# Carolina com.example.carolina_coffee.Coffee
+# Carolina Coffee
 
-The Carlina com.example.carolina_coffee.Coffee Application is a user friendly application that will allow users to conveniently
+The Carlina Coffee Application is a user friendly application that will allow users to conveniently
 select a drink, and modify the drink to the users preference. The application will allow the
 user to place the order in real time, sending the order to the store, and notifying the user of the
 drinks order upon completion.
-
-Your audience for the Readme.md are other developers who are joining your team.
-Specifically, the file should contain detailed instructions that any developer
-can follow to install, compile, run, and test your project. These are not only
-useful to new developers, but also to you when you have to re-install everything
-because your old laptop crashed. Also, the teachers of this class will be
-following your instructions.
 
 ## External Requirements
 
@@ -42,7 +35,7 @@ To run the application from Android Studio, the user must select an available
 device to emulate the Android app on. Once they have one selected, the user can
 go to Build > Make Project. After that, there should be no issues running the application.
  
-# Deployment
+## Deployment
  
 Webapps need a deployment section that explains how to get it deployed on the
 Internet. These should be detailed enough so anyone can re-deploy if needed
@@ -52,7 +45,7 @@ Mobile apps will also sometimes need some instructions on how to build a
 "release" version, maybe how to sign it, and how to run that binary in an
 emulator or in a physical phone.
 
-# Testing 
+## Testing 
   
 The unit tests are in `/App/build/src/test/java/CartTest`.
 
@@ -74,9 +67,8 @@ for the user.
 
 Please use emulators that are up-to-date (2020-2022).
 The code and API's require this, all other are unacceptable. 
-# Authors
-Your names and emails:
- 
+## Authors
+
 Name: Caleb Howard
 Email: Howardc484@gmail.com
  
