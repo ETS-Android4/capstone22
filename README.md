@@ -13,23 +13,7 @@ In order to build this project you first have to install:
 
 * [Android Studio](https://developer.android.com/)
 
-
-If possible, list the actual commands you used to install these, so the reader
-can just cut-n-paste the commands and get everything setup.
-
-You only need to add instructions for the OS you are using.
-
-## Setup
-
-Here you list all the one-time things the developer needs to do after cloning
-your repo. Sometimes there is no need for this section, but some apps require
-some first-time configuration from the developer, for example: setting up a
-database for running your webapp locally.
-
-
-## Running 
-
-Specify the commands for a developer to run the app from the cloned repo. 
+## Running
 
 To run the application from Android Studio, the user must select an available 
 device to emulate the Android app on. Once they have one selected, the user can
@@ -66,6 +50,7 @@ One the user has located the appropriate test folder and its corresponding class
 for the user.
 
 Please use emulators that are up-to-date (2020-2022).
+Recommended using a live device for best performance. 
 The code and API's require this, all other are unacceptable. 
 ## Authors
 
