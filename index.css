@@ -15,11 +15,18 @@ html, body {
 
 h1 {
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    color: #f2ebeb;
 }
 
 h2 {
     font-size: 1.8rem;
     font-weight: 400;
     font-style: italic;
+}
+
+.appHeader {
+    width: 100%;
+    background-color: #631818;
+    height: 15%;
 }
