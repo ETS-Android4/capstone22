@@ -1,0 +1,14 @@
+@import url("https://use.typekit.net/tuo4tyt.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  color: #16612a;
+  scroll-behavior: smooth;
+  font-family: sofia-pro, sans-serif;
+}
