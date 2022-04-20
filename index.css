@@ -6,9 +6,20 @@
 
 html, body {
   font-weight: 400;
-  margin: 0;
+  margin: 25px 50px;
   padding: 0;
-  color: #16612a;
+  color: #262424;
   scroll-behavior: smooth;
   font-family: sofia-pro, sans-serif;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    font-style: italic;
 }
