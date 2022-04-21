@@ -34,6 +34,13 @@ h3 {
     color: #631818;
 }
 
+footer {
+    font-size: 80;
+    font-weight: 400;
+    font-style: italic;
+    color: #631818;
+}
+
 p {
     margin: 15px 60px;
 }
