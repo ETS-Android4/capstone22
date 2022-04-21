@@ -48,6 +48,7 @@ p {
   float: left;
   width: 25%;
   padding: 50px;
+  border-spacing: 0 15px;
 }
 
 /* Clear floats after image containers */
@@ -55,4 +56,5 @@ p {
   content: "";
   clear: both;
   display: table;
+  border: 1px solid black;
 }
