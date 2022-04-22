@@ -67,3 +67,7 @@ p {
   border-spacing: 0 15px;
   margin-right: 50px;
 }
+
+a {
+    font-size: 1.6rem;
+}
