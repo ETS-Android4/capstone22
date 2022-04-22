@@ -68,10 +68,12 @@ p {
   margin-right: 50px;
 }
 
+.smallLink {
+font-size: 1rem;
+}
+
 a {
     font-size: 1.6rem;
 }
 
-.smallLink {
-font-size: 1rem;
-}
+
