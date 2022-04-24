@@ -193,7 +193,7 @@ public class HistoryPageActivity2 extends AppCompatActivity {
     }
 
     public void settingsPage(View view) {
-        Intent intent = new Intent(this, SettingPageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
