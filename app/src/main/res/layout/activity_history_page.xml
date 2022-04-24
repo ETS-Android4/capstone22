@@ -113,7 +113,7 @@
         app:layout_constraintBottom_toTopOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="@+id/whiteBox"
         app:layout_constraintStart_toStartOf="@+id/whiteBox"
-        app:layout_constraintTop_toBottomOf="@+id/card_used" />
+        app:layout_constraintTop_toBottomOf="@+id/orderNameAndPrice" />
 
     <TextView
         android:id="@+id/orderNameAndPrice"

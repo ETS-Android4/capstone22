@@ -22,8 +22,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +38,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.text.NumberFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.text.DecimalFormat;
@@ -1129,6 +1132,49 @@ public class CartPageActivity extends AppCompatActivity {
     }
 
     private void addDataToFireBase(String s) {
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("NewOrders").document(userID);
+        Map<String, Object> map = new HashMap<>();
+
+        documentReference.get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.getResult().exists()) {
+                    Map<String, Object> mapPrev = task.getResult().getData();
+                    for(Map.Entry<String, Object> entry : mapPrev.entrySet()) {
+                        map.put(entry.getKey(), entry.getValue());
+                    }
+                }
+
+                userID = fAuth.getCurrentUser().getUid();
+                Order newOrder = new Order(userID, cart.getCart(), cart.total_cart_price, s);
+                map.put("Order " + new Date().getTime(), newOrder);
+
+                documentReference.set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e);
+                    }
+                });
+
+                // After a successful order submission, clear cart and send user to home page.
+                cart.getCart().clear();
+                Intent intent = new Intent(CartPageActivity.this, MainActivity.class);
+                overridePendingTransition(0, 0);
+                startActivity(intent);
+                Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartPageActivity.this, "You've earned a reward point!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        /*
         // Transfer data to firebase.
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fStore.collection("Orders").document(userID);
@@ -1149,47 +1195,52 @@ public class CartPageActivity extends AppCompatActivity {
                 Log.d(TAG, "onFailure: " + e);
             }
         });
+*/
 
-        // After a successful order submission, clear cart and send user to home page.
-        cart.getCart().clear();
-        Intent intent = new Intent(CartPageActivity.this, MainActivity.class);
-        overridePendingTransition(0, 0);
-        startActivity(intent);
-        Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
-        Toast.makeText(CartPageActivity.this, "You've earned a reward point!", Toast.LENGTH_SHORT).show();
     }
 
     // For user redeeming rewards
     private void addDataToFireBase_Rewards(String s) {
         // Transfer data to firebase.
         userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fStore.collection("Orders").document(userID);
-        Map<String,Object> user = new HashMap<>();
-        user.put("Order_User_Name", userID);
-        user.put("Drinks", cart.getCart());
-        user.put("Order_Price", (cart.total_cart_price-4.99)); // -5 for rewards
-        user.put("Rewards", "$5 off Coupon");
-        // Automatically knows which card the user submitted for payment.
-        user.put("Payment_Used", s);
-        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+        DocumentReference documentReference = fStore.collection("NewOrders").document(userID);
+        Map<String, Object> map = new HashMap<>();
+
+        documentReference.get().addOnCompleteListener(this, new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(Void aVoid) {
-                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: " + e);
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.getResult().exists()) {
+                    Map<String, Object> mapPrev = task.getResult().getData();
+                    for(Map.Entry<String, Object> entry : mapPrev.entrySet()) {
+                        map.put(entry.getKey(), entry.getValue());
+                    }
+                }
+
+                userID = fAuth.getCurrentUser().getUid();
+                Order newOrder = new Order(userID, cart.getCart(), (cart.total_cart_price-4.99), s);
+                map.put("Order " + new Date().getTime(), newOrder);
+
+                documentReference.set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e);
+                    }
+                });
+
+                // After a successful order submission, clear cart and send user to home page.
+                cart.getCart().clear();
+                Intent intent = new Intent(CartPageActivity.this, MainActivity.class);
+                overridePendingTransition(0, 0);
+                startActivity(intent);
+                Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartPageActivity.this, "You've redeemed your reward!", Toast.LENGTH_SHORT).show();
             }
         });
-
-        // After a successful order submission, clear cart and send user to home page.
-        cart.getCart().clear();
-        Intent intent = new Intent(CartPageActivity.this, MainActivity.class);
-        overridePendingTransition(0, 0);
-        startActivity(intent);
-        Toast.makeText(CartPageActivity.this, "Order was placed!", Toast.LENGTH_SHORT).show();
-        Toast.makeText(CartPageActivity.this, "You've redeemed your reward!", Toast.LENGTH_SHORT).show();
     }
 
     public boolean order_More(View view) {
