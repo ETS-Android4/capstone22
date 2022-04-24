@@ -38,10 +38,8 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-/*
-THIS PAGE SHOULD ACT AS A DUPLICATE TO THE OTHER HISTORY PAGE.
-DO NTO DELETE.
- */
+import java.util.Set;
+
 public class HistoryPageActivity2 extends AppCompatActivity {
 
     TextView c_drink, c_price, c_card_used;
@@ -54,12 +52,18 @@ public class HistoryPageActivity2 extends AppCompatActivity {
     StorageReference storageReference;
 
     RecyclerView.Adapter<OrderHistoryViewHolder> drinkAdapter;
-    ArrayList<HashMap<String,Object>> drinks;
     ArrayList<HashMap<String,String>> addins;
+    RecyclerView.Adapter<OrdersViewHolder> orders_adapter;
     RecyclerView.Adapter<CartAddinViewHolder> drink_addin_adapter;
 
     RecyclerView drink_addin_recyler_menu;
     RecyclerView.LayoutManager drink_addin_layoutManager;
+
+    RecyclerView order_drinks_recycler_menu;
+    RecyclerView.LayoutManager order_drinks_layoutManager;
+
+    RecyclerView order_recycler_menu;
+    RecyclerView.LayoutManager order_layoutManager;
 
     RecyclerView recyler_menu;
     RecyclerView.LayoutManager layoutManager;
@@ -94,7 +98,7 @@ public class HistoryPageActivity2 extends AppCompatActivity {
         userID = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
-        DocumentReference documentReference = fStore.collection("Orders").document(userID);
+        DocumentReference documentReference = fStore.collection("NewOrders").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -112,22 +116,16 @@ public class HistoryPageActivity2 extends AppCompatActivity {
 
 
                     //Load menu
-                    recyler_menu = (RecyclerView)findViewById(R.id.history_recycler_view);
-                    layoutManager = new LinearLayoutManager(HistoryPageActivity2.this);
-                    recyler_menu.setLayoutManager(layoutManager);
-                    recyler_menu.setHasFixedSize(false);
+                    order_recycler_menu = (RecyclerView)findViewById(R.id.history_recycler_view);
+                    order_layoutManager = new LinearLayoutManager(HistoryPageActivity2.this);
+                    order_recycler_menu.setLayoutManager(order_layoutManager);
+                    order_recycler_menu.setHasFixedSize(false);
+
+                    loadOrders(documentSnapshot);
+
+
                     c_card_used = findViewById(R.id.card_used);
-
-                    TextView txtView = (TextView) findViewById(R.id.orderNameAndPrice);
-                    Object orderPrice = documentSnapshot.get("Order_Price");
-                    txtView.setText("Previous Order | $"+ orderPrice);
-                    loadDrinks(documentSnapshot);
-
-                    //Display last 4 digits of card to set Text.
-                    String card_used = documentSnapshot.getString("Payment_Used");
-                    String lastFourDigits = "";
-                    lastFourDigits = card_used.substring(card_used.length() - 4);
-                    c_card_used.setText("Card Used: xxxx-xxxx-xxxx-"+lastFourDigits);
+                    c_card_used.setText("");
 
 
                 }else {
@@ -194,14 +192,54 @@ public class HistoryPageActivity2 extends AppCompatActivity {
         }
     }
 
-    // Takes USER to main activity instead.
     public void settingsPage(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, SettingPageActivity.class);
         startActivity(intent);
     }
 
+    String order;
+
+    public void loadOrders(DocumentSnapshot documentSnapshot) {
+        orders_adapter = new RecyclerView.Adapter<OrdersViewHolder>() {
+            @Override
+            public void onBindViewHolder(OrdersViewHolder viewHolder, int i) {
+                Map<String, Object> map = documentSnapshot.getData();
+                Set<String> set = map.keySet();
+                String[] array = set.toArray(new String[set.size()]);
+                order = array[i];
+                viewHolder.orderName.setText(order);
+                Map<String, Object> orderDetails = (Map<String, Object>) map.get(order);
+                viewHolder.orderPrice.setText(("Price of Order: " + (Double) orderDetails.get("orderPrice")));
+                String lastDigits = (String)orderDetails.get("paymentUsed");
+                viewHolder.paymentUsed.setText("Payment Used: XXXX-XXXX" + lastDigits.substring(14));
+
+                order_drinks_recycler_menu = viewHolder.cartRecycler;
+                order_drinks_layoutManager = new LinearLayoutManager(HistoryPageActivity2.this);
+                order_drinks_recycler_menu.setLayoutManager(order_drinks_layoutManager);
+                order_drinks_recycler_menu.setHasFixedSize(false);
+
+                loadDrinks(documentSnapshot);
+            }
+            @Override
+            public int getItemCount() {
+                return documentSnapshot.getData().size();
+            }
+
+            @NonNull
+            @Override
+            public OrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.order_history_item, parent, false);
+                return new OrdersViewHolder(view);
+            }
+        };
+        order_recycler_menu.setAdapter(orders_adapter);
+    }
+
     public void loadDrinks(DocumentSnapshot documentSnapshot) {
-        drinks = (ArrayList<HashMap<String, Object>>) documentSnapshot.get("Drinks");
+        Map<String, Object> map = documentSnapshot.getData();
+        Map<String, Object> orderDetails = (Map<String, Object>) map.get(order);
+        ArrayList<HashMap<String, Object>> drinks = (ArrayList<HashMap<String, Object>>) orderDetails.get("cart");
 
         drinkAdapter = new RecyclerView.Adapter<OrderHistoryViewHolder>() {
             @Override
@@ -241,7 +279,7 @@ public class HistoryPageActivity2 extends AppCompatActivity {
                 return new OrderHistoryViewHolder(view);
             }
         };
-        recyler_menu.setAdapter(drinkAdapter);
+        order_drinks_recycler_menu.setAdapter(drinkAdapter);
     }
 
     public void loadDrinkAddins() {
