@@ -32,8 +32,10 @@
 
     <TextView
         android:id="@+id/new_reward_box"
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="105dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@color/red_ec"
         android:backgroundTint="#CC800B0B"
         android:fontFamily="@font/sofia_regular"
@@ -45,21 +47,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messages_box" />
 
+    <TextView
+        android:id="@+id/background_message"
+        android:layout_width="0dp"
+        android:layout_height="330dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/profile_page_top_curved_box"
+        android:backgroundTint="#CCFFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_reward_box" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messageList"
         android:layout_width="334dp"
-        android:layout_height="330dp"
-        android:background="@drawable/profile_page_bottom_curved_box"
-        android:backgroundTint="#99FFFFFF"
+        android:layout_height="320dp"
+        android:layout_marginEnd="7dp"
         android:fontFamily="@font/sofia_regular"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
         android:textAlignment="textStart"
         android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/background_message"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_reward_box" />
+        app:layout_constraintStart_toStartOf="@+id/background_message"
+        app:layout_constraintTop_toBottomOf="@+id/new_reward_box">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/inboxTopBox"
