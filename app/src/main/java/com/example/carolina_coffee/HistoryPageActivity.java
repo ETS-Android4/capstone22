@@ -35,6 +35,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +52,8 @@ public class HistoryPageActivity extends AppCompatActivity {
     Button resetPassLocal,changeProfileImage;
     FirebaseUser user;
     StorageReference storageReference;
+
+    NumberFormat f;
 
     RecyclerView.Adapter<OrderHistoryViewHolder> drinkAdapter;
     ArrayList<HashMap<String,String>> addins;
@@ -87,7 +91,12 @@ public class HistoryPageActivity extends AppCompatActivity {
         statusBarColor();
         setContentView(R.layout.activity_history_page);
 
-
+        //Rounding for Currency
+        f = NumberFormat.getInstance();
+        if (f instanceof DecimalFormat) {
+            ((DecimalFormat) f).setDecimalSeparatorAlwaysShown(true);
+            ((DecimalFormat) f).setMinimumFractionDigits(2);
+        }
 
 
         //Display history of drinks
@@ -209,7 +218,7 @@ public class HistoryPageActivity extends AppCompatActivity {
                 order = array[i];
                 viewHolder.orderName.setText(order);
                 Map<String, Object> orderDetails = (Map<String, Object>) map.get(order);
-                viewHolder.orderPrice.setText(("Price of Order: " + (Double) orderDetails.get("orderPrice")));
+                viewHolder.orderPrice.setText(("Price of Order: $" + f.format(orderDetails.get("orderPrice"))));
                 String lastDigits = (String)orderDetails.get("paymentUsed");
                 viewHolder.paymentUsed.setText("Payment Used: XXXX-XXXX" + lastDigits.substring(14));
 

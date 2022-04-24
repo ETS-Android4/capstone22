@@ -1147,7 +1147,7 @@ public class CartPageActivity extends AppCompatActivity {
                 }
 
                 userID = fAuth.getCurrentUser().getUid();
-                Order newOrder = new Order(userID, cart.getCart(), cart.total_cart_price, s);
+                Order newOrder = new Order(userID, cart.getCart(), Double.parseDouble(f.format(cart.total_cart_price)), s);
                 map.put("Order " + new Date().getTime(), newOrder);
 
                 documentReference.set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -1217,7 +1217,7 @@ public class CartPageActivity extends AppCompatActivity {
                 }
 
                 userID = fAuth.getCurrentUser().getUid();
-                Order newOrder = new Order(userID, cart.getCart(), (cart.total_cart_price-4.99), s);
+                Order newOrder = new Order(userID, cart.getCart(), Double.parseDouble(f.format(cart.total_cart_price-4.99)), s);
                 map.put("Order " + new Date().getTime(), newOrder);
 
                 documentReference.set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
