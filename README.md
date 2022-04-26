@@ -1,6 +1,6 @@
 # Carolina Coffee
 
-The Carlina Coffee Application is a user friendly application that will allow users to conveniently
+The Carolina Coffee Application is a user friendly application that will allow users to conveniently
 select a drink, and modify the drink to the users preference. The application will allow the
 user to place the order in real time, sending the order to the store, and notifying the user of the
 drinks order upon completion.
