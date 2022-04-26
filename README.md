@@ -18,16 +18,6 @@ In order to build this project you first have to install:
 To run the application from Android Studio, the user must select an available 
 device to emulate the Android app on. Once they have one selected, the user can
 go to Build > Make Project. After that, there should be no issues running the application.
- 
-## Deployment
- 
-Webapps need a deployment section that explains how to get it deployed on the
-Internet. These should be detailed enough so anyone can re-deploy if needed
-.Note that you **do not put passwords in git**.
-
-Mobile apps will also sometimes need some instructions on how to build a
-"release" version, maybe how to sign it, and how to run that binary in an
-emulator or in a physical phone.
 
 ## Testing 
   
