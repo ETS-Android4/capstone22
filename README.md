@@ -31,7 +31,7 @@ emulator or in a physical phone.
 
 ## Testing 
   
-The unit tests are in `/App/build/src/test/java/com/example/carolina_coffee`.
+The unit tests are in `/App/src/test/java/com/example/carolina_coffee`.
 
 The behavioral tests are in `/App/build/src/androidTest/java/RegisterPageActivity/`.
 
